@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbqb5d5lnlddp"]
+
+[ext_resource type="PackedScene" uid="uid://b66ilgb1odog6" path="res://tanks/gerbil.tscn" id="1_tv51i"]
+[ext_resource type="Texture2D" uid="uid://mi8yb866g112" path="res://icon.svg" id="2_gfw7y"]
+
+[node name="Map" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_tv51i")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gfw7y")

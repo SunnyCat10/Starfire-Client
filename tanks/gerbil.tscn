@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b66ilgb1odog6"]
+
+[ext_resource type="Script" path="res://tanks/gerbil.gd" id="1_1ad5m"]
+[ext_resource type="Texture2D" uid="uid://buuv4628y54vi" path="res://assets/Gerbil-Hull.png" id="1_ragkh"]
+[ext_resource type="Texture2D" uid="uid://byjw37fd362jn" path="res://assets/Gerbil-Turret.png" id="2_3csft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wqj"]
+size = Vector2(27, 14)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_1ad5m")
+speed = 75
+rotation_speed = 2.0
+attack_cooldown = 5.0
+healthint = 100
+turret_rotation_speed = 10000.0
+
+[node name="Hull" type="Sprite2D" parent="."]
+texture = ExtResource("1_ragkh")
+
+[node name="Turret" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_3csft")
+offset = Vector2(-2, 0)
+
+[node name="Muzzle" type="Marker2D" parent="Turret"]
+position = Vector2(16, 0)
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o4wqj")
+
+[node name="MousePositionGizmo" type="Polygon2D" parent="."]
+color = Color(0.964706, 1, 0, 1)
+offset = Vector2(0, -1)
+polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)
+
+[node name="SelectedRotationGizmo" type="Polygon2D" parent="."]
+color = Color(0, 1, 0.117647, 1)
+offset = Vector2(0, -1)
+polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)
+
+[node name="UnselectedRotationGizmo" type="Polygon2D" parent="."]
+color = Color(1, 0, 0.117647, 1)
+offset = Vector2(0, -1)
+polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)
+
+[node name="TankDirectionGizmo" type="Polygon2D" parent="."]
+color = Color(0.164706, 0, 1, 1)
+offset = Vector2(0, -1)
+polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)

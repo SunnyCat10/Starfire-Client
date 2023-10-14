@@ -15,6 +15,8 @@ var can_shoot = true
 var alive = true
 var tank_direction : Vector2 = Vector2()
 
+@export_range(0.0, 2) var turret_weight : float  = 1
+
 @onready var mouse_pos_gizmo : Polygon2D = $MousePositionGizmo
 @onready var selected_rot_gizmo : Polygon2D = $SelectedRotationGizmo
 @onready var unselected_rot_gizmo : Polygon2D = $UnselectedRotationGizmo
@@ -59,10 +61,11 @@ func rotate_turret(delta):
 	var target_angle : float = turret.get_angle_to(get_global_mouse_position())
 	if (target_angle >= -RADIANS_EQUAL_APPROX and target_angle <= RADIANS_EQUAL_APPROX):
 		return
+	var _rotation = (PI * delta) * turret_weight
 	if (target_angle >= 0):
-		turret.rotation += PI * delta
+		turret.rotation += _rotation
 	else:
-		turret.rotation -= PI * delta
+		turret.rotation -= _rotation
 
 func rotate_turret_2(delta):
 	var target_direction : Vector2 = get_local_mouse_position().normalized()

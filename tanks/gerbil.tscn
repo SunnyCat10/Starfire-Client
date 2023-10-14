@@ -14,7 +14,6 @@ speed = 75
 rotation_speed = 2.0
 attack_cooldown = 5.0
 healthint = 100
-turret_rotation_speed = 10000.0
 
 [node name="Hull" type="Sprite2D" parent="."]
 texture = ExtResource("1_ragkh")

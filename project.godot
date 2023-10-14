@@ -15,6 +15,10 @@ run/main_scene="res://map.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Server="*res://singletons/Server.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

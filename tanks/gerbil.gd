@@ -54,8 +54,8 @@ func rotate_turret(delta):
 	var target_angle : float = turret.get_angle_to(get_global_mouse_position())
 	if (target_angle >= -RADIANS_EQUAL_APPROX and target_angle <= RADIANS_EQUAL_APPROX):
 		return
-	var rotation = (PI * delta) * turret_weight
+	var rotation_range = (PI * delta) * turret_weight
 	if (target_angle >= 0):
-		turret.rotation += rotation
+		turret.rotation += rotation_range
 	else:
-		turret.rotation -= rotation
+		turret.rotation -= rotation_range

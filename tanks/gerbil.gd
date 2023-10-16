@@ -22,7 +22,12 @@ var tank_direction : Vector2 = Vector2()
 @onready var tank_direction_gizmo : Polygon2D = $TankDirectionGizmo
 @onready var turret : Node2D = $Turret
 
+
+var player_state
+
+
 func _ready():
+	set_physics_process(false) #remove when we will add a menu
 	$AttackTimer.wait_time = attack_cooldown
 	tank_direction = Vector2(1,0)
 	tank_direction_gizmo.position = tank_direction * 20
@@ -49,7 +54,7 @@ func _physics_process(delta):
 		return
 	control(delta)
 	move_and_slide()
-	Server.get_location(position)
+	define_player_state()
 
 func rotate_turret(delta):
 	var target_angle : float = turret.get_angle_to(get_global_mouse_position())
@@ -60,3 +65,10 @@ func rotate_turret(delta):
 		turret.rotation += rotation_range
 	else:
 		turret.rotation -= rotation_range
+
+func define_player_state():
+	player_state = {"T" : Time.get_unix_time_from_datetime_string(Time.get_time_string_from_system()),
+	"P" : global_position, 
+	"R" : rotation}
+	Server.send_player_state(player_state)
+	

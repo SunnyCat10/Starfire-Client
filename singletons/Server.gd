@@ -36,10 +36,10 @@ func on_connected_to_server():
 	map.despawn_player(player_id)
 
 func send_player_state(player_state):
-	print(player_state)
+#	print(player_state)
 	recive_player_state.rpc_id(1, player_state)
 	
 @rpc("unreliable_ordered") func recive_world_state(world_state): 
-	print(world_state)
+#	print(world_state)
 	map.update_world_state(world_state)
 	

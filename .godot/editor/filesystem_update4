@@ -1,4 +1,2 @@
 res://tanks/gerbil.tscn
-res://tanks/gerbil.gd
-res://singletons/Server.gd
 res://map.tscn

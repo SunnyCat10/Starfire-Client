@@ -8,7 +8,7 @@ var connected : bool = false
 
 @onready var map : Node2D = get_node("/root/Map")
 
-@rpc("any_peer", "unreliable_ordered") func recive_player_state(player_state) : pass
+@rpc("any_peer") func recive_player_state(player_state) : pass
 
 func _ready():
 	connect_to_server()
@@ -39,7 +39,7 @@ func send_player_state(player_state):
 #	print(player_state)
 	recive_player_state.rpc_id(1, player_state)
 	
-@rpc("unreliable_ordered") func recive_world_state(world_state): 
+@rpc func recive_world_state(world_state): 
 #	print(world_state)
 	map.update_world_state(world_state)
 	

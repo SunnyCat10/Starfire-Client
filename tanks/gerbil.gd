@@ -49,6 +49,7 @@ func _physics_process(delta):
 		return
 	control(delta)
 	move_and_slide()
+	Server.get_location(position)
 
 func rotate_turret(delta):
 	var target_angle : float = turret.get_angle_to(get_global_mouse_position())

@@ -16,8 +16,12 @@ func connect_to_server():
 	
 func on_connection_failed():
 	print("Failed to connect")
-	
+
 func on_connected_to_server():
 	print("Successfully connected")
 	print(self.is_multiplayer_authority())
+
+@rpc("any_peer")
+func get_location(location : Vector2):
+	rpc_id(1, "get_location", location)
 	

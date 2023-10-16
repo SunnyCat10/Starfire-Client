@@ -26,7 +26,7 @@ func on_connection_failed():
 func on_connected_to_server():
 	print("Successfully connected")
 	connected = true
-	get_node("../map/CharacterBody2D").set_physics_process(true) # remove when we get a menu
+	get_node("../Map/CharacterBody2D").set_physics_process(true) # remove when we get a menu
  
 
 @rpc func spawn_new_player(player_id : int, position : Vector2):

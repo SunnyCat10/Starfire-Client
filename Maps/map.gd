@@ -47,7 +47,7 @@ func _physics_process(delta):
 				player_node.rotate_player_turret(updated_turret_rotation)
 			else:
 				print("spawning player")
-				spawn_new_player(player, world_state_buffer[1]["P"])
+				spawn_new_player(player, world_state_buffer[1][player]["P"])
  
 func update_world_state(world_state):
 	last_world_state = world_state["T"] # might be redundant

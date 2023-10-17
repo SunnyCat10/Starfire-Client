@@ -15,22 +15,14 @@ var alive = true
 var tank_direction : Vector2 = Vector2()
 
 @export_range(0.0, 2) var turret_weight : float  = 1
-
-@onready var mouse_pos_gizmo : Polygon2D = $MousePositionGizmo
-@onready var selected_rot_gizmo : Polygon2D = $SelectedRotationGizmo
-@onready var unselected_rot_gizmo : Polygon2D = $UnselectedRotationGizmo
-@onready var tank_direction_gizmo : Polygon2D = $TankDirectionGizmo
 @onready var turret : Node2D = $Turret
 
-
 var player_state
-
 
 func _ready():
 	set_physics_process(false) #remove when we will add a menu
 	$AttackTimer.wait_time = attack_cooldown
 	tank_direction = Vector2(1,0)
-	tank_direction_gizmo.position = tank_direction * 20
 
 func control(delta):
 	rotate_turret(delta)

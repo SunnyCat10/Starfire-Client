@@ -25,7 +25,7 @@ func _physics_process(delta):
 	var render_time = Time.get_unix_time_from_system() - interpolation_offset
 	if world_state_buffer.size() > 1:
 		while world_state_buffer.size() > 2 and render_time > world_state_buffer[1]["T"]:
-			world_state_buffer.remove(0)
+			world_state_buffer.pop_front()
 		var interpolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"])
 		for player in world_state_buffer[1].keys():
 			if str(player) == "T": #WTF?

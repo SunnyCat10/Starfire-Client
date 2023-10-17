@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://y14sm71srt1u"]
+
+[ext_resource type="Script" path="res://Maps/map.gd" id="1_3pp8j"]
+[ext_resource type="PackedScene" uid="uid://b66ilgb1odog6" path="res://tanks/gerbil.tscn" id="2_rhqrb"]
+[ext_resource type="Texture2D" uid="uid://mi8yb866g112" path="res://icon.svg" id="3_28012"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_3pp8j")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_rhqrb")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_28012")

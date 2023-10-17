@@ -34,23 +34,3 @@ zoom = Vector2(3, 3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_o4wqj")
-
-[node name="MousePositionGizmo" type="Polygon2D" parent="."]
-color = Color(0.964706, 1, 0, 1)
-offset = Vector2(0, -1)
-polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)
-
-[node name="SelectedRotationGizmo" type="Polygon2D" parent="."]
-color = Color(0, 1, 0.117647, 1)
-offset = Vector2(0, -1)
-polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)
-
-[node name="UnselectedRotationGizmo" type="Polygon2D" parent="."]
-color = Color(1, 0, 0.117647, 1)
-offset = Vector2(0, -1)
-polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)
-
-[node name="TankDirectionGizmo" type="Polygon2D" parent="."]
-color = Color(0.164706, 0, 1, 1)
-offset = Vector2(0, -1)
-polygon = PackedVector2Array(0, 0, 1, 1, 0, 2, -1, 1)

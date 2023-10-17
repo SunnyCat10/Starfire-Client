@@ -9,3 +9,4 @@ res://ui/server_selection.tscn
 res://ui/ServerSelection.tscn
 res://ui/ServerSelection.gd
 res://Maps/map.tscn
+res://Maps/map.gd

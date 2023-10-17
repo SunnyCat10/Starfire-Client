@@ -31,6 +31,7 @@ func update_world_state(world_state):
 			var player_node : Node2D = get_node(str(player))
 			player_node.move_player(world_state[player]["P"])
 			player_node.rotate_player(world_state[player]["R"])
+			player_node.rotate_player_turret(world_state[player]["r"])
 		else:
 			print("spawning player")
 			spawn_new_player(player, world_state[player]["P"])

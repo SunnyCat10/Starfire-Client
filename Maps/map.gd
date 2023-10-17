@@ -2,7 +2,7 @@ extends Node2D
 
 var player_instance = preload("res://tanks/remote_player.tscn")
 var last_world_state = 0
-const interpolation_offset : float = 0.1
+const interpolation_offset : float = 0.100
 var world_state_buffer = []
 
 func spawn_new_player(player_id : int, _position : Vector2):
@@ -28,8 +28,7 @@ func _physics_process(delta):
 			world_state_buffer.pop_front()
 		var interpolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"])
 		for player in world_state_buffer[1].keys():
-			if str(player) == "T": #WTF?
-				print("WTF: str(player) == T")
+			if str(player) == "T": # Stil WTF?
 				continue
 			if player == multiplayer.get_unique_id(): # no need to update our own position
 				continue

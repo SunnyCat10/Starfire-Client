@@ -67,7 +67,7 @@ func rotate_turret(delta):
 		turret.rotation -= rotation_range
 
 func define_player_state():
-	player_state = {"T" : Time.get_unix_time_from_datetime_string(Time.get_time_string_from_system()),
+	player_state = {"T" : Time.get_unix_time_from_system(),
 	"P" : global_position, 
 	"R" : rotation}
 	Server.send_player_state(player_state)

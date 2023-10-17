@@ -22,16 +22,15 @@ func update_world_state(world_state):
 	# Interpolation
 	# Extrapolation
 	# Rubber Banding
-	if world_state["T"] > last_world_state:
-		last_world_state = world_state["T"]
-		world_state.erase("T")
-		world_state.erase(multiplayer.get_unique_id())
-		for player in world_state.keys():
-			if has_node(str(player)):
-				var player_node : Node2D = get_node(str(player))
-				player_node.move_player(world_state[player]["P"])
-				player_node.rotate_player(world_state[player]["R"])
-			else:
-				print("spawning player")
-				spawn_new_player(player, world_state[player]["P"])
-				
+	# if world_state["T"] > last_world_state:
+	last_world_state = world_state["T"]
+	world_state.erase("T")
+	world_state.erase(multiplayer.get_unique_id())
+	for player in world_state.keys():
+		if has_node(str(player)):
+			var player_node : Node2D = get_node(str(player))
+			player_node.move_player(world_state[player]["P"])
+			player_node.rotate_player(world_state[player]["R"])
+		else:
+			print("spawning player")
+			spawn_new_player(player, world_state[player]["P"])

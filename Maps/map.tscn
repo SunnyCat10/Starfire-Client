@@ -8,6 +8,7 @@
 script = ExtResource("1_3pp8j")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_rhqrb")]
+turret_weight = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_28012")

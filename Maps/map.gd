@@ -18,6 +18,7 @@ func spawn_new_player(player_id : int, _position : Vector2):
 	
 # TODO: Fix the despawn
 func despawn_player(player_id: int):
+	print("despawned ", player_id)
 	get_node(str(player_id)).queue_free()
 	
 

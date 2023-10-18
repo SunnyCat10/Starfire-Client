@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://njxhgde13nrw"]
+[gd_scene load_steps=8 format=3 uid="uid://njxhgde13nrw"]
 
 [ext_resource type="Script" path="res://tanks/remote_player.gd" id="1_redan"]
 [ext_resource type="Texture2D" uid="uid://buuv4628y54vi" path="res://assets/Gerbil-Hull.png" id="2_klk2n"]
@@ -6,6 +6,24 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wqj"]
 size = Vector2(27, 14)
+
+[sub_resource type="Gradient" id="Gradient_o1ys8"]
+offsets = PackedFloat32Array(0.222222, 1)
+colors = PackedColorArray(0.07, 0.0396667, 0, 1, 0.34, 0.192667, 0, 0.415686)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fu5sf"]
+gradient = SubResource("Gradient_o1ys8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hufoe"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(-20, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.3
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_fu5sf")
 
 [node name="RemotePlayer" type="CharacterBody2D"]
 z_index = 1
@@ -25,3 +43,13 @@ position = Vector2(16, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_o4wqj")
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-15, -3)
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_hufoe")
+
+[node name="SmokeParticles2" type="GPUParticles2D" parent="."]
+position = Vector2(-15, 3)
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_hufoe")

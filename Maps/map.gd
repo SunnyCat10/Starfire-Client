@@ -18,36 +18,54 @@ func spawn_new_player(player_id : int, _position : Vector2):
 	
 # TODO: Fix the despawn
 func despawn_player(player_id: int):
-	print("despawned ", player_id)
+	await get_tree().create_timer(0.2).timeout
 	get_node(str(player_id)).queue_free()
 	
 
 func _physics_process(delta):
 	var render_time = Time.get_unix_time_from_system() - interpolation_offset
 	if world_state_buffer.size() > 1:
-		while world_state_buffer.size() > 2 and render_time > world_state_buffer[1]["T"]:
+		while world_state_buffer.size() > 2 and render_time > world_state_buffer[2]["T"]:
 			world_state_buffer.pop_front()
-		var interpolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"])
-		for player in world_state_buffer[1].keys():
-			if str(player) == "T": # Stil WTF?
-				continue
-			if player == multiplayer.get_unique_id(): # no need to update our own position
-				continue
-			if not world_state_buffer[0].has(player): # player logged out
-				continue
-			if has_node(str(player)):
-				var player_node : Node2D = get_node(str(player))
-				var past_state = world_state_buffer[0][player]
-				var future_state = world_state_buffer[1][player]
-				var updated_position = lerp(past_state["P"], future_state["P"], interpolation_factor)
-				var updated_rotation = lerp_angle(past_state["R"], future_state["R"], interpolation_factor)
-				var updated_turret_rotation = lerp_angle(past_state["r"], future_state["r"], interpolation_factor)
-				player_node.move_player(updated_position)
-				player_node.rotate_player(updated_rotation)
-				player_node.rotate_player_turret(updated_turret_rotation)
-			else:
-				print("spawning player")
-				spawn_new_player(player, world_state_buffer[1][player]["P"])
+		if world_state_buffer.size() > 2: # We have a future state
+			var interpolation_factor = float(render_time - world_state_buffer[1]["T"]) / float(world_state_buffer[2]["T"] - world_state_buffer[1]["T"])
+			for player in world_state_buffer[2].keys():
+				if str(player) == "T": # Stil WTF?
+					continue
+				if player == multiplayer.get_unique_id(): # no need to update our own position
+					continue
+				if not world_state_buffer[1].has(player): # player logged out
+					continue
+				if has_node(str(player)):
+					var player_node : Node2D = get_node(str(player))
+					var past_state = world_state_buffer[1][player]
+					var future_state = world_state_buffer[2][player]
+					var updated_position = lerp(past_state["P"], future_state["P"], interpolation_factor)
+					var updated_rotation = lerp_angle(past_state["R"], future_state["R"], interpolation_factor)
+					var updated_turret_rotation = lerp_angle(past_state["r"], future_state["r"], interpolation_factor)
+					player_node.move_player(updated_position)
+					player_node.rotate_player(updated_rotation)
+					player_node.rotate_player_turret(updated_turret_rotation)
+				else:
+					print("spawning player")
+					spawn_new_player(player, world_state_buffer[2][player]["P"])
+		elif render_time > world_state_buffer[1]["T"]: # We have no future world_state
+			var extrapolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"]) - 1.00
+			for player in world_state_buffer[1].keys():
+				if str(player) == "T":
+					continue
+				if player == multiplayer.get_unique_id():
+					continue
+				if not world_state_buffer[0].has(player):
+					continue
+				if has_node(str(player)):
+					var position_delta = (world_state_buffer[1][player]["P"] - world_state_buffer[0]["P"])
+					var new_position = world_state_buffer[1][player]["P"] + (position_delta * extrapolation_factor)
+					var player_node : Node2D = get_node(str(player))
+					player_node.move_player(new_position)
+					# add new rotation
+					# add new player rotation
+			
  
 func update_world_state(world_state):
 	last_world_state = world_state["T"] # might be redundant

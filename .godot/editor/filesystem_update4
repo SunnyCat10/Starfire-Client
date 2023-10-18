@@ -1,12 +1,2 @@
 res://tanks/gerbil.tscn
-res://tanks/gerbil.gd
-res://map.tscn
-res://tanks/remote_player.tscn
-res://singletons/Server.gd
-res://map.gd
-res://tanks/remote_player.gd
-res://ui/server_selection.tscn
-res://ui/ServerSelection.tscn
-res://ui/ServerSelection.gd
 res://Maps/map.tscn
-res://Maps/map.gd

@@ -2,7 +2,7 @@ extends Node2D
 
 var player_instance = preload("res://tanks/remote_player.tscn")
 var last_world_state = 0
-const interpolation_offset : float = 0.1
+const interpolation_offset : float = 0.2
 var world_state_buffer = []
 
 func spawn_new_player(player_id : int, _position : Vector2):
@@ -40,8 +40,8 @@ func _physics_process(delta):
 				var past_state = world_state_buffer[0][player]
 				var future_state = world_state_buffer[1][player]
 				var updated_position = lerp(past_state["P"], future_state["P"], interpolation_factor)
-				var updated_rotation = lerp(past_state["R"], future_state["R"], interpolation_factor)
-				var updated_turret_rotation = lerp(past_state["r"], future_state["r"], interpolation_factor)
+				var updated_rotation = lerp_angle(past_state["R"], future_state["R"], interpolation_factor)
+				var updated_turret_rotation = lerp_angle(past_state["r"], future_state["r"], interpolation_factor)
 				player_node.move_player(updated_position)
 				player_node.rotate_player(updated_rotation)
 				player_node.rotate_player_turret(updated_turret_rotation)
@@ -52,6 +52,7 @@ func _physics_process(delta):
 func update_world_state(world_state):
 	last_world_state = world_state["T"] # might be redundant
 	world_state_buffer.append(world_state)
+	
 
 #func old_update_world_state(world_state):
 #	# Buffer

@@ -39,8 +39,8 @@ func _physics_process(delta):
 				var past_state = world_state_buffer[0][player]
 				var future_state = world_state_buffer[1][player]
 				var updated_position = lerp(past_state["P"], future_state["P"], interpolation_factor)
-				var updated_rotation = lerp(past_state["R"], future_state["R"], interpolation_factor)
-				var updated_turret_rotation = lerp(past_state["r"], future_state["r"], interpolation_factor)
+				var updated_rotation = lerp_angle(past_state["R"], future_state["R"], interpolation_factor)
+				var updated_turret_rotation = lerp_angle(past_state["r"], future_state["r"], interpolation_factor)
 				player_node.move_player(updated_position)
 				player_node.rotate_player(updated_rotation)
 				player_node.rotate_player_turret(updated_turret_rotation)

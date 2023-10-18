@@ -22,6 +22,8 @@ Server="*res://singletons/Server.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://ui/Cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [dotnet]
 

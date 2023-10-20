@@ -59,7 +59,7 @@ func _physics_process(delta):
 				if not world_state_buffer[0].has(player):
 					continue
 				if has_node(str(player)):
-					var position_delta = (world_state_buffer[1][player]["P"] - world_state_buffer[0]["P"])
+					var position_delta = (world_state_buffer[1][player]["P"] - world_state_buffer[0][player]["P"])
 					var new_position = world_state_buffer[1][player]["P"] + (position_delta * extrapolation_factor)
 					var player_node : Node2D = get_node(str(player))
 					player_node.move_player(new_position)

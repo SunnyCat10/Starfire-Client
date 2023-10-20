@@ -1,5 +1,7 @@
-TileMap
+Sprite2D
 GPUParticles2D
+Polygon2D
+TileMap
 LineEdit
 MarginContainer
 Label
@@ -11,9 +13,7 @@ Button
 HBoxContainer
 Control
 CanvasLayer
-Polygon2D
 Marker2D
-Sprite2D
 CanvasModulate
 Node2D
 CollisionShape2D

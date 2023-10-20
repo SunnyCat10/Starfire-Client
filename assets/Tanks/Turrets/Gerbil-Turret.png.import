@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byjw37fd362jn"
-path="res://.godot/imported/Gerbil-Turret.png-61b5d7c293f80e5cde0acaf055f65b23.ctex"
+path="res://.godot/imported/Gerbil-Turret.png-9004187b6b7a9086f7274e4ffcbc4517.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gerbil-Turret.png"
-dest_files=["res://.godot/imported/Gerbil-Turret.png-61b5d7c293f80e5cde0acaf055f65b23.ctex"]
+source_file="res://assets/Tanks/Turrets/Gerbil-Turret.png"
+dest_files=["res://.godot/imported/Gerbil-Turret.png-9004187b6b7a9086f7274e4ffcbc4517.ctex"]
 
 [params]
 

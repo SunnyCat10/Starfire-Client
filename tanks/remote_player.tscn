@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://njxhgde13nrw"]
 
 [ext_resource type="Script" path="res://tanks/remote_player.gd" id="1_redan"]
-[ext_resource type="Texture2D" uid="uid://buuv4628y54vi" path="res://assets/Gerbil-Hull.png" id="2_klk2n"]
-[ext_resource type="Texture2D" uid="uid://byjw37fd362jn" path="res://assets/Gerbil-Turret.png" id="3_g6dxo"]
+[ext_resource type="Texture2D" uid="uid://buuv4628y54vi" path="res://assets/Tanks/Hulls/Gerbil-Hull.png" id="2_ydagq"]
+[ext_resource type="Texture2D" uid="uid://byjw37fd362jn" path="res://assets/Tanks/Turrets/Gerbil-Turret.png" id="3_ns4yg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wqj"]
 size = Vector2(27, 14)
@@ -30,14 +30,15 @@ z_index = 1
 script = ExtResource("1_redan")
 
 [node name="Hull" type="Sprite2D" parent="."]
-texture = ExtResource("2_klk2n")
+z_index = 2
+texture = ExtResource("2_ydagq")
 
-[node name="Turret" type="Sprite2D" parent="."]
+[node name="Turret" type="Sprite2D" parent="Hull"]
 z_index = 1
-texture = ExtResource("3_g6dxo")
+texture = ExtResource("3_ns4yg")
 offset = Vector2(-2, 0)
 
-[node name="Muzzle" type="Marker2D" parent="Turret"]
+[node name="Muzzle" type="Marker2D" parent="Hull/Turret"]
 position = Vector2(16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

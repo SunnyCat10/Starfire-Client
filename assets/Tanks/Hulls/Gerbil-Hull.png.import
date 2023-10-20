@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buuv4628y54vi"
-path="res://.godot/imported/Gerbil-Hull.png-a1e0f0e442c62e895263f5e26b15b3d3.ctex"
+path="res://.godot/imported/Gerbil-Hull.png-e47ffe76d3db73627b8ae22e1d053254.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gerbil-Hull.png"
-dest_files=["res://.godot/imported/Gerbil-Hull.png-a1e0f0e442c62e895263f5e26b15b3d3.ctex"]
+source_file="res://assets/Tanks/Hulls/Gerbil-Hull.png"
+dest_files=["res://.godot/imported/Gerbil-Hull.png-e47ffe76d3db73627b8ae22e1d053254.ctex"]
 
 [params]
 

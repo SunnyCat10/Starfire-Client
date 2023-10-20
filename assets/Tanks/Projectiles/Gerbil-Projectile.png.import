@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cradfngtdtnxm"
-path="res://.godot/imported/Grass_03.png-b077d7fc2d6f952e5b71b435cc9c312a.ctex"
+uid="uid://cq13f4e3kw7td"
+path="res://.godot/imported/Gerbil-Projectile.png-38bb38a8915572aca1c46d9c503a0c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/Grass_03.png"
-dest_files=["res://.godot/imported/Grass_03.png-b077d7fc2d6f952e5b71b435cc9c312a.ctex"]
+source_file="res://assets/Tanks/Projectiles/Gerbil-Projectile.png"
+dest_files=["res://.godot/imported/Gerbil-Projectile.png-38bb38a8915572aca1c46d9c503a0c22.ctex"]
 
 [params]
 

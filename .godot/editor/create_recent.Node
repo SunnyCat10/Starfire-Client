@@ -1,4 +1,10 @@
+Area2D
+Timer
+CollisionShape2D
+AnimationPlayer
 Sprite2D
+AnimatedSprite2D
+Node2D
 GPUParticles2D
 Polygon2D
 TileMap
@@ -15,9 +21,6 @@ Control
 CanvasLayer
 Marker2D
 CanvasModulate
-Node2D
-CollisionShape2D
 Camera2D
-Timer
 CharacterBody2D
 RigidBody2D

@@ -17,6 +17,7 @@ var tank_direction : Vector2 = Vector2()
 @export_range(0.0, 2) var turret_weight : float  = 1
 @onready var turret : Node2D = $Turret
 @onready var muzzle : Node2D = $Turret/Muzzle
+@onready var animation_player : AnimationPlayer = $Turret/AnimationPlayer
 
 var projectile = preload("res://Scenes/Projectiles/GerbilProjectile.tscn")
 var rate_of_fire : float = 1.0
@@ -67,6 +68,7 @@ func rotate_turret(delta):
 func handle_attack():
 	if Input.is_action_pressed("attack") and can_fire == true:
 		can_fire = false
+		animation_player.play("Firing")
 		var projectile_instance : Node2D = projectile.instantiate()
 		projectile_instance.position = muzzle.global_position 
 		projectile_instance.rotation = turret.global_rotation

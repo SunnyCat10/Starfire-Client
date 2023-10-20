@@ -1,8 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://njxhgde13nrw"]
 
 [ext_resource type="Script" path="res://tanks/remote_player.gd" id="1_redan"]
-[ext_resource type="Texture2D" uid="uid://buuv4628y54vi" path="res://assets/Tanks/Hulls/Gerbil-Hull.png" id="2_ydagq"]
-[ext_resource type="Texture2D" uid="uid://byjw37fd362jn" path="res://assets/Tanks/Turrets/Gerbil-Turret.png" id="3_ns4yg"]
+[ext_resource type="Texture2D" uid="uid://bjv02ljdqoonu" path="res://assets/Tanks/Hulls/Gerbil-Hull.png" id="2_ydagq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1lqb3"]
+load_path = "res://.godot/imported/Gerbil-Turret.png-9004187b6b7a9086f7274e4ffcbc4517.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wqj"]
 size = Vector2(27, 14)
@@ -35,7 +37,7 @@ texture = ExtResource("2_ydagq")
 
 [node name="Turret" type="Sprite2D" parent="Hull"]
 z_index = 1
-texture = ExtResource("3_ns4yg")
+texture = SubResource("CompressedTexture2D_1lqb3")
 offset = Vector2(-2, 0)
 
 [node name="Muzzle" type="Marker2D" parent="Hull/Turret"]

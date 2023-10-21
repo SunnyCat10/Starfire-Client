@@ -12,4 +12,4 @@ func attack():
 		var projectile_instance : Node2D = projectile.instantiate()
 		projectile_instance.position = muzzle.global_position 
 		projectile_instance.rotation = global_rotation
-		get_parent().get_parent().add_child(projectile_instance)
+		get_tree().get_root().add_child(projectile_instance)

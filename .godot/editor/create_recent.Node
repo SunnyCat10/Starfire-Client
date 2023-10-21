@@ -1,3 +1,4 @@
+RigidBody2D
 Sprite2D
 AnimationPlayer
 AnimatedSprite2D
@@ -23,4 +24,3 @@ Marker2D
 CanvasModulate
 Camera2D
 CharacterBody2D
-RigidBody2D

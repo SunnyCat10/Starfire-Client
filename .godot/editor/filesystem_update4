@@ -5,3 +5,5 @@ res://tanks/gerbil.gd
 res://Maps/map.tscn
 res://tanks/remote_player.tscn
 res://Scenes/Projectiles/GerbilProjectile.tscn
+res://Scenes/Projectiles/GerbilProjectile.gd
+res://tanks/remote_player.gd

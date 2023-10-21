@@ -61,7 +61,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsplt"]
 size = Vector2(6, 4)
 
-[node name="GerbilProjectile" type="Node2D"]
+[node name="GerbilProjectile" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_3m68r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -75,9 +76,7 @@ libraries = {
 "": SubResource("AnimationLibrary_xw583")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_rsplt")
-
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rsplt")

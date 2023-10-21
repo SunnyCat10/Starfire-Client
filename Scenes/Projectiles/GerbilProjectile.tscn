@@ -3,6 +3,22 @@
 [ext_resource type="Script" path="res://Scenes/Projectiles/GerbilProjectile.gd" id="1_3m68r"]
 [ext_resource type="Texture2D" uid="uid://cq13f4e3kw7td" path="res://assets/Tanks/Projectiles/Gerbil-Projectile.png" id="1_teurk"]
 
+[sub_resource type="Animation" id="Animation_fqyuo"]
+resource_name = "Exploding"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10]
+}
+
 [sub_resource type="Animation" id="Animation_53d1j"]
 resource_name = "Flying"
 length = 0.3
@@ -33,22 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_fqyuo"]
-resource_name = "Exploding"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7, 8, 9, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xw583"]

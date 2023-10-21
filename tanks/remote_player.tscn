@@ -35,12 +35,12 @@ script = ExtResource("1_redan")
 z_index = 2
 texture = ExtResource("2_ydagq")
 
-[node name="Turret" type="Sprite2D" parent="Hull"]
+[node name="Turret" type="Sprite2D" parent="."]
 z_index = 1
 texture = SubResource("CompressedTexture2D_1lqb3")
 offset = Vector2(-2, 0)
 
-[node name="Muzzle" type="Marker2D" parent="Hull/Turret"]
+[node name="Muzzle" type="Marker2D" parent="Turret"]
 position = Vector2(16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

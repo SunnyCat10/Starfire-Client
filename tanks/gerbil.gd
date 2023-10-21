@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
-signal health_changed
-signal player_dead
+# signal health_changed
+# signal player_dead
 
 const RADIANS_EQUAL_APPROX : float = PI/64
 
 @export var speed : int
 @export var rotation_speed : float
-@export var attack_cooldown : float
 @export var healthint : int
 
 var can_shoot = true
@@ -27,8 +26,8 @@ var player_state
 
 func _ready():
 	set_physics_process(false) #remove when we will add a menu
-	$AttackTimer.wait_time = attack_cooldown
 	tank_direction = Vector2(1,0)
+
 
 func control(delta):
 	rotate_turret(delta)
@@ -47,6 +46,7 @@ func control(delta):
 	if Input.is_action_pressed('move_backward'):
 		velocity = Vector2(-speed/2.0, 0).rotated(rotation)
 
+
 func _physics_process(delta):
 	if not alive:
 		return
@@ -54,6 +54,7 @@ func _physics_process(delta):
 	handle_attack()
 	move_and_slide()
 	define_player_state()
+
 
 func rotate_turret(delta):
 	var target_angle : float = turret.get_angle_to(get_global_mouse_position())
@@ -64,17 +65,15 @@ func rotate_turret(delta):
 		turret.rotation += rotation_range
 	else:
 		turret.rotation -= rotation_range
-		
+
+
 func handle_attack():
 	if Input.is_action_pressed("attack") and can_fire == true:
 		can_fire = false
-		animation_player.play("Firing")
-		var projectile_instance : Node2D = projectile.instantiate()
-		projectile_instance.position = muzzle.global_position 
-		projectile_instance.rotation = turret.global_rotation
-		get_parent().add_child(projectile_instance)
-		await get_tree().create_timer(rate_of_fire).timeout
+		turret.attack()
+		await get_tree().create_timer(turret.turret_cooldown).timeout
 		can_fire = true
+
 
 func define_player_state():
 	player_state = {"T" : Time.get_unix_time_from_system(),

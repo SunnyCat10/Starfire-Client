@@ -1,3 +1,10 @@
+ColorRect
+VBoxContainer
+HBoxContainer
+Label
+MarginContainer
+Control
+CanvasLayer
 RigidBody2D
 Sprite2D
 AnimationPlayer
@@ -10,16 +17,9 @@ GPUParticles2D
 Polygon2D
 TileMap
 LineEdit
-MarginContainer
-Label
-VBoxContainer
 TextEdit
 GridContainer
-ColorRect
 Button
-HBoxContainer
-Control
-CanvasLayer
 Marker2D
 CanvasModulate
 Camera2D

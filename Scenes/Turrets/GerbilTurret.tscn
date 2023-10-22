@@ -50,7 +50,7 @@ script = ExtResource("2_aq7wb")
 projectile = ExtResource("3_jdv85")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(20, 0)
+position = Vector2(17, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 1.5

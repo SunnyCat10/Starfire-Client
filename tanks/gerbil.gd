@@ -71,6 +71,7 @@ func handle_attack():
 	if Input.is_action_pressed("attack") and can_fire == true:
 		can_fire = false
 		turret.attack()
+		Server.send_attack(position, turret.rotation)
 		await get_tree().create_timer(turret.turret_cooldown).timeout
 		can_fire = true
 

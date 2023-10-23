@@ -21,6 +21,7 @@ var delta_latency = 0
 @rpc("any_peer", "reliable") func player_joined_map(player_id : int): pass
 @rpc("any_peer", "reliable") func fetch_server_time(client_time : float): pass
 @rpc("any_peer") func determine_latency(client_time : float): pass
+@rpc("any_peer", "reliable") func attack(position : Vector2, rotation : float, client_time : float): pass
 
 
 func _physics_process(delta):
@@ -74,6 +75,10 @@ func calculate_latency():
 	determine_latency.rpc_id(1, Time.get_unix_time_from_system())
 
 
+func send_attack(position : Vector2, rotation : float):
+	attack.rpc_id(1, position, rotation, client_clock)
+
+
 @rpc func spawn_new_player(player_id : int, position : Vector2):
 	map.spawn_new_player(player_id, position)
 
@@ -111,3 +116,9 @@ func calculate_latency():
 		# print("Delta Latency ", delta_latency)
 		latency_array.clear()
 	
+
+@rpc("reliable") func receive_attack(position : Vector2, rotation : float, client_time : float, player_id : int):
+	if player_id == multiplayer.get_unique_id():
+		pass
+	else:
+		get_node(str(get_parent().get_path()) + "/Map/" + str(player_id)).attack_dictionary[client_time] = {"Position": position, "Rotation": rotation}

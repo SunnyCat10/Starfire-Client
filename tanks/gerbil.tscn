@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b66ilgb1odog6"]
+[gd_scene load_steps=11 format=3 uid="uid://cit2em1stabgt"]
 
 [ext_resource type="Script" path="res://tanks/gerbil.gd" id="1_1ad5m"]
 [ext_resource type="Texture2D" uid="uid://bjv02ljdqoonu" path="res://assets/Tanks/Hulls/Gerbil-Hull.png" id="2_rtgrk"]

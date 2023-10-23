@@ -33,7 +33,7 @@ script = ExtResource("1_redan")
 z_index = 2
 texture = ExtResource("2_ydagq")
 
-[node name="GerbilTurret" parent="." instance=ExtResource("3_h8pf5")]
+[node name="Turret" parent="." instance=ExtResource("3_h8pf5")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

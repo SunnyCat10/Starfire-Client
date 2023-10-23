@@ -7,6 +7,7 @@ extends RigidBody2D
 @export var life_time = 1.0
 
 func _ready():
+	body_entered.connect(on_impact)
 	apply_central_impulse(Vector2(speed, 0).rotated(global_rotation))
 	animation_player.play("Flying")
 	timer.timeout.connect(destroy_projectile)
@@ -18,7 +19,7 @@ func on_impact(body: Node) -> void:
 	
 
 func destroy_projectile():
-	freeze = true
+	set_deferred("freeze", true)
 	animation_player.play("Exploding")
 	await animation_player.animation_finished
 	queue_free()

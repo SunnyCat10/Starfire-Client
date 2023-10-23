@@ -1,3 +1,8 @@
+LightOccluder2D
+DirectionalLight2D
+CollisionShape2D
+Sprite2D
+StaticBody2D
 ColorRect
 VBoxContainer
 HBoxContainer
@@ -6,12 +11,10 @@ MarginContainer
 Control
 CanvasLayer
 RigidBody2D
-Sprite2D
 AnimationPlayer
 AnimatedSprite2D
 Area2D
 Timer
-CollisionShape2D
 Node2D
 GPUParticles2D
 Polygon2D

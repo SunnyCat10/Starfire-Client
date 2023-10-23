@@ -27,6 +27,8 @@ color_ramp = SubResource("GradientTexture1D_fu5sf")
 
 [node name="RemotePlayer" type="CharacterBody2D"]
 z_index = 1
+collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_redan")
 
 [node name="Hull" type="Sprite2D" parent="."]

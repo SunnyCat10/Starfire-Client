@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbinh8wm1d3wr"]
+
+[ext_resource type="Texture2D" uid="uid://dav35bmxqff7r" path="res://assets/Environment/Cobble-Wall-02.png" id="1_rk57t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_occhl"]
+size = Vector2(16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y7dk6"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="CobbleCorner" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rk57t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_occhl")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_y7dk6")

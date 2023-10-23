@@ -1,6 +1,9 @@
 res://tanks/gerbil.tscn
-res://Scenes/Turrets/GerbilTurret.tscn
 res://Scenes/Projectiles/GerbilProjectile.tscn
+res://Scenes/Turrets/GerbilTurret.tscn
 res://Maps/map.tscn
 res://ui/Debug.tscn
 res://tanks/remote_player.tscn
+res://Scenes/Environment/CobbleWall.tscn
+res://Scenes/Environment/CobbleCorner.tscn
+res://Scenes/Projectiles/GerbilProjectile.gd

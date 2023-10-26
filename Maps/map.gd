@@ -2,8 +2,11 @@ extends Node2D
 
 var player_instance = preload("res://tanks/remote_player.tscn")
 var last_world_state = 0
-const interpolation_offset : float = 0.100
+const interpolation_offset : float = 0.100 # remove and change to server.INTERPOLATION_OFFSET
 var world_state_buffer = []
+
+# func _ready():
+	# Server.near_future_changed.connect(change_future)
 
 func spawn_new_player(player_id : int, _position : Vector2):
 	print("spawned new player: ", player_id, " at position: ", _position)
@@ -23,7 +26,8 @@ func despawn_player(player_id: int):
 	
 
 func _physics_process(delta):
-	var render_time = Time.get_unix_time_from_system() - interpolation_offset
+	#var render_time = Time.get_unix_time_from_system() - interpolation_offset
+	var render_time = Server.client_clock - interpolation_offset
 	if world_state_buffer.size() > 1:
 		while world_state_buffer.size() > 2 and render_time > world_state_buffer[2]["T"]:
 			world_state_buffer.pop_front()
@@ -89,3 +93,17 @@ func update_world_state(world_state):
 #		else:
 #			print("spawning player")
 #			spawn_new_player(player, world_state[player]["P"])
+
+func change_future(player_id : int, position : Vector2, client_time : float):
+	if world_state_buffer.size() > 3:
+		print("===============")
+		print (client_time)
+		print(world_state_buffer[2]["T"])
+		print(world_state_buffer[3]["T"])
+		print("===============")
+		#world_state_buffer[3]["T"]
+		world_state_buffer[3][player_id]["P"] = position
+		pass
+	# else : we will update it
+		#world_state_buffer.append()
+	pass

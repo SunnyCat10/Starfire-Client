@@ -1,6 +1,7 @@
 extends Node 
 
 signal pinged(ping : float)
+# signal near_future_changed(player_id : int, position : Vector2, client_time : float)
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
 const LOCAL_HOST_PORT : int = 34684
@@ -16,6 +17,8 @@ var client_clock : float = 0
 var latency_array = []
 var latency : float = 0
 var delta_latency = 0
+
+var INTERPOLATION_OFFSET : float = 0.100 
 
 @rpc("any_peer", "unreliable_ordered") func recive_player_state(player_state): pass
 @rpc("any_peer", "reliable") func player_joined_map(player_id : int): pass

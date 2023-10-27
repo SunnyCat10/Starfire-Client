@@ -9,17 +9,16 @@ extends Sprite2D
 
 
 func attack():
-		animation_player.play("Firing")
-		var projectile_instance : Node2D = projectile.instantiate()
-		projectile_instance.position = muzzle.global_position 
-		projectile_instance.rotation = global_rotation
-		#if str(get_parent().name) == "CharacterBody2D":
-		projectile_instance.set_collision_layer(4)
-		projectile_instance.set_collision_mask(9)
-		Server.send_attack(position, rotation)
-		get_tree().get_root().add_child(projectile_instance)
-		# projectile_parent
-
+	Server.send_attack(muzzle.global_position, global_rotation)
+	
+	animation_player.play("Firing")
+	var projectile_instance : Node2D = projectile.instantiate()
+	projectile_instance.position = muzzle.global_position 
+	projectile_instance.rotation = global_rotation
+	projectile_instance.set_collision_layer(4)
+	projectile_instance.set_collision_mask(9)
+	get_tree().get_root().add_child(projectile_instance)
+		
 
 func remote_attack(position : Vector2, rotation : float):
 	animation_player.play("Firing")

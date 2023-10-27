@@ -1,14 +1,18 @@
+Label
+VBoxContainer
+MarginContainer
+ParallaxBackground
+AspectRatioContainer
+Panel
+PanelContainer
+Control
 LightOccluder2D
 DirectionalLight2D
 CollisionShape2D
 Sprite2D
 StaticBody2D
 ColorRect
-VBoxContainer
 HBoxContainer
-Label
-MarginContainer
-Control
 CanvasLayer
 RigidBody2D
 AnimationPlayer
@@ -26,4 +30,3 @@ Button
 Marker2D
 CanvasModulate
 Camera2D
-CharacterBody2D

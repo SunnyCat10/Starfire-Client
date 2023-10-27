@@ -1,6 +1,7 @@
 extends Node 
 
 signal pinged(ping : float)
+signal ui_update_player(name: String)
 # signal near_future_changed(player_id : int, position : Vector2, client_time : float)
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
@@ -89,6 +90,8 @@ func send_attack(position : Vector2, rotation : float):
 @rpc func despawn_player(player_id: int):
 	map.despawn_player(player_id)
 
+@rpc("reliable") func update_ui_player(player_list: Dictionary):
+	ui_update_player.emit(player_list)
 
 @rpc("unreliable_ordered") func recive_world_state(world_state): 
 	map.update_world_state(world_state)

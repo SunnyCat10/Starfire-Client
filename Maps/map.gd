@@ -5,7 +5,6 @@ var last_world_state = 0
 const interpolation_offset : float = 0.100 # remove and change to server.INTERPOLATION_OFFSET
 var world_state_buffer = []
 
-
 # func _ready():
 	# Server.near_future_changed.connect(change_future)
 
@@ -23,7 +22,6 @@ func spawn_new_player(player_id : int, _position : Vector2):
 # TODO: Fix the despawn
 func despawn_player(player_id: int):
 	await get_tree().create_timer(0.2).timeout
-
 	get_node(str(player_id)).queue_free()
 	
 

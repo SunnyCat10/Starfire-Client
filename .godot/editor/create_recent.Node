@@ -1,6 +1,8 @@
+ProgressBar
+MarginContainer
+CanvasLayer
 Label
 VBoxContainer
-MarginContainer
 ParallaxBackground
 AspectRatioContainer
 Panel
@@ -13,7 +15,6 @@ Sprite2D
 StaticBody2D
 ColorRect
 HBoxContainer
-CanvasLayer
 RigidBody2D
 AnimationPlayer
 AnimatedSprite2D

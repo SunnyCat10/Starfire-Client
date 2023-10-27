@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://y14sm71srt1u"]
+[gd_scene load_steps=23 format=3 uid="uid://y14sm71srt1u"]
 
 [ext_resource type="Script" path="res://Maps/map.gd" id="1_3pp8j"]
 [ext_resource type="PackedScene" uid="uid://cit2em1stabgt" path="res://tanks/gerbil.tscn" id="2_rhqrb"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://iq27w5yc76r7" path="res://ui/Debug.tscn" id="11_1tmrs"]
 [ext_resource type="PackedScene" uid="uid://cbinh8wm1d3wr" path="res://Scenes/Environment/CobbleCorner.tscn" id="12_a7sua"]
 [ext_resource type="PackedScene" uid="uid://creuoj14mj6il" path="res://Scenes/Environment/CobbleWall.tscn" id="13_ims0e"]
+[ext_resource type="PackedScene" uid="uid://lw6e1vlkpa2x" path="res://ui/PlayerStats.tscn" id="14_wfsdt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msj3y"]
 texture = ExtResource("4_njet5")
@@ -62,7 +63,9 @@ sources/6 = SubResource("TileSetAtlasSource_vsxog")
 [node name="Map" type="Node2D"]
 script = ExtResource("1_3pp8j")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_rhqrb")]
+[node name="PlayerStatsGui" parent="." instance=ExtResource("14_wfsdt")]
+
+[node name="Player" parent="." instance=ExtResource("2_rhqrb")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_28012")

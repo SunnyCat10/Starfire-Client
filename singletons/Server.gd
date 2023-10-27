@@ -2,7 +2,8 @@ extends Node
 
 signal pinged(ping : float)
 signal ui_update_player(name: String)
-# signal near_future_changed(player_id : int, position : Vector2, client_time : float)
+signal health_filled(health : int)
+signal on_damage(damage : int)
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
 const LOCAL_HOST_PORT : int = 34684

@@ -7,8 +7,9 @@ const RADIANS_EQUAL_APPROX : float = PI/64
 
 @export var speed : int
 @export var rotation_speed : float
-@export var healthint : int
+@export var max_health : int
 
+var current_health : int
 var can_shoot = true
 var alive = true
 var tank_direction : Vector2 = Vector2()
@@ -27,6 +28,7 @@ var player_state
 func _ready():
 	set_physics_process(false) #remove when we will add a menu
 	tank_direction = Vector2(1,0)
+	Server.health_filled.emit(max_health)
 
 
 func control(delta):

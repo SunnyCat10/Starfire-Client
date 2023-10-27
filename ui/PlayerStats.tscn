@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://lw6e1vlkpa2x"]
+
+[ext_resource type="Script" path="res://ui/PlayerStats.gd" id="1_xgoyq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lfu3"]
+bg_color = Color(0.4, 0.0784314, 0.0784314, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4onf"]
+bg_color = Color(0.105882, 0.341176, 0.00392157, 0.541176)
+
+[node name="PlayerStatsGui" type="CanvasLayer"]
+script = ExtResource("1_xgoyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_6lfu3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k4onf")
+max_value = 0.0
+step = 1.0

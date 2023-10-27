@@ -2,3 +2,5 @@ res://tanks/gerbil.tscn
 res://Scenes/Turrets/GerbilTurret.tscn
 res://Scenes/Projectiles/GerbilProjectile.tscn
 res://tanks/remote_player.tscn
+res://ui/Debug.tscn
+res://ui/Debug.gd

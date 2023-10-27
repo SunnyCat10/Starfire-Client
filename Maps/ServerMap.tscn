@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d167vxkpo4kae"]
+
+[ext_resource type="PackedScene" uid="uid://cbinh8wm1d3wr" path="res://Scenes/Environment/CobbleCorner.tscn" id="12_s3xs2"]
+[ext_resource type="PackedScene" uid="uid://creuoj14mj6il" path="res://Scenes/Environment/CobbleWall.tscn" id="13_j2x5q"]
+
+[node name="Map" type="Node2D"]
+
+[node name="CobbleCorner" parent="." instance=ExtResource("12_s3xs2")]
+position = Vector2(200, 40)
+
+[node name="CobbleWall" parent="." instance=ExtResource("13_j2x5q")]
+position = Vector2(200, 0)
+rotation = 1.5708
+
+[node name="CobbleCorner2" parent="." instance=ExtResource("12_s3xs2")]
+position = Vector2(200, -40)

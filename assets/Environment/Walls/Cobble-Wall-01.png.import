@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dav35bmxqff7r"
-path="res://.godot/imported/Cobble-Wall-02.png-493bab9a36c57c68090f20c1dc516920.ctex"
+uid="uid://bcdhxo54igevq"
+path="res://.godot/imported/Cobble-Wall-01.png-4834e7b4d2d92528df48ef66b03c6a46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Environment/Cobble-Wall-02.png"
-dest_files=["res://.godot/imported/Cobble-Wall-02.png-493bab9a36c57c68090f20c1dc516920.ctex"]
+source_file="res://assets/Environment/Walls/Cobble-Wall-01.png"
+dest_files=["res://.godot/imported/Cobble-Wall-01.png-4834e7b4d2d92528df48ef66b03c6a46.ctex"]
 
 [params]
 

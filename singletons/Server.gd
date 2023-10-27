@@ -59,7 +59,7 @@ func load_main_map():
 	get_parent().add_child(map)
 	print(multiplayer.get_unique_id())
 	player_joined_map.rpc_id(1, multiplayer.get_unique_id())
-	get_node("../Map/CharacterBody2D").set_physics_process(true)
+	get_node("../Map/Player").set_physics_process(true)
 	get_node("../ServerSelection").queue_free()
 
 
@@ -129,3 +129,7 @@ func send_attack(position : Vector2, rotation : float):
 		pass
 	else:
 		get_node(str(get_parent().get_path()) + "/Map/" + str(player_id)).attack_dictionary[client_time] = {"Position": position, "Rotation": rotation}
+
+
+@rpc("reliable") func receive_damage(damage: int): 
+	on_damage.emit(damage)

@@ -48,7 +48,7 @@ collision_mask = 17
 script = ExtResource("1_1ad5m")
 speed = 75
 rotation_speed = 2.0
-max_health = 3000
+max_health = 100
 
 [node name="Hull" type="Sprite2D" parent="."]
 z_index = 2

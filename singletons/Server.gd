@@ -127,10 +127,12 @@ func send_attack(position : Vector2, rotation : float):
 	
 
 @rpc("reliable") func receive_attack(position : Vector2, rotation : float, client_time : float, player_id : int):
-	if player_id == multiplayer.get_unique_id():
-		pass
-	else:
-		get_node(str(get_parent().get_path()) + "/Map/" + str(player_id)).attack_dictionary[client_time] = {"Position": position, "Rotation": rotation}
+	if has_node(str(get_parent().get_path()) + "/Map/" + str(player_id)):
+		print("Player", player_id, "exists")
+		if player_id == multiplayer.get_unique_id():
+			pass
+		else:
+			get_node(str(get_parent().get_path()) + "/Map/" + str(player_id)).attack_dictionary[client_time] = {"Position": position, "Rotation": rotation}
 
 
 @rpc("reliable") func receive_damage(damage: int): 

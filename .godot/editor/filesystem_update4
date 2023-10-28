@@ -1,1 +1,7 @@
 res://tanks/gerbil.tscn
+res://Scenes/Turrets/GerbilTurret.tscn
+res://tanks/remote_player.tscn
+res://Scenes/Projectiles/GerbilProjectile.tscn
+res://Maps/map.tscn
+res://ui/PlayerStats.tscn
+res://singletons/Server.gd

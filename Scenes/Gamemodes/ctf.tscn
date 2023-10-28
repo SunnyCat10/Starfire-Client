@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hfnn2qn17sdl"]
+
+[ext_resource type="Script" path="res://Scenes/Gamemodes/Ctf.gd" id="1_ufh44"]
+[ext_resource type="PackedScene" uid="uid://hh261irkgxdl" path="res://ui/Ctf.tscn" id="2_h6tyg"]
+
+[node name="CTF" type="Node2D"]
+script = ExtResource("1_ufh44")
+
+[node name="CTFGui" parent="." instance=ExtResource("2_h6tyg")]

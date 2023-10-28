@@ -1,7 +1,11 @@
-ProgressBar
+ColorRect
+Label
+HBoxContainer
 MarginContainer
 CanvasLayer
-Label
+Node2D
+Polygon2D
+ProgressBar
 VBoxContainer
 ParallaxBackground
 AspectRatioContainer
@@ -13,16 +17,12 @@ DirectionalLight2D
 CollisionShape2D
 Sprite2D
 StaticBody2D
-ColorRect
-HBoxContainer
 RigidBody2D
 AnimationPlayer
 AnimatedSprite2D
 Area2D
 Timer
-Node2D
 GPUParticles2D
-Polygon2D
 TileMap
 LineEdit
 TextEdit
@@ -30,4 +30,3 @@ GridContainer
 Button
 Marker2D
 CanvasModulate
-Camera2D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://y14sm71srt1u"]
+[gd_scene load_steps=25 format=3 uid="uid://y14sm71srt1u"]
 
 [ext_resource type="Script" path="res://Maps/map.gd" id="1_3pp8j"]
 [ext_resource type="PackedScene" uid="uid://cit2em1stabgt" path="res://tanks/gerbil.tscn" id="2_rhqrb"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cbinh8wm1d3wr" path="res://Scenes/Environment/CobbleCorner.tscn" id="12_a7sua"]
 [ext_resource type="PackedScene" uid="uid://creuoj14mj6il" path="res://Scenes/Environment/CobbleWall.tscn" id="13_ims0e"]
 [ext_resource type="PackedScene" uid="uid://lw6e1vlkpa2x" path="res://ui/PlayerStats.tscn" id="14_wfsdt"]
+[ext_resource type="PackedScene" uid="uid://hfnn2qn17sdl" path="res://Scenes/Gamemodes/ctf.tscn" id="15_hhxr3"]
+[ext_resource type="PackedScene" uid="uid://hh261irkgxdl" path="res://ui/Ctf.tscn" id="16_a6feg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msj3y"]
 texture = ExtResource("4_njet5")
@@ -94,3 +96,7 @@ color = Color(0.968627, 0.541176, 0.164706, 1)
 energy = 0.2
 shadow_enabled = true
 height = 1.0
+
+[node name="CTF" parent="." instance=ExtResource("15_hhxr3")]
+
+[node name="CTFGui" parent="." instance=ExtResource("16_a6feg")]

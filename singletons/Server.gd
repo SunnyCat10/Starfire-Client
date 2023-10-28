@@ -22,6 +22,8 @@ var delta_latency = 0
 
 var INTERPOLATION_OFFSET : float = 0.100 
 
+enum Team {ALLY_TEAM, ENEMY_TEAM}
+
 @rpc("any_peer", "unreliable_ordered") func recive_player_state(player_state): pass
 @rpc("any_peer", "reliable") func player_joined_map(player_id : int): pass
 @rpc("any_peer", "reliable") func fetch_server_time(client_time : float): pass

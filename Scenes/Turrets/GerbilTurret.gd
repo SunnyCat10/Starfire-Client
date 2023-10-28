@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var projectile : PackedScene
-@export var turret_cooldown : float = 1.0
+@export var turret_cooldown : float = 0.01
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var muzzle : Marker2D = $Muzzle

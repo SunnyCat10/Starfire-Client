@@ -105,6 +105,6 @@ position = Vector2(128, -64)
 
 [node name="Flagpole2" parent="Objectives" instance=ExtResource("16_2258m")]
 position = Vector2(128, 64)
-team_id = 1
+flag_team_id = 1
 
 [node name="CTF" parent="." instance=ExtResource("15_hhxr3")]

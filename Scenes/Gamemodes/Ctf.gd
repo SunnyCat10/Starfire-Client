@@ -60,11 +60,25 @@ func update_score():
 
 func setup_flags():
 	for objective in objectives.get_children():
-		print("objective serach")
 		if objective.name.contains(FLAGPOLE_IDENTIFIER):
-			print("Found!")
 			objective.setup_flag(client_team_id)
+			objective.flag_picked.connect(on_pickup_flag)
+			objective.flag_dropped.connect(on_drop_flag)
+			objective.flag_captured.connect(on_capture_flag)
 
+
+func on_pickup_flag(team_id : int):
+	if client_team_id == team_id:
+		ctf_ui.flag_taken(Server.Team.ALLY_TEAM)
+	else:
+		ctf_ui.flag_taken(Server.Team.ENEMY_TEAM)
+
+
+func on_drop_flag(team_id : int):
+	pass
+	
+func on_capture_flag(team_id : int):
+	pass
 
 func test():
 	timer = Timer.new()

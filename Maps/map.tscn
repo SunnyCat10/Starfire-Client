@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://creuoj14mj6il" path="res://Scenes/Environment/CobbleWall.tscn" id="13_ims0e"]
 [ext_resource type="PackedScene" uid="uid://lw6e1vlkpa2x" path="res://ui/PlayerStats.tscn" id="14_wfsdt"]
 [ext_resource type="PackedScene" uid="uid://hfnn2qn17sdl" path="res://Scenes/Gamemodes/ctf.tscn" id="15_hhxr3"]
-[ext_resource type="PackedScene" uid="uid://hh261irkgxdl" path="res://ui/Ctf.tscn" id="16_a6feg"]
+[ext_resource type="PackedScene" uid="uid://dhrr0xvjxs4fp" path="res://Scenes/Objectives/Flagpole.tscn" id="16_2258m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msj3y"]
 texture = ExtResource("4_njet5")
@@ -97,6 +97,14 @@ energy = 0.2
 shadow_enabled = true
 height = 1.0
 
-[node name="CTF" parent="." instance=ExtResource("15_hhxr3")]
+[node name="Objectives" type="Node" parent="."]
+unique_name_in_owner = true
 
-[node name="CTFGui" parent="." instance=ExtResource("16_a6feg")]
+[node name="Flagpole" parent="Objectives" instance=ExtResource("16_2258m")]
+position = Vector2(128, -64)
+
+[node name="Flagpole2" parent="Objectives" instance=ExtResource("16_2258m")]
+position = Vector2(128, 64)
+team_id = 1
+
+[node name="CTF" parent="." instance=ExtResource("15_hhxr3")]

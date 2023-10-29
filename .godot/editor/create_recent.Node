@@ -1,3 +1,7 @@
+Node
+Sprite2D
+CollisionShape2D
+Area2D
 ColorRect
 Label
 HBoxContainer
@@ -14,13 +18,10 @@ PanelContainer
 Control
 LightOccluder2D
 DirectionalLight2D
-CollisionShape2D
-Sprite2D
 StaticBody2D
 RigidBody2D
 AnimationPlayer
 AnimatedSprite2D
-Area2D
 Timer
 GPUParticles2D
 TileMap

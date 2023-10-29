@@ -59,7 +59,6 @@ func flag_captured(team : Server.Team):
 
 
 func flicker_flag():
-	print("Flicker!!!")
 	if (ally_flag_taken):
 		ally_flag.color = emtpy_color if ally_flag.color == ally_color else ally_color
 	if (enemy_flag_taken):

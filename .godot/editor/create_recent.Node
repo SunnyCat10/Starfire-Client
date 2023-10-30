@@ -1,5 +1,6 @@
-Node
 Sprite2D
+Node2D
+Node
 CollisionShape2D
 Area2D
 ColorRect
@@ -7,7 +8,6 @@ Label
 HBoxContainer
 MarginContainer
 CanvasLayer
-Node2D
 Polygon2D
 ProgressBar
 VBoxContainer
@@ -30,4 +30,3 @@ TextEdit
 GridContainer
 Button
 Marker2D
-CanvasModulate

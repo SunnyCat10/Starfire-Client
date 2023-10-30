@@ -48,11 +48,11 @@ func flag_returned(team : Server.Team):
 func flag_captured(team : Server.Team):
 	if team == Server.Team.ALLY_TEAM:
 		ally_score_lbl.text = str(ally_score_lbl.text.to_int() + 1)
-		ally_flag_taken = false
+		enemy_flag_taken = false
 		ally_flag.color = ally_color
 	elif team == Server.Team.ENEMY_TEAM:
 		enemy_score_lbl.text = str(enemy_score_lbl.text.to_int() + 1)
-		enemy_flag_taken = false
+		ally_flag_taken = false
 		enemy_flag.color = enemy_color
 	else:
 		print("Error: Team ", team ," not available > Flag captured")	

@@ -14,6 +14,8 @@ var timer : Timer
 @onready var ctf_ui : CanvasLayer = get_node("CTFGui")
 @onready var objectives : Node = get_parent().get_node("%Objectives")
 
+var flagpoles = {}
+
 # for testing:
 var client_team_id = 1
 
@@ -63,8 +65,9 @@ func setup_flags():
 		if objective.name.contains(FLAGPOLE_IDENTIFIER):
 			objective.setup_flag(client_team_id)
 			objective.flag_picked.connect(on_pickup_flag)
-			objective.flag_dropped.connect(on_drop_flag)
+			#objective.flag_dropped.connect(on_drop_flag)
 			objective.flag_captured.connect(on_capture_flag)
+			flagpoles[objective.name] = objective
 
 
 func on_pickup_flag(team_id : int):
@@ -78,7 +81,11 @@ func on_drop_flag(team_id : int):
 	pass
 	
 func on_capture_flag(team_id : int):
-	pass
+	if client_team_id == team_id:
+		ctf_ui.flag_captured(Server.Team.ALLY_TEAM)
+	else:
+		ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
+
 
 func test():
 	timer = Timer.new()

@@ -18,6 +18,7 @@ var tank_direction : Vector2 = Vector2()
 @onready var turret : Node2D = $Turret
 @onready var muzzle : Node2D = $Turret/Muzzle
 @onready var animation_player : AnimationPlayer = $Turret/AnimationPlayer
+@onready var flag_manager : Node2D = $FlagManager
 
 var projectile = preload("res://Scenes/Projectiles/GerbilProjectile.tscn")
 var rate_of_fire : float = 1.0

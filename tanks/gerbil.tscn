@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cit2em1stabgt"]
+[gd_scene load_steps=12 format=3 uid="uid://cit2em1stabgt"]
 
 [ext_resource type="Script" path="res://tanks/gerbil.gd" id="1_1ad5m"]
 [ext_resource type="Texture2D" uid="uid://bjv02ljdqoonu" path="res://assets/Tanks/Hulls/Gerbil-Hull.png" id="2_rtgrk"]
 [ext_resource type="PackedScene" uid="uid://bwhh3fpxcso88" path="res://Scenes/Turrets/GerbilTurret.tscn" id="3_ykiw3"]
+[ext_resource type="PackedScene" uid="uid://bjppcbrbfu4l1" path="res://Scenes/Managers/FlagManager.tscn" id="4_eip0t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wqj"]
 size = Vector2(27, 14)
@@ -84,3 +85,5 @@ position = Vector2(-4, -6)
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_486m8")
 lifetime = 1.5
+
+[node name="FlagManager" parent="." instance=ExtResource("4_eip0t")]

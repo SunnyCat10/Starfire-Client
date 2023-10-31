@@ -65,26 +65,21 @@ func setup_flags():
 		if objective.name.contains(FLAGPOLE_IDENTIFIER):
 			objective.setup_flag(client_team_id)
 			objective.flag_picked.connect(on_pickup_flag)
-			#objective.flag_dropped.connect(on_drop_flag)
+			objective.flag_returned.connect(on_return_flag)
 			objective.flag_captured.connect(on_capture_flag)
 			flagpoles[objective.name] = objective
 
 
 func on_pickup_flag(team_id : int):
-	if client_team_id == team_id:
-		ctf_ui.flag_taken(Server.Team.ALLY_TEAM)
-	else:
-		ctf_ui.flag_taken(Server.Team.ENEMY_TEAM)
+	ctf_ui.flag_taken(Server.Team.ALLY_TEAM) if client_team_id == team_id else ctf_ui.flag_taken(Server.Team.ENEMY_TEAM)
 
 
-func on_drop_flag(team_id : int):
-	pass
-	
+func on_return_flag(team_id : int):
+	ctf_ui.flag_returned(Server.Team.ALLY_TEAM) if client_team_id == team_id else ctf_ui.flag_returned(Server.Team.ENEMY_TEAM)
+
+
 func on_capture_flag(team_id : int):
-	if client_team_id == team_id:
-		ctf_ui.flag_captured(Server.Team.ALLY_TEAM)
-	else:
-		ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
+	ctf_ui.flag_captured(Server.Team.ALLY_TEAM) if client_team_id == team_id else ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
 
 
 func test():

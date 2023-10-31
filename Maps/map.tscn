@@ -108,3 +108,4 @@ position = Vector2(128, 64)
 flag_team_id = 1
 
 [node name="CTF" parent="." instance=ExtResource("15_hhxr3")]
+position = Vector2(48, 40)

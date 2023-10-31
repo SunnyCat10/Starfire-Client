@@ -3,11 +3,3 @@ res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
 res://Scenes/Objectives/Flagpole.tscn
 res://Scenes/Managers/FlagManager.tscn
-res://Scenes/Managers/FlagManager.gd
-res://Scenes/Drops/flag.tscn
-res://Scenes/Objectives/Flagpole.gd
-res://Scenes/Drops/Flag.gd
-res://Scenes/Gamemodes/Ctf.gd
-res://ui/Ctf.tscn
-res://tanks/gerbil.gd
-res://Scenes/Turrets/GerbilTurret.gd

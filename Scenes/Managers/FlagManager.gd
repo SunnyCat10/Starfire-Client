@@ -22,12 +22,13 @@ func load_flag(flagpole : Node2D, client_team_id : int):
 	with_flag = true
 
 
-func drop_flag():
+func drop_flag(drop_position : Vector2):
 	sprite.texture = null
 	with_flag = false
 	var flag_drop : Node2D = flag_drop_scene.instantiate()
+	get_parent().get_parent().get_parent().add_child(flag_drop)
+	flag_drop.global_position = drop_position
 	flag_drop.load_flag(_flagpole, _client_team_id, _flagpole.flag_team_id)
-	get_parent().get_parent().add_child(flag_drop)
 
 
 func capture_flag():

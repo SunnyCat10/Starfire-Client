@@ -20,6 +20,7 @@ var tank_direction : Vector2 = Vector2()
 @onready var muzzle : Node2D = $Turret/Muzzle
 @onready var animation_player : AnimationPlayer = $Turret/AnimationPlayer
 @onready var flag_manager : Node2D = $FlagManager
+@onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
 # var projectile = preload("res://Scenes/Projectiles/GerbilProjectile.tscn")
 # var rate_of_fire : float = 1.0
@@ -91,11 +92,17 @@ func define_player_state():
 
 func respawn():
 	alive = false
-	await get_tree().create_timer(3).timeout
+	collision_shape.disabled = true
+	visible = false
+	if flag_manager.with_flag:
+		flag_manager.drop_flag(global_position)
 	global_position = Vector2.ZERO
 	global_rotation = 0
 	turret.global_rotation = 0
+	await get_tree().create_timer(3).timeout
+	collision_shape.disabled = false
 	current_health = max_health
+	visible = true
 	alive = true
 
 

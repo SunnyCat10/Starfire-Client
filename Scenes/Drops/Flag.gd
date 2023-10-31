@@ -2,8 +2,8 @@ extends Area2D
 
 @onready var flag : Sprite2D = %Flag
 
-var ally_flag_texture : Texture2D = preload("res://assets/Environment/Objectives/ally_team_flag.png")
-var enemy_flag_texture : Texture2D = preload("res://assets/Environment/Objectives/enemy_team_flag.png")
+var ally_flag_texture : Texture2D = preload("res://assets/Drops/ally_team_flag_dropped.png")
+var enemy_flag_texture : Texture2D = preload("res://assets/Drops/enemy_team_flag_dropped.png")
 
 var _flag_team_id : int
 var _client_team_id : int
@@ -26,6 +26,7 @@ func load_flag(flagpole : Node2D, client_team_id : int, flag_team_id : int):
 
 func take_flag(body: Node2D):
 	body.flag_manager.load_flag(_flagpole, _client_team_id)
+	self.queue_free()
 
 
 func return_flag():

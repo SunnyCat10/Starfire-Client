@@ -5,4 +5,7 @@
 [node name="FlagManager" type="Node2D"]
 script = ExtResource("1_etd0d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="FlagSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
+offset = Vector2(8, -15)

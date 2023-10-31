@@ -8,10 +8,11 @@ const RADIANS_EQUAL_APPROX : float = PI/64
 @export var speed : int
 @export var rotation_speed : float
 @export var max_health : int
-
 var current_health : int
-var can_shoot = true
 var alive = true
+
+# var can_shoot = true
+
 var tank_direction : Vector2 = Vector2()
 
 @export_range(0.0, 2) var turret_weight : float  = 1
@@ -20,8 +21,8 @@ var tank_direction : Vector2 = Vector2()
 @onready var animation_player : AnimationPlayer = $Turret/AnimationPlayer
 @onready var flag_manager : Node2D = $FlagManager
 
-var projectile = preload("res://Scenes/Projectiles/GerbilProjectile.tscn")
-var rate_of_fire : float = 1.0
+# var projectile = preload("res://Scenes/Projectiles/GerbilProjectile.tscn")
+# var rate_of_fire : float = 1.0
 var can_fire : bool = true
 
 var player_state
@@ -30,6 +31,8 @@ func _ready():
 	set_physics_process(false) #remove when we will add a menu
 	tank_direction = Vector2(1,0)
 	Server.health_filled.emit(max_health)
+	Server.on_damage.connect(get_damage)
+	current_health = max_health
 
 
 func control(delta):
@@ -84,4 +87,19 @@ func define_player_state():
 	"R" : rotation,
 	"r" : turret.rotation}
 	Server.send_player_state(player_state)
-	
+
+
+func respawn():
+	alive = false
+	await get_tree().create_timer(3).timeout
+	global_position = Vector2.ZERO
+	global_rotation = 0
+	turret.global_rotation = 0
+	current_health = max_health
+	alive = true
+
+
+func get_damage(damage : int):
+	current_health = current_health - damage
+	if current_health <= 0:
+		respawn()

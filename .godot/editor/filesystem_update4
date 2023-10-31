@@ -9,3 +9,5 @@ res://Scenes/Objectives/Flagpole.gd
 res://Scenes/Drops/Flag.gd
 res://Scenes/Gamemodes/Ctf.gd
 res://ui/Ctf.tscn
+res://tanks/gerbil.gd
+res://Scenes/Turrets/GerbilTurret.gd

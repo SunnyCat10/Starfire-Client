@@ -4,9 +4,16 @@ signal pinged(ping : float)
 signal ui_update_player(name: String)
 signal health_filled(health : int)
 signal on_damage(damage : int)
+signal lobby_list_initiated(lobby_list)
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
 const LOCAL_HOST_PORT : int = 34684
+
+# for packets: TODO: Make a singleton for packets
+const LOBBY_NAME = "n"
+const LOBBY_GAMEMODE = "g"
+const LOBBY_CURRENT_PLAYERS = "c"
+const LOBBY_MAX_PLAYERS = "m"
 
 var network : ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var ip : String = LOCAL_HOST_IP
@@ -136,3 +143,8 @@ func send_attack(position : Vector2, rotation : float):
 
 @rpc("reliable") func receive_damage(damage: int): 
 	on_damage.emit(damage)
+
+
+@rpc("reliable") func initiate_lobby_list(lobby_list) :
+	var list = {"1": {"n" : "dev lobby", "g" : "CTF", "c" : "0", "m" : "2"}}
+	lobby_list_initiated.emit(list)

@@ -1,9 +1,11 @@
+ColorRect
+ItemList
+ReferenceRect
 Sprite2D
 Node2D
 Node
 CollisionShape2D
 Area2D
-ColorRect
 Label
 HBoxContainer
 MarginContainer
@@ -28,5 +30,3 @@ TileMap
 LineEdit
 TextEdit
 GridContainer
-Button
-Marker2D

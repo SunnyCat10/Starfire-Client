@@ -5,7 +5,9 @@ res://Scenes/Managers/FlagManager.tscn
 res://Scenes/Objectives/Flagpole.tscn
 res://Scenes/Drops/flag.tscn
 res://ui/Ctf.tscn
-res://ui/LobbySelection.tscn
 res://ui/ServerSelection.tscn
-res://ui/LobbySelection.gd
+res://ui/LobbySelection.tscn
+res://Maps/map.gd
 res://singletons/Server.gd
+res://ui/LobbySelection.gd
+res://ui/ServerSelection.gd

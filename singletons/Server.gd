@@ -5,6 +5,9 @@ signal ui_update_player(name: String)
 signal health_filled(health : int)
 signal on_damage(damage : int)
 signal lobby_list_initiated(lobby_list)
+signal server_selected
+signal lobby_selected(lobby_id : int)
+signal lobby_gui_closed()
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
 const LOCAL_HOST_PORT : int = 34684
@@ -36,6 +39,11 @@ enum Team {ALLY_TEAM, ENEMY_TEAM}
 @rpc("any_peer", "reliable") func fetch_server_time(client_time : float): pass
 @rpc("any_peer") func determine_latency(client_time : float): pass
 @rpc("any_peer", "reliable") func attack(position : Vector2, rotation : float, client_time : float): pass
+@rpc("any_peer", "reliable") func get_lobby_list(): pass
+
+
+func _ready():
+	lobby_selected.connect(on_lobby_selected)
 
 
 func _physics_process(delta):
@@ -58,8 +66,21 @@ func on_connection_failed():
 func on_connected_to_server():
 	print("Succesfully connected to the server")
 	sync_time()
-	load_main_map()
+	#load_main_map()
+	load_lobbies()
 	connected = true
+
+
+func load_lobbies():
+	var lobby_selection : CanvasLayer = load("res://ui/LobbySelection.tscn").instantiate()
+	add_child(lobby_selection)
+	get_lobby_list.rpc_id(1)
+
+
+# TODO: Later on ask the server type of map to select from a list
+func on_lobby_selected(lobby_id : int):
+	load_main_map()
+	lobby_gui_closed.emit()
 
 
 func load_main_map():
@@ -69,7 +90,6 @@ func load_main_map():
 	print(multiplayer.get_unique_id())
 	player_joined_map.rpc_id(1, multiplayer.get_unique_id())
 	get_node("../Map/Player").set_physics_process(true)
-	get_node("../ServerSelection").queue_free()
 
 
 func send_player_state(player_state):
@@ -145,6 +165,6 @@ func send_attack(position : Vector2, rotation : float):
 	on_damage.emit(damage)
 
 
-@rpc("reliable") func initiate_lobby_list(lobby_list) :
-	var list = {"1": {"n" : "dev lobby", "g" : "CTF", "c" : "0", "m" : "2"}}
-	lobby_list_initiated.emit(list)
+@rpc("reliable") func receive_lobby_list(lobby_list):
+	print("got answer")
+	lobby_list_initiated.emit(lobby_list)

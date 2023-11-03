@@ -16,13 +16,13 @@ var _starting_time : float = 0.0
 var flagpoles = {}
 
 # for testing:
-var client_team_id = 1
+var client_team_id
 
 # for testsing
 var timer_ready : bool = false
 
 func _ready():
-	setup_flags()
+	# setup_flags()
 	Server.gamemode_started.connect(setup_game)
 	pass
 
@@ -41,9 +41,11 @@ func setup_game(player_list, starting_time : float):
 	if (player_list["0"].has(player_id)):
 		allied_team = player_list["0"]
 		enemy_team = player_list["1"]
+		client_team_id = 0
 	else:
 		allied_team = player_list["1"]
 		enemy_team = player_list["0"]
+		client_team_id = 1
 	
 	timer = Timer.new()
 	print(starting_time, " > ",  Server.client_clock)
@@ -51,7 +53,8 @@ func setup_game(player_list, starting_time : float):
 	timer.one_shot = true
 	add_child(timer)
 	_starting_time = starting_time
-
+	
+	setup_flags()
 
 func start_game():
 	# CTF UI ENABLE

@@ -104,6 +104,8 @@ func respawn():
 	current_health = max_health
 	visible = true
 	alive = true
+	
+	
 
 
 func get_damage(damage : int):

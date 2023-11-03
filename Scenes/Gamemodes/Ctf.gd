@@ -8,8 +8,7 @@ var enemy_team = {}
 var ally_score : int = 0
 var enemy_score : int = 0
 var timer : Timer
-# onready flag A
-# onready flag B
+var _starting_time : float = 0.0
 
 @onready var ctf_ui : CanvasLayer = get_node("CTFGui")
 @onready var objectives : Node = get_parent().get_node("%Objectives")
@@ -24,26 +23,34 @@ var timer_ready : bool = false
 
 func _ready():
 	setup_flags()
-	# find spawn nodes
+	Server.gamemode_started.connect(setup_game)
 	pass
 
 
 func _physics_process(delta):
-	#if (timer_ready):
-	#	ctf_ui.update_time(timer.time_left)
-	pass
+	if not _starting_time == 0.0 and _starting_time <= Server.client_clock:
+		if timer_ready:
+			ctf_ui.update_time(timer.time_left)
+		else:
+			timer.start()
+			timer_ready = true
 
 
-func setup_game(player_list):
+func setup_game(player_list, starting_time : float):
 	var player_id : int = multiplayer.get_unique_id()
-	if (player_list["A"].has(player_id)):
-		allied_team = player_list["A"]
-		enemy_team = player_list["B"]
+	if (player_list["0"].has(player_id)):
+		allied_team = player_list["0"]
+		enemy_team = player_list["1"]
 	else:
-		allied_team = player_list["B"]
-		enemy_team = player_list["A"]
+		allied_team = player_list["1"]
+		enemy_team = player_list["0"]
 	
-	# set texture of the flags
+	timer = Timer.new()
+	print(starting_time, " > ",  Server.client_clock)
+	timer.wait_time = 900.0 # TODO: send time duration while setting lobby
+	timer.one_shot = true
+	add_child(timer)
+	_starting_time = starting_time
 
 
 func start_game():

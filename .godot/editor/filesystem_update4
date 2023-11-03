@@ -1,13 +1,7 @@
 res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
-res://Scenes/Managers/FlagManager.tscn
-res://Scenes/Objectives/Flagpole.tscn
-res://Scenes/Drops/flag.tscn
 res://ui/Ctf.tscn
 res://ui/ServerSelection.tscn
 res://ui/LobbySelection.tscn
-res://Maps/map.gd
-res://singletons/Server.gd
-res://ui/LobbySelection.gd
-res://ui/ServerSelection.gd
+res://tanks/remote_player.tscn

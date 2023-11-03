@@ -8,6 +8,7 @@ signal lobby_list_initiated(lobby_list)
 signal server_selected
 signal lobby_selected(lobby_id : int)
 signal lobby_gui_closed()
+signal gamemode_started(team_list, starting_time : float)
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
 const LOCAL_HOST_PORT : int = 34684
@@ -166,5 +167,9 @@ func send_attack(position : Vector2, rotation : float):
 
 
 @rpc("reliable") func receive_lobby_list(lobby_list):
-	print("got answer")
 	lobby_list_initiated.emit(lobby_list)
+
+
+@rpc("reliable") func receive_ctf_start(sorted_player_list , start_time : float):
+	print("LETS GO!!!")
+	gamemode_started.emit(sorted_player_list, start_time)

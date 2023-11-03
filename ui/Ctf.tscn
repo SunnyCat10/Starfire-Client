@@ -41,7 +41,7 @@ text = "0
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "< 00:00 >"
+text = "awaiting other players..."
 
 [node name="EnemyScore" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

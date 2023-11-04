@@ -46,14 +46,14 @@ func _physics_process(delta):
 
 func setup_game(player_list, starting_time : float):
 	var player_id : int = multiplayer.get_unique_id()
-	if (player_list["0"].has(player_id)):
-		allied_team = player_list["0"]
-		enemy_team = player_list["1"]
-		client_team_id = 0
+	if (player_list[Packets.CtfTeam.TEAM_A].has(player_id)):
+		allied_team = player_list[Packets.CtfTeam.TEAM_A]
+		enemy_team = player_list[Packets.CtfTeam.TEAM_B]
+		client_team_id = Packets.CtfTeam.TEAM_A
 	else:
-		allied_team = player_list["1"]
-		enemy_team = player_list["0"]
-		client_team_id = 1
+		allied_team = player_list[Packets.CtfTeam.TEAM_B]
+		enemy_team = player_list[Packets.CtfTeam.TEAM_A]
+		client_team_id = Packets.CtfTeam.TEAM_B
 	
 	timer = Timer.new()
 	print(starting_time, " > ",  Server.client_clock)
@@ -78,7 +78,7 @@ func end_game():
 
 func update_score():
 	pass
-	
+
 
 func setup_flags():
 	for objective in objectives.get_children():

@@ -1,8 +1,6 @@
 extends Node
 
-const CTF_TEAM_A : String = "0"
-const CTF_TEAM_B : String = "1"
-
+enum CtfTeam {TEAM_A, TEAM_B}
 
 # Ctf status packet > [player_id, team_id, status]
 enum FlagStatus {FLAG_TAKEN, FLAG_DROPPED, FLAG_CAPTURED}

@@ -1,3 +1,5 @@
+Label
+MarginContainer
 Button
 ColorRect
 ItemList
@@ -7,9 +9,7 @@ Node2D
 Node
 CollisionShape2D
 Area2D
-Label
 HBoxContainer
-MarginContainer
 CanvasLayer
 Polygon2D
 ProgressBar
@@ -30,4 +30,3 @@ GPUParticles2D
 TileMap
 LineEdit
 TextEdit
-GridContainer

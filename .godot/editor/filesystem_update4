@@ -5,3 +5,6 @@ res://ui/Ctf.tscn
 res://ui/ServerSelection.tscn
 res://ui/LobbySelection.tscn
 res://tanks/remote_player.tscn
+res://ui/CtfGui.gd
+res://singletons/Packets.gd
+res://singletons/Server.gd

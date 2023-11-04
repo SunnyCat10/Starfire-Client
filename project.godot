@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Server="*res://singletons/Server.gd"
+Packets="*res://singletons/Packets.gd"
 
 [display]
 

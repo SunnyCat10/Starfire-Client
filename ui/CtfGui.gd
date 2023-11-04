@@ -2,8 +2,6 @@ extends CanvasLayer
 
 const STATUS_TIMER_COOLDOWN : float = 3.0
 
-enum StatusInfo {PLAYER_ID, STATUS, IS_ALLY} # Moved to Packets!
-
 var ally_score : int = 0
 var enemy_score : int = 0
 var ally_flag_taken : bool = false
@@ -24,7 +22,8 @@ var is_displaying_status : bool = false
 @onready var update_lbl : Label = %UpdateLabel
 
 var status_timer : Timer
-var status_update_cache = {}
+var client_team_id : int
+
 
 func _ready():
 	status_timer = Timer.new()
@@ -37,10 +36,6 @@ func _physics_process(delta):
 		flicker_flag()
 		current_flicker_time = flicker_time
 	current_flicker_time = current_flicker_time - 1
-	for status in status_update_cache:
-		if status <= Server.client_clock:
-			update_status(status)
-			status_update_cache.erase(status)
 
 
 func flag_taken(team : Server.Team):
@@ -90,17 +85,13 @@ func update_time(time : float):
 	timer.text = time_passed
 
 
-func append_status_update(player_id, status, status_time, is_ally):
-	status_update_cache[player_id] = [player_id, status, is_ally]
-
-
 func update_status(status_update):
 	if not status_timer.is_stopped():
 		timer.stop()
-	render_status(status_update[StatusInfo.PLAYER_ID], status_update[StatusInfo.STATUS], status_update[StatusInfo.IS_ALLY])
+	render_status(status_update[Packets.StatusPacket.PLAYER_ID], status_update[Packets.StatusPacket.STATUS], status_update[Packets.StatusPacket.TEAM_ID])
 
 
-func render_status(player_id, status, is_ally):
+func render_status(player_id, status, team_id):
 	var output_status : String
 	var output_status_color : Color
 	match status:
@@ -110,7 +101,7 @@ func render_status(player_id, status, is_ally):
 			output_status = str(player_id) + " dropped the flag!"
 		Packets.FlagStatus.FLAG_CAPTURED:
 			output_status = str(player_id) + " captured the flag!"
-	output_status_color = ally_color if is_ally else enemy_color
+	output_status_color = ally_color if team_id == client_team_id else enemy_color
 	update_lbl.text = output_status
 	update_lbl.add_theme_color_override("font_color", output_status_color)
 	status_timer.start(STATUS_TIMER_COOLDOWN)

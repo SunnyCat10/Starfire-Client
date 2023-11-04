@@ -21,10 +21,13 @@ var client_team_id
 # for testsing
 var timer_ready : bool = false
 
+
+var status_update_cache = {}
+
 func _ready():
 	# setup_flags()
 	Server.gamemode_started.connect(setup_game)
-	pass
+	Packets.gamemode_update.connect(append_status_update)
 
 
 func _physics_process(delta):
@@ -34,6 +37,11 @@ func _physics_process(delta):
 		else:
 			timer.start()
 			timer_ready = true
+	
+	for status in status_update_cache:
+		if status <= Server.client_clock:
+			ctf_ui.update_status(status)
+			status_update_cache.erase(status)
 
 
 func setup_game(player_list, starting_time : float):
@@ -55,6 +63,8 @@ func setup_game(player_list, starting_time : float):
 	_starting_time = starting_time
 	
 	setup_flags()
+	
+	ctf_ui.client_team_id = client_team_id
 
 func start_game():
 	# CTF UI ENABLE
@@ -90,6 +100,10 @@ func on_return_flag(team_id : int):
 
 func on_capture_flag(team_id : int):
 	ctf_ui.flag_captured(Server.Team.ALLY_TEAM) if client_team_id == team_id else ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
+
+
+func append_status_update(status_info, status_time : float):
+	status_update_cache[status_time] = status_info
 
 
 func test():

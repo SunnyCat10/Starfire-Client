@@ -1,10 +1,9 @@
+res://tanks/remote_player.tscn
+res://singletons/Server.gd
+res://Scenes/Gamemodes/Ctf.gd
+res://Scenes/Gamemodes/ctf.tscn
+res://ui/CtfGui.gd
+res://ui/Ctf.tscn
+res://singletons/Packets.gd
 res://tanks/gerbil.tscn
 res://Maps/map.tscn
-res://Scenes/Gamemodes/ctf.tscn
-res://ui/Ctf.tscn
-res://ui/ServerSelection.tscn
-res://ui/LobbySelection.tscn
-res://tanks/remote_player.tscn
-res://ui/CtfGui.gd
-res://singletons/Packets.gd
-res://singletons/Server.gd

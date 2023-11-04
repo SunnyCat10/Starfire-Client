@@ -174,6 +174,6 @@ func send_attack(position : Vector2, rotation : float):
 	gamemode_started.emit(sorted_player_list, start_time)
 
 
-@rpc("reliable") func receive_gamemode_update(status_info : Packets.StatusInfo, status_time : float):
+@rpc("reliable") func receive_gamemode_update(status_info, status_time : float):
 	print("Updated!")
 	Packets.gamemode_update.emit(status_info, status_time)

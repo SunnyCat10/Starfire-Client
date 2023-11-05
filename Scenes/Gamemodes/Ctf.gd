@@ -34,13 +34,16 @@ func _physics_process(delta):
 	if not _starting_time == 0.0 and _starting_time <= Server.client_clock:
 		if timer_ready:
 			ctf_ui.update_time(timer.time_left)
-		else:
+		else:		
 			timer.start()
 			timer_ready = true
-	
+			setup_ctf_players()
+
+
 	for status in status_update_cache:
 		if status <= Server.client_clock:
-			ctf_ui.update_status(status)
+			render_status(status_update_cache[status])
+			ctf_ui.update_status(status_update_cache[status])
 			status_update_cache.erase(status)
 
 
@@ -61,22 +64,12 @@ func setup_game(player_list, starting_time : float):
 	timer.one_shot = true
 	add_child(timer)
 	_starting_time = starting_time
-	
 	setup_flags()
 	
 	ctf_ui.client_team_id = client_team_id
 
-func start_game():
-	# CTF UI ENABLE
-	# RUN TIMER LOCALLY
-	pass
-
 
 func end_game():
-	pass
-
-
-func update_score():
 	pass
 
 
@@ -106,19 +99,32 @@ func append_status_update(status_info, status_time : float):
 	status_update_cache[status_time] = status_info
 
 
-func test():
-	timer = Timer.new()
-	timer.wait_time = 30.0
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
-	timer_ready = true
-	await get_tree().create_timer(2).timeout
-	ctf_ui.flag_captured(Server.Team.ALLY_TEAM)
-	ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
-	ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
-	ctf_ui.flag_taken(Server.Team.ENEMY_TEAM)
-	ctf_ui.flag_taken(Server.Team.ALLY_TEAM)
-	await get_tree().create_timer(15).timeout
-	ctf_ui.flag_returned(Server.Team.ENEMY_TEAM)
-	ctf_ui.flag_returned(Server.Team.ALLY_TEAM)
+func render_status(status_packet):
+	if status_packet[Packets.StatusPacket.STATUS] == Packets.FlagStatus.FLAG_TAKEN:
+		print("Rendering...")
+
+
+func setup_ctf_players():
+	for ally_player in allied_team:
+		if not ally_player == multiplayer.get_unique_id():
+			allied_team[ally_player] = get_parent().get_node(str(ally_player))
+	for enemy_player in enemy_team:
+		print(get_parent().get_node(str(enemy_player)))
+	#print(enemy_team)
+
+#func test():
+#	timer = Timer.new()
+#	timer.wait_time = 30.0
+#	timer.one_shot = true
+#	add_child(timer)
+#	timer.start()
+#	timer_ready = true
+#	await get_tree().create_timer(2).timeout
+#	ctf_ui.flag_captured(Server.Team.ALLY_TEAM)
+#	ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
+#	ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
+#	ctf_ui.flag_taken(Server.Team.ENEMY_TEAM)
+#	ctf_ui.flag_taken(Server.Team.ALLY_TEAM)
+#	await get_tree().create_timer(15).timeout
+#	ctf_ui.flag_returned(Server.Team.ENEMY_TEAM)
+#	ctf_ui.flag_returned(Server.Team.ALLY_TEAM)

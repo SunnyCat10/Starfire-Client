@@ -22,7 +22,7 @@ var client_team_id
 var timer_ready : bool = false
 
 var flag_list = []
-var status_update_cache = {}
+var status_update_cache = {} # CHANGE THIS TO SOMEKIND OF A LIST!!!!
 
 func _ready():
 	# setup_flags()
@@ -98,14 +98,14 @@ func on_capture_flag(team_id : int):
 	ctf_ui.flag_captured(Server.Team.ALLY_TEAM) if client_team_id == team_id else ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
 
 
-func append_status_update(status_info, status_time : float):
-	status_update_cache[status_time] = status_info
+func append_status_update(packet, event_time : float):
+	status_update_cache[event_time] = packet
 
 
 func render_status(packet):
-	if packet[Packets.StatusPacket.STATUS] == Packets.FlagStatus.FLAG_TAKEN:
-		var flag = flag_list[packet[Packets.StatusPacket.TEAM_ID]]
-		var player_id : int = packet[Packets.StatusPacket.PLAYER_ID]
+	if packet[Packets.PACKET_ID] == Packets.Type.PICKUP_FLAG:
+		var flag = flag_list[packet[Packets.PickupFlag.FLAG_ID]]
+		var player_id : int = packet[Packets.PickupFlag.PLAYER_ID]
 		flag.pickup_flag()
 		if allied_team.has(player_id):
 			allied_team[player_id].flag_manager.pickup(flag)

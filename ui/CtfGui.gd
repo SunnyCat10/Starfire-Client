@@ -85,29 +85,29 @@ func update_time(time : float):
 	timer.text = time_passed
 
 
-func update_status(status_update):
-	if not status_timer.is_stopped():
-		status_timer.stop()
-	render_status(status_update[Packets.StatusPacket.PLAYER_ID], status_update[Packets.StatusPacket.STATUS], status_update[Packets.StatusPacket.TEAM_ID])
+#func update_status(status_update):
+#	if not status_timer.is_stopped():
+#		status_timer.stop()
+#	render_status(status_update[Packets.StatusPacket.PLAYER_ID], status_update[Packets.StatusPacket.STATUS], status_update[Packets.StatusPacket.TEAM_ID])
 
 
-func render_status(player_id, status, team_id):
-	print("player id: ", player_id, " | status: ", status, " | team_id: ", team_id)
-	var output_status : String
-	var output_status_color : Color
-	match status:
-		Packets.FlagStatus.FLAG_TAKEN:
-			output_status = str(player_id) + " took the flag!"
-			output_status_color = ally_color if not team_id == client_team_id else enemy_color
-		Packets.FlagStatus.FLAG_DROPPED:
-			output_status = str(player_id) + " dropped the flag!"
-			output_status_color = ally_color if team_id == client_team_id else enemy_color
-		Packets.FlagStatus.FLAG_CAPTURED:
-			output_status = str(player_id) + " captured the flag!"
-			output_status_color = ally_color if team_id == client_team_id else enemy_color
-	update_lbl.text = output_status
-	update_lbl.add_theme_color_override("font_color", output_status_color)
-	status_timer.start(STATUS_TIMER_COOLDOWN)
+#func render_status(player_id, status, team_id):
+#	print("player id: ", player_id, " | status: ", status, " | team_id: ", team_id)
+#	var output_status : String
+#	var output_status_color : Color
+#	match status:
+#		Packets.FlagStatus.FLAG_TAKEN:
+#			output_status = str(player_id) + " took the flag!"
+#			output_status_color = ally_color if not team_id == client_team_id else enemy_color
+#		Packets.FlagStatus.FLAG_DROPPED:
+#			output_status = str(player_id) + " dropped the flag!"
+#			output_status_color = ally_color if team_id == client_team_id else enemy_color
+#		Packets.FlagStatus.FLAG_CAPTURED:
+#			output_status = str(player_id) + " captured the flag!"
+#			output_status_color = ally_color if team_id == client_team_id else enemy_color
+#	update_lbl.text = output_status
+#	update_lbl.add_theme_color_override("font_color", output_status_color)
+#	status_timer.start(STATUS_TIMER_COOLDOWN)
 
 
 func clear_status():

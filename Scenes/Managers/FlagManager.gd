@@ -27,6 +27,11 @@ func pickup(flagpole : Node2D):
 	with_flag = true
 
 
+func capture_flag():
+	sprite.texture = null
+	with_flag = false
+
+
 #func load_flag(flagpole : Node2D, client_team_id : int):
 #	_flagpole = flagpole
 #	_client_team_id = client_team_id

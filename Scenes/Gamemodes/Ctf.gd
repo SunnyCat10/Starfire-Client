@@ -103,14 +103,14 @@ func append_status_update(packet, event_time : float):
 
 
 func render_status(packet):
-	if packet[Packets.PACKET_ID] == Packets.Type.PICKUP_FLAG:
-		var flag = flag_list[packet[Packets.PickupFlag.FLAG_ID]]
-		var player_id : int = packet[Packets.PickupFlag.PLAYER_ID]
-		flag.pickup_flag()
-		if allied_team.has(player_id):
-			allied_team[player_id].flag_manager.pickup(flag)
-		if enemy_team.has(player_id):
-			enemy_team[player_id].flag_manager.pickup(flag)
+	print(packet)
+	match packet[Packets.PACKET_ID]:
+		Packets.Type.PICKUP_FLAG:
+			print("PICKUP")
+			render_flag_pickup(packet)
+		Packets.Type.CAPTURE_FLAG:
+			print("CAPTURE")
+			render_flag_capture(packet)
 
 
 func setup_ctf_players():
@@ -122,6 +122,25 @@ func setup_ctf_players():
 		enemy_team[enemy_player] = get_parent().get_node(str(enemy_player))
 		enemy_team[enemy_player].flag_manager.setup_manager(enemy_team_id, client_team_id)
 
+
+func render_flag_pickup(packet):
+	var flag = flag_list[packet[Packets.PickupFlag.FLAG_ID]]
+	var player_id : int = packet[Packets.PickupFlag.PLAYER_ID]
+	flag.pickup_flag()
+	if allied_team.has(player_id):
+		allied_team[player_id].flag_manager.pickup(flag)
+	if enemy_team.has(player_id):
+		enemy_team[player_id].flag_manager.pickup(flag)
+
+
+func render_flag_capture(packet):
+	var flag = flag_list[packet[Packets.CaptureFlag.FLAG_ID]]
+	var player_id : int = packet[Packets.CaptureFlag.PLAYER_ID]
+	flag.capture_flag()
+	if allied_team.has(player_id):
+		allied_team[player_id].flag_manager.capture_flag()
+	if enemy_team.has(player_id):
+		enemy_team[player_id].flag_manager.capture_flag()
 
 #func test():
 #	timer = Timer.new()

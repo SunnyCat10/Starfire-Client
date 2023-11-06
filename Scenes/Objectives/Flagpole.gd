@@ -24,10 +24,7 @@ func _ready():
 
 func setup_flag(client_team_id : int):
 	_client_team_id = client_team_id
-	if (client_team_id == flag_team_id):
-		flag.texture = ally_flag_texture
-	else:
-		flag.texture = enemy_flag_texture
+	color_flag()
 	is_empty = false
 
 
@@ -44,6 +41,10 @@ func pickup_flag():
 
 func capture_flag():
 	flag_captured.emit(flag_team_id)
+	color_flag() 
+
+#func capture_flag():
+#	flag_captured.emit(flag_team_id)
 
 
 func return_flag(client_team_id : int):
@@ -62,3 +63,7 @@ func on_body_entered(body: Node2D):
 #		if _client_team_id == flag_team_id and body.flag_manager.with_flag:
 #			body.flag_manager.capture_flag()
 #			capture_flag()
+
+
+func color_flag():
+	flag.texture = ally_flag_texture if flag_team_id == _client_team_id else enemy_flag_texture

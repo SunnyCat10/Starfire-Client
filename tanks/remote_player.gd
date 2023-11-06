@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var turret : Node2D = $Turret
+@onready var flag_manager : Node2D = $FlagManager
 
 var attack_dictionary = {}
 

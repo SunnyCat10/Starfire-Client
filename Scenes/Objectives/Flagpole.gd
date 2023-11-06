@@ -14,7 +14,9 @@ var ally_flag_texture : Texture2D = preload("res://assets/Environment/Objectives
 var enemy_flag_texture : Texture2D = preload("res://assets/Environment/Objectives/enemy_team_flag.png")
 var empty_flag_texture : Texture2D = preload("res://assets/Environment/Objectives/empty_flagpole.png")
 
+
 var is_empty : bool = false
+var id : int
 
 func _ready():
 	body_entered.connect(on_body_entered)
@@ -29,10 +31,15 @@ func setup_flag(client_team_id : int):
 	is_empty = false
 
 
-func pickup_flag(player : Node2D):
+#func pickup_flag(player : Node2D):
+#	flag_picked.emit(flag_team_id)
+#	flag.texture = empty_flag_texture
+#	is_empty = true
+
+
+func pickup_flag():
 	flag_picked.emit(flag_team_id)
 	flag.texture = empty_flag_texture
-	is_empty = true
 
 
 func capture_flag():
@@ -46,11 +53,12 @@ func return_flag(client_team_id : int):
 
 
 func on_body_entered(body: Node2D):
-	if body.is_in_group("client_player"):
-		if not _client_team_id == flag_team_id and not is_empty:
-			print("took the flag")
-			pickup_flag(body)
-			body.flag_manager.load_flag(self, _client_team_id)
-		if _client_team_id == flag_team_id and body.flag_manager.with_flag:
-			body.flag_manager.capture_flag()
-			capture_flag()
+	pass
+#	if body.is_in_group("client_player"):
+#		if not _client_team_id == flag_team_id and not is_empty:
+#			print("took the flag")
+#			pickup_flag(body)
+#			body.flag_manager.load_flag(self, _client_team_id)
+#		if _client_team_id == flag_team_id and body.flag_manager.with_flag:
+#			body.flag_manager.capture_flag()
+#			capture_flag()

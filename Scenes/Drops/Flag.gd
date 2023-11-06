@@ -12,6 +12,14 @@ var _flagpole : Node2D
 
 func _ready():
 	body_entered.connect(on_body_entered)
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 func load_flag(flagpole : Node2D, client_team_id : int, flag_team_id : int):

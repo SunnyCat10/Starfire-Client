@@ -13,7 +13,7 @@ var _starting_time : float = 0.0
 @onready var ctf_ui : CanvasLayer = get_node("CTFGui")
 @onready var objectives : Node = get_parent().get_node("%Objectives")
 
-var flagpoles = {}
+
 
 # for testing:
 var client_team_id
@@ -21,7 +21,7 @@ var client_team_id
 # for testsing
 var timer_ready : bool = false
 
-
+var flag_list = []
 var status_update_cache = {}
 
 func _ready():
@@ -43,7 +43,7 @@ func _physics_process(delta):
 	for status in status_update_cache:
 		if status <= Server.client_clock:
 			render_status(status_update_cache[status])
-			ctf_ui.update_status(status_update_cache[status])
+			# ctf_ui.update_status(status_update_cache[status])
 			status_update_cache.erase(status)
 
 
@@ -74,13 +74,16 @@ func end_game():
 
 
 func setup_flags():
+	var flag_id : int = 0
 	for objective in objectives.get_children():
 		if objective.name.contains(FLAGPOLE_IDENTIFIER):
 			objective.setup_flag(client_team_id)
 			objective.flag_picked.connect(on_pickup_flag)
 			objective.flag_returned.connect(on_return_flag)
 			objective.flag_captured.connect(on_capture_flag)
-			flagpoles[objective.name] = objective
+			flag_list.append(objective)
+			objective.id = flag_id
+			flag_id = flag_id + 1
 
 
 func on_pickup_flag(team_id : int):
@@ -99,18 +102,26 @@ func append_status_update(status_info, status_time : float):
 	status_update_cache[status_time] = status_info
 
 
-func render_status(status_packet):
-	if status_packet[Packets.StatusPacket.STATUS] == Packets.FlagStatus.FLAG_TAKEN:
-		print("Rendering...")
+func render_status(packet):
+	if packet[Packets.StatusPacket.STATUS] == Packets.FlagStatus.FLAG_TAKEN:
+		var flag = flag_list[packet[Packets.StatusPacket.TEAM_ID]]
+		var player_id : int = packet[Packets.StatusPacket.PLAYER_ID]
+		flag.pickup_flag()
+		if allied_team.has(player_id):
+			allied_team[player_id].flag_manager.pickup(flag)
+		if enemy_team.has(player_id):
+			enemy_team[player_id].flag_manager.pickup(flag)
 
 
 func setup_ctf_players():
 	for ally_player in allied_team:
-		if not ally_player == multiplayer.get_unique_id():
-			allied_team[ally_player] = get_parent().get_node(str(ally_player))
+		allied_team[ally_player] = get_parent().get_node(str(ally_player))
+		allied_team[ally_player].flag_manager.setup_manager(client_team_id, client_team_id)
 	for enemy_player in enemy_team:
-		print(get_parent().get_node(str(enemy_player)))
-	#print(enemy_team)
+		var enemy_team_id = 1 if client_team_id == 0 else 0
+		enemy_team[enemy_player] = get_parent().get_node(str(enemy_player))
+		enemy_team[enemy_player].flag_manager.setup_manager(enemy_team_id, client_team_id)
+
 
 #func test():
 #	timer = Timer.new()

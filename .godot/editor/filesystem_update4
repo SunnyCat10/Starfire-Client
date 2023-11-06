@@ -5,5 +5,11 @@ res://ui/Ctf.tscn
 res://tanks/remote_player.tscn
 res://Scenes/Objectives/Flagpole.tscn
 res://Scenes/Managers/FlagManager.tscn
+res://Scenes/Drops/flagSERVER.tscn
+res://Scenes/Drops/flag.tscn
+res://Scenes/Drops/Flag.gd
 res://Scenes/Gamemodes/Ctf.gd
+res://Scenes/Objectives/Flagpole.gd
+res://singletons/Server.gd
 res://Scenes/Managers/FlagManager.gd
+res://tanks/remote_player.gd

@@ -88,9 +88,9 @@ func load_main_map():
 	var map_scene : PackedScene = load("res://Maps/map.tscn")
 	map = map_scene.instantiate()
 	get_parent().add_child(map)
-	print(multiplayer.get_unique_id())
 	player_joined_map.rpc_id(1, multiplayer.get_unique_id())
 	get_node("../Map/Player").set_physics_process(true)
+	get_node("../Map/Player").name = str(multiplayer.get_unique_id())
 
 
 func send_player_state(player_state):
@@ -174,6 +174,5 @@ func send_attack(position : Vector2, rotation : float):
 	gamemode_started.emit(sorted_player_list, start_time)
 
 
-@rpc("reliable") func receive_gamemode_update(status_info, status_time : float):
-	print("Updated!")
-	Packets.gamemode_update.emit(status_info, status_time)
+@rpc("reliable") func receive_gamemode_update(packet, event_time : float):
+	Packets.gamemode_update.emit(packet, event_time)

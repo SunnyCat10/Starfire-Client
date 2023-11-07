@@ -95,7 +95,7 @@ func on_return_flag(team_id : int):
 
 
 func on_capture_flag(team_id : int):
-	ctf_ui.flag_captured(Server.Team.ALLY_TEAM) if client_team_id == team_id else ctf_ui.flag_captured(Server.Team.ENEMY_TEAM)
+	ctf_ui.flag_captured(Server.Team.ENEMY_TEAM) if client_team_id == team_id else ctf_ui.flag_captured(Server.Team.ALLY_TEAM)
 
 
 func append_status_update(packet, event_time : float):
@@ -106,10 +106,8 @@ func render_status(packet):
 	print(packet)
 	match packet[Packets.PACKET_ID]:
 		Packets.Type.PICKUP_FLAG:
-			print("PICKUP")
 			render_flag_pickup(packet)
 		Packets.Type.CAPTURE_FLAG:
-			print("CAPTURE")
 			render_flag_capture(packet)
 
 

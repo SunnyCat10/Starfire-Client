@@ -1,11 +1,12 @@
+Node2D
+Sprite2D
+Marker2D
 Label
 MarginContainer
 Button
 ColorRect
 ItemList
 ReferenceRect
-Sprite2D
-Node2D
 Node
 CollisionShape2D
 Area2D
@@ -29,4 +30,3 @@ Timer
 GPUParticles2D
 TileMap
 LineEdit
-TextEdit

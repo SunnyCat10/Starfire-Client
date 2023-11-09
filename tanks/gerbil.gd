@@ -32,7 +32,7 @@ func _ready():
 	set_physics_process(false) #remove when we will add a menu
 	tank_direction = Vector2(1,0)
 	Server.health_filled.emit(max_health)
-	Server.on_damage.connect(get_damage)
+	#Server.on_damage.connect(get_damage)
 	current_health = max_health
 
 
@@ -104,11 +104,22 @@ func respawn():
 	current_health = max_health
 	visible = true
 	alive = true
-	
-	
 
 
-func get_damage(damage : int):
-	current_health = current_health - damage
-	if current_health <= 0:
-		respawn()
+#func get_damage(damage : int):
+	#current_health = current_health - damage
+	#if current_health <= 0:
+		#respawn()
+
+
+func spawn(spawn_position : Vector2) -> void:
+	global_position = spawn_position
+	rotation = 0
+	turret.global_rotation = 0
+	collision_shape.set_deferred("disabled", false)
+	visible = true
+
+
+func death() -> void:
+	collision_shape.set_deferred("disabled", true)
+	visible = false

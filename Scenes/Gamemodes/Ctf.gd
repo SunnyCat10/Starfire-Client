@@ -130,6 +130,8 @@ func render_status(packet) -> void:
 			render_flag_capture(packet)
 		Packets.Type.SPAWN_PLAYER:
 			spawn_player(packet)
+		Packets.Type.PLAYER_DEATH:
+			player_death(packet)
 
 
 func setup_ctf_players() -> void:
@@ -166,9 +168,17 @@ func spawn_player(packet) -> void:
 	var player_id : int = packet[Packets.SpawnPlayer.PLAYER_ID]
 	var spawn_location : Vector2 = packet[Packets.SpawnPlayer.SPAWN_LOCATION]
 	if allied_team.has(player_id):
-		allied_team[player_id].global_position = spawn_location
+		allied_team[player_id].spawn(spawn_location)
 	elif enemy_team.has(player_id):
-		enemy_team[player_id].global_position = spawn_location
+		enemy_team[player_id].spawn(spawn_location)
+
+
+func player_death(packet) -> void:
+	var player_id : int = packet[Packets.PlayerDeath.PLAYER_ID]
+	if allied_team.has(player_id):
+		allied_team[player_id].death()
+	elif enemy_team.has(player_id):
+		enemy_team[player_id].death()
 
 
 #func test():

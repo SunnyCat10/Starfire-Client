@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://y14sm71srt1u"]
+[gd_scene load_steps=27 format=3 uid="uid://y14sm71srt1u"]
 
 [ext_resource type="Script" path="res://Maps/map.gd" id="1_3pp8j"]
 [ext_resource type="PackedScene" uid="uid://cit2em1stabgt" path="res://tanks/gerbil.tscn" id="2_rhqrb"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://hfnn2qn17sdl" path="res://Scenes/Gamemodes/ctf.tscn" id="15_hhxr3"]
 [ext_resource type="PackedScene" uid="uid://dhrr0xvjxs4fp" path="res://Scenes/Objectives/Flagpole.tscn" id="16_2258m"]
 [ext_resource type="PackedScene" uid="uid://cioady3in2elt" path="res://Scenes/Objectives/Spawner.tscn" id="16_hk8sq"]
+[ext_resource type="Texture2D" uid="uid://wdbalgqkx50j" path="res://assets/Environment/Building.png" id="18_5hmcl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msj3y"]
 texture = ExtResource("4_njet5")
@@ -124,3 +125,8 @@ team_id = 1
 
 [node name="CTF" parent="." instance=ExtResource("15_hhxr3")]
 position = Vector2(48, 40)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16, -176)
+scale = Vector2(2, 2)
+texture = ExtResource("18_5hmcl")

@@ -40,6 +40,7 @@ func spawn(spawn_position : Vector2) -> void:
 	rotation = 0
 	turret.global_rotation = 0
 	collision_shape.set_deferred("disabled", false)
+	await get_tree().process_frame
 	visible = true
 
 

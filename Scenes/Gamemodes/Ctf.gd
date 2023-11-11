@@ -14,8 +14,7 @@ var _starting_time : float = 0.0
 
 @onready var ctf_ui : CanvasLayer = get_node("CTFGui")
 @onready var objectives : Node = get_parent().get_node("%Objectives")
-
-
+@onready var flag_drop_scene: PackedScene = preload("res://Scenes/Drops/Flag.tscn")
 
 # for testing:
 var client_team_id
@@ -24,10 +23,11 @@ var client_team_id
 var timer_ready : bool = false
 
 var flag_list = []
-var status_update_cache = {} # CHANGE THIS TO SOMEKIND OF A LIST!!!!
+var status_update_cache = {} 
 var packet_buffer = []
 var indices_to_remove = []
 
+var dropped_flags = {}
 
 func _ready() -> void:
 	# setup_flags()
@@ -132,6 +132,8 @@ func render_status(packet) -> void:
 			spawn_player(packet)
 		Packets.Type.PLAYER_DEATH:
 			player_death(packet)
+		Packets.Type.DROP_ITEM:
+			drop_item(packet)
 
 
 func setup_ctf_players() -> void:
@@ -159,9 +161,9 @@ func render_flag_capture(packet) -> void:
 	var player_id : int = packet[Packets.CaptureFlag.PLAYER_ID]
 	flag.capture_flag()
 	if allied_team.has(player_id):
-		allied_team[player_id].flag_manager.capture_flag()
+		allied_team[player_id].flag_manager.drop_flag()
 	elif enemy_team.has(player_id):
-		enemy_team[player_id].flag_manager.capture_flag()
+		enemy_team[player_id].flag_manager.drop_flag()
 
 
 func spawn_player(packet) -> void:
@@ -179,6 +181,29 @@ func player_death(packet) -> void:
 		allied_team[player_id].death()
 	elif enemy_team.has(player_id):
 		enemy_team[player_id].death()
+
+
+func drop_item(packet) -> void:
+	var item_type : int = packet[Packets.DropItem.ITEM_TYPE]
+	var item_id : int = packet[Packets.DropItem.ITEM_ID]
+	var drop_location : Vector2 = packet[Packets.DropItem.DROP_LOCATION]
+	if (item_type == 0):
+		var player_id : int = packet[Packets.DropItem.PLAYER_ID]
+		if allied_team.has(player_id):
+			allied_team[player_id].flag_manager.drop_flag()
+		elif enemy_team.has(player_id):
+			enemy_team[player_id].flag_manager.drop_flag()
+		else:
+			pass
+		create_drop_flag(drop_location, item_id)
+
+
+func create_drop_flag(drop_position : Vector2, team_id : int) -> void:
+	var flag_drop : Node2D = flag_drop_scene.instantiate()
+	add_child(flag_drop)
+	flag_drop.global_position = drop_position
+	flag_drop.load_flag(client_team_id, team_id)
+	dropped_flags[team_id] = flag_drop
 
 
 #func test():

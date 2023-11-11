@@ -27,7 +27,7 @@ func pickup(flagpole : Node2D):
 	with_flag = true
 
 
-func capture_flag():
+func drop_flag():
 	sprite.texture = null
 	with_flag = false
 

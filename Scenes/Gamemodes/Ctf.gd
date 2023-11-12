@@ -1,6 +1,8 @@
 extends Node2D
 
 const FLAGPOLE_IDENTIFIER : String = "Flagpole"
+const TEAM_A : int = 0
+const TEAM_B : int = 1
 
 enum Buffer {TIME, PACKET}
 
@@ -16,8 +18,8 @@ var _starting_time : float = 0.0
 @onready var objectives : Node = get_parent().get_node("%Objectives")
 @onready var flag_drop_scene: PackedScene = preload("res://Scenes/Drops/Flag.tscn")
 
-# for testing:
-var client_team_id
+
+var client_team_id : int
 
 # for testsing
 var timer_ready : bool = false
@@ -30,7 +32,6 @@ var indices_to_remove = []
 var dropped_flags = {}
 
 func _ready() -> void:
-	# setup_flags()
 	Server.gamemode_started.connect(setup_game)
 	Packets.gamemode_update.connect(append_status_update)
 
@@ -44,16 +45,6 @@ func _physics_process(delta) -> void:
 			timer_ready = true
 			setup_ctf_players()
 
-
-#	for status in status_update_cache:
-#		if status <= Server.client_clock:
-#			render_status(status_update_cache[status])
-#			# ctf_ui.update_status(status_update_cache[status])
-#			status_update_cache.erase(status)
-
-
-
-# ctf_ui.update_status(status_update_cache[status])
 
 	var updated_buffer = []
 	for packet in packet_buffer:
@@ -117,7 +108,6 @@ func on_capture_flag(team_id : int) -> void:
 
 func append_status_update(packet, event_time : float) -> void:
 	print(packet)
-	# status_update_cache[event_time] = packet
 	packet_buffer.append([event_time, packet])
 
 
@@ -134,6 +124,8 @@ func render_status(packet) -> void:
 			player_death(packet)
 		Packets.Type.DROP_ITEM:
 			drop_item(packet)
+		Packets.Type.PICKUP_ITEM:
+			item_pickup(packet)
 
 
 func setup_ctf_players() -> void:
@@ -189,12 +181,7 @@ func drop_item(packet) -> void:
 	var drop_location : Vector2 = packet[Packets.DropItem.DROP_LOCATION]
 	if (item_type == 0):
 		var player_id : int = packet[Packets.DropItem.PLAYER_ID]
-		if allied_team.has(player_id):
-			allied_team[player_id].flag_manager.drop_flag()
-		elif enemy_team.has(player_id):
-			enemy_team[player_id].flag_manager.drop_flag()
-		else:
-			pass
+		remove_player_flag(player_id)
 		create_drop_flag(drop_location, item_id)
 
 
@@ -204,6 +191,44 @@ func create_drop_flag(drop_position : Vector2, team_id : int) -> void:
 	flag_drop.global_position = drop_position
 	flag_drop.load_flag(client_team_id, team_id)
 	dropped_flags[team_id] = flag_drop
+
+
+func item_pickup(packet):
+	var item_type : Packets.ItemType = packet[Packets.PickupItem.ITEM_TYPE]
+	var item_id : int = packet[Packets.PickupItem.ITEM_ID]
+	var player_id : int = packet[Packets.PickupItem.PLAYER_ID]
+	
+	if item_type == Packets.ItemType.FLAG:
+		var flag_index : int = 0
+		for objective in flag_list:
+			if objective.flag_team_id == item_id:
+				break
+			flag_index += 1
+		
+		if item_id == get_player_team_id(player_id):
+			remove_player_flag(player_id)
+			flag_list[flag_index].return_flag()
+		else:
+			var return_flag_packet = [Packets.PickupFlag, player_id, flag_index]
+			render_flag_pickup(return_flag_packet) # TODO: make generic function instead of packet
+		dropped_flags[item_id].queue_free()
+		dropped_flags[item_id] = null
+
+
+func get_player_team_id(player_id : int) -> int:
+	if client_team_id == TEAM_A:
+		return TEAM_A if allied_team.has(player_id) else TEAM_B
+	else:
+		return TEAM_B if allied_team.has(player_id) else TEAM_A
+
+
+func remove_player_flag(player_id : int) -> void:
+	if allied_team.has(player_id):
+		allied_team[player_id].flag_manager.drop_flag()
+	elif enemy_team.has(player_id):
+		enemy_team[player_id].flag_manager.drop_flag()
+	else:
+		pass
 
 
 #func test():

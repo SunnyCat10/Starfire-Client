@@ -28,12 +28,6 @@ func setup_flag(client_team_id : int):
 	is_empty = false
 
 
-#func pickup_flag(player : Node2D):
-#	flag_picked.emit(flag_team_id)
-#	flag.texture = empty_flag_texture
-#	is_empty = true
-
-
 func pickup_flag():
 	flag_picked.emit(flag_team_id)
 	flag.texture = empty_flag_texture
@@ -43,13 +37,10 @@ func capture_flag():
 	flag_captured.emit(flag_team_id)
 	color_flag() 
 
-#func capture_flag():
-#	flag_captured.emit(flag_team_id)
 
-
-func return_flag(client_team_id : int):
+func return_flag():
 	flag_returned.emit(flag_team_id)
-	setup_flag(client_team_id)
+	setup_flag(_client_team_id)
 	is_empty = false
 
 

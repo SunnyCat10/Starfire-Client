@@ -8,7 +8,7 @@ var with_flag : bool = false
 @onready var sprite : Sprite2D = %FlagSprite
 @onready var ally_team : Texture2D = preload("res://assets/Drops/ally_team_flag_dropped.png")
 @onready var enemy_team : Texture2D = preload("res://assets/Drops/enemy_team_flag_dropped.png")
-@onready var flag_drop_scene: PackedScene = preload("res://Scenes/Drops/flag.tscn")
+@onready var flag_drop_scene: PackedScene = preload("res://Scenes/Drops/Flag.tscn")
 
 
 func _physics_process(delta):

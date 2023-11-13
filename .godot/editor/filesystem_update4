@@ -1,8 +1,8 @@
-res://Scenes/Drops/flag.tscn
+res://Maps/map.tscn
 res://Scenes/Turrets/GerbilTurret.gdshader
-res://Scenes/Drops/Flag.gd
-res://Scenes/Managers/FlagManager.tscn
-res://Scenes/Drops/Flag.tscn
+res://tanks/gerbil.tscn
 res://Scenes/Gamemodes/ctf.tscn
-res://Scenes/Gamemodes/Ctf.gd
-res://Scenes/Managers/FlagManager.gd
+res://ui/Ctf.tscn
+res://Scenes/Objectives/Flagpole.tscn
+res://Scenes/Managers/FlagManager.tscn
+res://tanks/remote_player.tscn

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cioady3in2elt"]
+
+[ext_resource type="Script" path="res://Scenes/Objectives/Spawner.gd" id="1_6cqhu"]
+[ext_resource type="Texture2D" uid="uid://isflpdgf54tv" path="res://ui/Cursor.png" id="2_4x3ft"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_6cqhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+texture = ExtResource("2_4x3ft")

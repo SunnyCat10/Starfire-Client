@@ -5,9 +5,11 @@ extends CanvasLayer
 @onready var local_host_button : Button = %LocalHostBtn
 @onready var dedicated_host_button : Button = %DedicatedBtn
 
+
 func _ready():
 	local_host_button.pressed.connect(local_host_pressed)
 	dedicated_host_button.pressed.connect(dedicated_host_pressed)
+	Server.server_selected.connect(close)
 
 
 func local_host_pressed():
@@ -25,3 +27,7 @@ func dedicated_host_pressed():
 		Server.connect_to_server()
 		local_host_button.disabled = true
 		dedicated_host_button.disabled = true
+
+
+func close():
+	queue_free()

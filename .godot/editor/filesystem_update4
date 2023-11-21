@@ -1,11 +1,8 @@
+res://tanks/gerbil.tscn
+res://Scenes/Turrets/GerbilTurret.gdshader
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
-res://Scenes/Gamemodes/Ctf.gd
 res://ui/Ctf.tscn
-res://tanks/gerbil.tscn
-res://Scenes/Turrets/GerbilTurret.tscn
+res://Scenes/Objectives/Flagpole.tscn
+res://Scenes/Managers/FlagManager.tscn
 res://tanks/remote_player.tscn
-res://Scenes/Projectiles/GerbilProjectile.tscn
-res://ui/PlayerStats.tscn
-res://ui/CtfGui.gd
-res://singletons/Server.gd

@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfwaqt83axvoa"]
+
+[ext_resource type="Script" path="res://ui/LobbySelection.gd" id="1_b8yrd"]
+
+[node name="LobbySelection" type="CanvasLayer"]
+script = ExtResource("1_b8yrd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer"]
+layout_mode = 2
+color = Color(0.0705882, 0.0156863, 0.0117647, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.447059)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="MarginContainer" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.607843, 0.172549, 1)
+theme_override_font_sizes/font_size = 28
+text = "< Lobby selection >
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="MarginContainer" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "⏣ Select a game lobby to join :"
+
+[node name="LobbyList" type="ItemList" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_selected_color = Color(0, 0.521569, 0, 1)
+auto_height = true
+
+[node name="JoinGame" type="Button" parent="Control/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Join the game"

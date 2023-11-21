@@ -4,9 +4,20 @@ signal pinged(ping : float)
 signal ui_update_player(name: String)
 signal health_filled(health : int)
 signal on_damage(damage : int)
+signal lobby_list_initiated(lobby_list)
+signal server_selected
+signal lobby_selected(lobby_id : int)
+signal lobby_gui_closed()
+signal gamemode_started(team_list, starting_time : float)
 
 const LOCAL_HOST_IP : String = "127.0.0.1"
 const LOCAL_HOST_PORT : int = 34684
+
+# for packets: TODO: Make a singleton for packets
+const LOBBY_NAME = "n"
+const LOBBY_GAMEMODE = "g"
+const LOBBY_CURRENT_PLAYERS = "c"
+const LOBBY_MAX_PLAYERS = "m"
 
 var network : ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var ip : String = LOCAL_HOST_IP
@@ -29,6 +40,11 @@ enum Team {ALLY_TEAM, ENEMY_TEAM}
 @rpc("any_peer", "reliable") func fetch_server_time(client_time : float): pass
 @rpc("any_peer") func determine_latency(client_time : float): pass
 @rpc("any_peer", "reliable") func attack(position : Vector2, rotation : float, client_time : float): pass
+@rpc("any_peer", "reliable") func get_lobby_list(): pass
+
+
+func _ready():
+	lobby_selected.connect(on_lobby_selected)
 
 
 func _physics_process(delta):
@@ -51,18 +67,30 @@ func on_connection_failed():
 func on_connected_to_server():
 	print("Succesfully connected to the server")
 	sync_time()
-	load_main_map()
+	#load_main_map()
+	load_lobbies()
 	connected = true
+
+
+func load_lobbies():
+	var lobby_selection : CanvasLayer = load("res://ui/LobbySelection.tscn").instantiate()
+	add_child(lobby_selection)
+	get_lobby_list.rpc_id(1)
+
+
+# TODO: Later on ask the server type of map to select from a list
+func on_lobby_selected(lobby_id : int):
+	load_main_map()
+	lobby_gui_closed.emit()
 
 
 func load_main_map():
 	var map_scene : PackedScene = load("res://Maps/map.tscn")
 	map = map_scene.instantiate()
 	get_parent().add_child(map)
-	print(multiplayer.get_unique_id())
 	player_joined_map.rpc_id(1, multiplayer.get_unique_id())
 	get_node("../Map/Player").set_physics_process(true)
-	get_node("../ServerSelection").queue_free()
+	get_node("../Map/Player").name = str(multiplayer.get_unique_id())
 
 
 func send_player_state(player_state):
@@ -128,7 +156,6 @@ func send_attack(position : Vector2, rotation : float):
 
 @rpc("reliable") func receive_attack(position : Vector2, rotation : float, client_time : float, player_id : int):
 	if has_node(str(get_parent().get_path()) + "/Map/" + str(player_id)):
-		print("Player", player_id, "exists")
 		if player_id == multiplayer.get_unique_id():
 			pass
 		else:
@@ -137,3 +164,15 @@ func send_attack(position : Vector2, rotation : float):
 
 @rpc("reliable") func receive_damage(damage: int): 
 	on_damage.emit(damage)
+
+
+@rpc("reliable") func receive_lobby_list(lobby_list):
+	lobby_list_initiated.emit(lobby_list)
+
+
+@rpc("reliable") func receive_ctf_start(sorted_player_list , start_time : float):
+	gamemode_started.emit(sorted_player_list, start_time)
+
+
+@rpc("reliable") func receive_gamemode_update(packet, event_time : float):
+	Packets.gamemode_update.emit(packet, event_time)

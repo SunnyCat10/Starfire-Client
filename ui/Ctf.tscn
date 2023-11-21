@@ -41,7 +41,7 @@ text = "0
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "< 00:00 >"
+text = "awaiting other players..."
 
 [node name="EnemyScore" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -60,3 +60,21 @@ color = Color(0.690196, 0, 0, 1)
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0, 0, 0, 0.196078)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.5
+offset_right = 14.5
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 80
+
+[node name="UpdateLabel" type="Label" parent="MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.392157)
+theme_override_font_sizes/font_size = 32

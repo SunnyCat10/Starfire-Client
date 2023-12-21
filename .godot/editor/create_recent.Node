@@ -1,3 +1,4 @@
+Control
 Sprite2D
 Node2D
 Marker2D
@@ -12,21 +13,3 @@ CollisionShape2D
 Area2D
 HBoxContainer
 CanvasLayer
-Polygon2D
-ProgressBar
-VBoxContainer
-ParallaxBackground
-AspectRatioContainer
-Panel
-PanelContainer
-Control
-LightOccluder2D
-DirectionalLight2D
-StaticBody2D
-RigidBody2D
-AnimationPlayer
-AnimatedSprite2D
-Timer
-GPUParticles2D
-TileMap
-LineEdit

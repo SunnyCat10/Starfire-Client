@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkoeg00id71h7"]
 
-[ext_resource type="Theme" uid="uid://ik4tsxey5a8l" path="res://ui/theme.tres" id="1_6njl1"]
 [ext_resource type="Script" path="res://ui/Scoreboard.gd" id="1_iblp4"]
-[ext_resource type="Script" path="res://ui/TeamScoreboard.gd" id="2_j4uk3"]
+[ext_resource type="PackedScene" uid="uid://l7h7ccsx1nsw" path="res://ui/TeamScoreboard.tscn" id="2_lkwdn"]
+[ext_resource type="Theme" uid="uid://cfsbskl835ob3" path="res://assets/Themes/EnemyScoreboard.tres" id="4_sav32"]
 
 [node name="Scoreboard" type="Control"]
 layout_mode = 3
@@ -23,96 +23,14 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="TeamScoreboard" type="GridContainer" parent="CenterContainer/HBoxContainer"]
+[node name="TeamScoreboard" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_lkwdn")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("1_6njl1")
-columns = 5
-script = ExtResource("2_j4uk3")
 
-[node name="name_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "Name
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="k_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "K
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="a_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "A
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="d_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="score_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "Score"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ReferenceRect" type="VSeparator" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-
-[node name="EnemyScoreboard" type="GridContainer" parent="CenterContainer/HBoxContainer"]
+[node name="EnemyScoreboard" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_lkwdn")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("1_6njl1")
-columns = 5
-
-[node name="name_lbl" type="Label" parent="CenterContainer/HBoxContainer/EnemyScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "Name
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="k_lbl" type="Label" parent="CenterContainer/HBoxContainer/EnemyScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "K
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="a_lbl" type="Label" parent="CenterContainer/HBoxContainer/EnemyScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "A
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="d_lbl" type="Label" parent="CenterContainer/HBoxContainer/EnemyScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="score_lbl" type="Label" parent="CenterContainer/HBoxContainer/EnemyScoreboard"]
-layout_mode = 2
-theme = ExtResource("1_6njl1")
-text = "Score"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme = ExtResource("4_sav32")
+label_theme = ExtResource("4_sav32")

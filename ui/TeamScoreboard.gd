@@ -1,6 +1,6 @@
 extends GridContainer
 
-@onready var label_theme : Theme = preload("res://ui/theme.tres")
+@export var label_theme : Theme
 
 enum Column {NAME, KILLS, ASSISTS, DEATHS, SCORE}
 enum Pair {ID, SCORE}
@@ -39,9 +39,7 @@ func create_row() -> void:
 
 func update_table() -> void:
 	var row_number : int = 0
-	print("update")
 	for data_pair in order:
-		print(data_pair)
 		var player_id = data_pair[Pair.ID]
 		for column in range(0, columns, 1):
 			label_references[row_number][column].text = str(data[player_id][column])
@@ -49,8 +47,20 @@ func update_table() -> void:
 
 
 func update_data_value(player_id : int, update_index : int, value : int) -> void:
-	if not data.has(player_id): 
+	if not data.has(player_id): # Can be removed!
 		print("Player " + str(player_id) + " was not added to the scoreboard, updating now...")
 		add_player(player_id)
 	data[player_id][update_index] = value
+	if (update_index == Column.SCORE):
+		for player in order:
+			if player[Pair.ID] == player_id:
+				print("FOUND!")
+				player[Pair.SCORE] = value
+				print(order)
+				order.sort_custom(pair_sort)
+	print(order)
 	update_table()
+
+
+func is_player_inside(player_id : int) -> bool:
+	return data.has(player_id)

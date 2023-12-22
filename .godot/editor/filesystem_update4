@@ -6,3 +6,7 @@ res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
 res://ui/Scoreboard.gd
+res://assets/Themes/EnemyScoreboard.tres
+res://ui/TeamScoreboard.tscn
+res://assets/Themes/Scoreboard.tres
+res://assets/Themes/AllyScoreboard.tres

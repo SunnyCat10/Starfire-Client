@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkoeg00id71h7"]
+
+[ext_resource type="Theme" uid="uid://ik4tsxey5a8l" path="res://ui/theme.tres" id="1_6njl1"]
+[ext_resource type="Script" path="res://ui/TeamScoreboard.gd" id="2_j4uk3"]
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TeamScoreboard" type="GridContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+columns = 5
+script = ExtResource("2_j4uk3")
+
+[node name="name_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "Name
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="k_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "K
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="a_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "A
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="d_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_lbl" type="Label" parent="CenterContainer/HBoxContainer/TeamScoreboard"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReferenceRect" type="VSeparator" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+
+[node name="GridContainer2" type="GridContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+columns = 5
+
+[node name="name_lbl" type="Label" parent="CenterContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "Name
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="k_lbl" type="Label" parent="CenterContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "K
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="a_lbl" type="Label" parent="CenterContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "A
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="d_lbl" type="Label" parent="CenterContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_lbl" type="Label" parent="CenterContainer/HBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("1_6njl1")
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1

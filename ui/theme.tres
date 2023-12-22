@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ik4tsxey5a8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydiwo"]
+bg_color = Color(0.0470588, 0.364706, 0.988235, 0.392157)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.490196, 0.776471, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[resource]
+default_font_size = 20
+GridContainer/constants/h_separation = 10
+GridContainer/constants/v_separation = 10
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 22
+Label/styles/normal = SubResource("StyleBoxFlat_ydiwo")
+VSeparator/constants/separation = 7
+VSeparator/styles/separator = null

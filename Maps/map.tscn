@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://y14sm71srt1u"]
+[gd_scene load_steps=64 format=3 uid="uid://y14sm71srt1u"]
 
 [ext_resource type="Script" path="res://Maps/map.gd" id="1_3pp8j"]
 [ext_resource type="PackedScene" uid="uid://cit2em1stabgt" path="res://tanks/gerbil.tscn" id="2_rhqrb"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://b085u075a1hc5" path="res://assets/Tiles/Sidewalk_07.png" id="21_tvj8n"]
 [ext_resource type="Texture2D" uid="uid://cqrvawys4ay8y" path="res://assets/Tiles/Sidewalk_08.png" id="22_c4qpk"]
 [ext_resource type="Texture2D" uid="uid://ci3flhar8rma5" path="res://assets/Environment/Buildings/Building_4x4_01.png" id="29_iq3sd"]
+[ext_resource type="PackedScene" uid="uid://dkoeg00id71h7" path="res://ui/Scoreboard.tscn" id="37_4qnlt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msj3y"]
 texture = ExtResource("4_njet5")
@@ -194,6 +195,8 @@ sources/24 = SubResource("TileSetAtlasSource_rkmcq")
 script = ExtResource("1_3pp8j")
 
 [node name="PlayerStatsGui" parent="." instance=ExtResource("14_wfsdt")]
+
+[node name="Scoreboard" parent="PlayerStatsGui" instance=ExtResource("37_4qnlt")]
 
 [node name="Player" parent="." instance=ExtResource("2_rhqrb")]
 

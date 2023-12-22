@@ -5,3 +5,4 @@ res://ui/TeamScoreboard.gd
 res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
+res://ui/Scoreboard.gd

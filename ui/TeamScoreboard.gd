@@ -31,16 +31,21 @@ func create_row() -> void:
 	for column in range(0, columns, 1):
 		var label : Label = Label.new()
 		label.theme = label_theme
-		row_reference.append(label) # TODO: This can blow up!
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		row_reference.push_back(label) # TODO: This can blow up!
 		add_child(label)
-	label_references.append(row_reference)
+	label_references.push_back(row_reference)
 
 
 func update_table() -> void:
+	var row_number : int = 0
+	print("update")
 	for data_pair in order:
-		var row_data = data_pair[Pair.ID]
+		print(data_pair)
+		var player_id = data_pair[Pair.ID]
 		for column in range(0, columns, 1):
-			label_references[data_pair][column].text = row_data[column]
+			label_references[row_number][column].text = str(data[player_id][column])
+		row_number += 1
 
 
 func update_data_value(player_id : int, update_index : int, value : int) -> void:

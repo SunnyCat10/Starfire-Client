@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://drq34c8pcvue4"]
+
+[ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
+[ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="1_tm475"]
+[ext_resource type="Script" path="res://ui/Preview.gd" id="3_f4ndm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4wmt"]
+shader = ExtResource("1_431hm")
+shader_parameter/new_color = Color(0.301961, 0.501961, 0.2, 1)
+
+[node name="PlayerEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.145098, 0.188235, 1)
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+color = Color(0.301961, 0.501961, 0.2, 1)
+edit_alpha = false
+picker_shape = 2
+presets_visible = false
+
+[node name="Preview" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_j4wmt")
+position = Vector2(368, 304)
+scale = Vector2(8, 8)
+texture = ExtResource("1_tm475")
+script = ExtResource("3_f4ndm")

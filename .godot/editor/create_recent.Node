@@ -1,4 +1,7 @@
+ColorPicker
 ColorRect
+Sprite2D
+Control
 MarginContainer
 VSeparator
 ReferenceRect
@@ -7,8 +10,6 @@ Label
 GridContainer
 VBoxContainer
 CenterContainer
-Control
-Sprite2D
 Node2D
 Marker2D
 Button

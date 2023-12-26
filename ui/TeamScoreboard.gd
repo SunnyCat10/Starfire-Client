@@ -54,11 +54,8 @@ func update_data_value(player_id : int, update_index : int, value : int) -> void
 	if (update_index == Column.SCORE):
 		for player in order:
 			if player[Pair.ID] == player_id:
-				print("FOUND!")
 				player[Pair.SCORE] = value
-				print(order)
 				order.sort_custom(pair_sort)
-	print(order)
 	update_table()
 
 

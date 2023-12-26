@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkoeg00id71h7"]
+
+[ext_resource type="Script" path="res://ui/Scoreboard.gd" id="1_iblp4"]
+[ext_resource type="PackedScene" uid="uid://l7h7ccsx1nsw" path="res://ui/TeamScoreboard.tscn" id="2_lkwdn"]
+[ext_resource type="Theme" uid="uid://cfsbskl835ob3" path="res://assets/Themes/EnemyScoreboard.tres" id="4_sav32"]
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iblp4")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TeamScoreboard" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_lkwdn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EnemyScoreboard" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_lkwdn")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_sav32")
+label_theme = ExtResource("4_sav32")

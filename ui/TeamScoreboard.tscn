@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://l7h7ccsx1nsw"]
+
+[ext_resource type="Theme" uid="uid://cjtyntyknxfkm" path="res://assets/Themes/AllyScoreboard.tres" id="1_kdehw"]
+[ext_resource type="Script" path="res://ui/TeamScoreboard.gd" id="2_t74fr"]
+
+[node name="TeamScoreboard" type="GridContainer"]
+offset_right = 247.0
+offset_bottom = 39.0
+theme = ExtResource("1_kdehw")
+columns = 5
+script = ExtResource("2_t74fr")
+label_theme = ExtResource("1_kdehw")
+
+[node name="name_lbl" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="k_lbl" type="Label" parent="."]
+layout_mode = 2
+text = "K
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="a_lbl" type="Label" parent="."]
+layout_mode = 2
+text = "A
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="d_lbl" type="Label" parent="."]
+layout_mode = 2
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_lbl" type="Label" parent="."]
+layout_mode = 2
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1

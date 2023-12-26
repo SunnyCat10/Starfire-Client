@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=6 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="1_tm475"]
+[ext_resource type="Texture2D" uid="uid://cejhcfgshnvsc" path="res://assets/Tanks/Paint/Camo_01.png" id="2_k74nh"]
 [ext_resource type="Script" path="res://ui/Preview.gd" id="3_f4ndm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4wmt"]
 shader = ExtResource("1_431hm")
 shader_parameter/new_color = Color(0.301961, 0.501961, 0.2, 1)
+shader_parameter/selected_color_1 = Color(0.490196, 0.188235, 0, 1)
+shader_parameter/selected_color_2 = Color(0.85098, 0.682353, 0.109804, 1)
+shader_parameter/selected_color_3 = Color(0.215686, 0.356863, 0, 1)
+shader_parameter/paint = ExtResource("2_k74nh")
 
 [node name="PlayerEditor" type="Control"]
 layout_mode = 3

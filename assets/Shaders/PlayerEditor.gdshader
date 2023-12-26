@@ -1,8 +1,6 @@
 shader_type canvas_item;
 
-uniform vec3 new_color : source_color;
-uniform sampler2D paint : filter_nearest;
-
+uniform sampler2D selected_texture : filter_nearest;
 uniform vec3 selected_color_1 : source_color;
 uniform vec3 selected_color_2 : source_color;
 uniform vec3 selected_color_3 : source_color;
@@ -28,7 +26,7 @@ vec3 add_color_to_mask(vec3 texture_color, vec3 color_to_replace, vec3 new_selec
 void fragment() {
 	vec3 mask = create_mask_from_color(COLOR.rgb, surface_color);
 
-	vec3 texture_color = texture(paint, UV).rgb;
+	vec3 texture_color = texture(selected_texture, UV).rgb;
 	vec3 colored_texture_mask = 
 	add_color_to_mask(texture_color, paint_color_1, selected_color_1) + 
 	add_color_to_mask(texture_color, paint_color_2, selected_color_2) + 

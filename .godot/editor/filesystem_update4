@@ -7,3 +7,4 @@ res://tanks/gerbil.tscn
 res://Scenes/Gamemodes/ctf.tscn
 res://assets/Shaders/PlayerEditor.gdshader
 res://ui/Preview.gd
+res://ui/PlayerEditor.gd

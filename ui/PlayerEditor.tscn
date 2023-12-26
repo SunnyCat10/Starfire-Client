@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=7 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
+[ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
 [ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="1_tm475"]
 [ext_resource type="Texture2D" uid="uid://cejhcfgshnvsc" path="res://assets/Tanks/Paint/Camo_01.png" id="2_k74nh"]
-[ext_resource type="Script" path="res://ui/Preview.gd" id="3_f4ndm"]
+[ext_resource type="Texture2D" uid="uid://bfujkakjyuu8m" path="res://assets/Tanks/Paint/Camo_00.png" id="5_5xx2x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4wmt"]
 shader = ExtResource("1_431hm")
-shader_parameter/new_color = Color(0.301961, 0.501961, 0.2, 1)
 shader_parameter/selected_color_1 = Color(0.490196, 0.188235, 0, 1)
 shader_parameter/selected_color_2 = Color(0.85098, 0.682353, 0.109804, 1)
 shader_parameter/selected_color_3 = Color(0.215686, 0.356863, 0, 1)
-shader_parameter/paint = ExtResource("2_k74nh")
+shader_parameter/selected_texture = ExtResource("2_k74nh")
 
 [node name="PlayerEditor" type="Control"]
 layout_mode = 3
@@ -20,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g6a8t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -30,25 +31,83 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.145098, 0.188235, 1)
 
-[node name="ColorPicker" type="ColorPicker" parent="."]
+[node name="Preview" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_j4wmt")
+position = Vector2(368, 304)
+scale = Vector2(8, 8)
+texture = ExtResource("1_tm475")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -298.0
+offset_top = -235.5
+offset_bottom = 235.5
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="MaterialSelector" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Material1Btn" type="TextureButton" parent="HBoxContainer/MaterialSelector"]
+unique_name_in_owner = true
+modulate = Color(1, 0.976471, 1, 1)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="Material2Btn" type="TextureButton" parent="HBoxContainer/MaterialSelector"]
+unique_name_in_owner = true
+modulate = Color(1, 0.976471, 1, 1)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_k74nh")
+stretch_mode = 0
+
+[node name="ColorSlector" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Color3Btn" type="TextureButton" parent="HBoxContainer/ColorSlector"]
+unique_name_in_owner = true
+modulate = Color(1, 0.976471, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="Color2Btn" type="TextureButton" parent="HBoxContainer/ColorSlector"]
+unique_name_in_owner = true
+modulate = Color(1, 0.976471, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="Color1Btn" type="TextureButton" parent="HBoxContainer/ColorSlector"]
+unique_name_in_owner = true
+modulate = Color(1, 0.976471, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ColorPicker" type="ColorPicker" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 alignment = 1
 color = Color(0.301961, 0.501961, 0.2, 1)
 edit_alpha = false
 picker_shape = 2
 presets_visible = false
-
-[node name="Preview" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_j4wmt")
-position = Vector2(368, 304)
-scale = Vector2(8, 8)
-texture = ExtResource("1_tm475")
-script = ExtResource("3_f4ndm")

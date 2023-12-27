@@ -200,6 +200,7 @@ script = ExtResource("1_3pp8j")
 [node name="Scoreboard" parent="PlayerStatsGui" instance=ExtResource("37_4qnlt")]
 
 [node name="PlayerEditor" parent="PlayerStatsGui" instance=ExtResource("4_h7jgt")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_rhqrb")]
 

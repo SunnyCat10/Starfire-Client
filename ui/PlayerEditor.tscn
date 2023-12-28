@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=13 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
 [ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="1_tm475"]
 [ext_resource type="Texture2D" uid="uid://cejhcfgshnvsc" path="res://assets/Tanks/Paint/Camo_01.png" id="2_k74nh"]
 [ext_resource type="Texture2D" uid="uid://bfujkakjyuu8m" path="res://assets/Tanks/Paint/Camo_00.png" id="5_5xx2x"]
+[ext_resource type="Theme" uid="uid://cddeh34ai2xqx" path="res://assets/Themes/PlayerEditor.tres" id="6_e8pcf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5bac"]
 
@@ -14,6 +15,32 @@ shader_parameter/selected_color_1 = Color(0.490196, 0.188235, 0, 1)
 shader_parameter/selected_color_2 = Color(0.85098, 0.682353, 0.109804, 1)
 shader_parameter/selected_color_3 = Color(0.215686, 0.356863, 0, 1)
 shader_parameter/selected_texture = ExtResource("2_k74nh")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63b21"]
+bg_color = Color(0.196078, 0.129412, 0.227451, 1)
+border_width_right = 8
+border_color = Color(0.643137, 0.0117647, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28x22"]
+bg_color = Color(0.196078, 0.129412, 0.227451, 1)
+border_width_right = 8
+border_color = Color(0.643137, 0.0117647, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghnuy"]
+bg_color = Color(0.196078, 0.129412, 0.227451, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 16
+border_color = Color(0.643137, 0.0117647, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70ro2"]
+bg_color = Color(0.196078, 0.129412, 0.227451, 1)
+border_width_left = 8
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.643137, 0.0117647, 0.121569, 1)
 
 [node name="PlayerEditor" type="Control"]
 layout_mode = 3
@@ -32,9 +59,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.145098, 0.188235, 1)
+color = Color(0.2, 0.396078, 0.541176, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,32 +70,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 2
 
-[node name="Preview" type="Sprite2D" parent="MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_j4wmt")
-position = Vector2(368, 304)
-scale = Vector2(8, 8)
-texture = ExtResource("1_tm475")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MaterialSelector" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MaterialSelector" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Material1Btn" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MaterialSelector"]
+[node name="Material1Btn" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MaterialSelector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
 custom_minimum_size = Vector2(96, 96)
@@ -75,7 +101,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_5xx2x")
 stretch_mode = 0
 
-[node name="Material2Btn" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MaterialSelector"]
+[node name="Material2Btn" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MaterialSelector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
 custom_minimum_size = Vector2(96, 96)
@@ -83,13 +109,13 @@ layout_mode = 2
 texture_normal = ExtResource("2_k74nh")
 stretch_mode = 0
 
-[node name="ColorSlector" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ColorSlector" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Color3Btn" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ColorSlector"]
+[node name="Color3Btn" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ColorSlector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
 custom_minimum_size = Vector2(64, 64)
@@ -97,7 +123,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_5xx2x")
 stretch_mode = 0
 
-[node name="Color2Btn" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ColorSlector"]
+[node name="Color2Btn" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ColorSlector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
 custom_minimum_size = Vector2(64, 64)
@@ -105,7 +131,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_5xx2x")
 stretch_mode = 0
 
-[node name="Color1Btn" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ColorSlector"]
+[node name="Color1Btn" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ColorSlector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
 custom_minimum_size = Vector2(64, 64)
@@ -113,29 +139,223 @@ layout_mode = 2
 texture_normal = ExtResource("5_5xx2x")
 stretch_mode = 0
 
-[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ColorPicker" type="ColorPicker" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
 color = Color(0.301961, 0.501961, 0.2, 1)
 edit_alpha = false
 picker_shape = 2
 presets_visible = false
 
-[node name="NavigationButtons" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="MarginContainer/NavigationButtons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_e8pcf")
+text = "Hull
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+self_modulate = Color(0.0941176, 0.0941176, 0.0941176, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/GridContainer"]
+self_modulate = Color(0.0941176, 0.0941176, 0.0941176, 1)
+layout_mode = 2
+texture_normal = ExtResource("5_5xx2x")
+
+[node name="NavigationButtons" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme = ExtResource("6_e8pcf")
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer/NavigationButtons"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
 text = "Save
 "
 
-[node name="Button2" type="Button" parent="MarginContainer/NavigationButtons"]
+[node name="Button2" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer/NavigationButtons"]
 layout_mode = 2
+theme = ExtResource("6_e8pcf")
 text = "Return
 "
+
+[node name="Preview" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_j4wmt")
+position = Vector2(350, 150)
+scale = Vector2(8, 8)
+texture = ExtResource("1_tm475")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="CategoryMenu" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Panel" type="Panel" parent="HBoxContainer/CategoryMenu"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_63b21")
+
+[node name="CategoryMenu2" type="MarginContainer" parent="HBoxContainer/CategoryMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="Panel" type="Panel" parent="HBoxContainer/CategoryMenu/CategoryMenu2"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_28x22")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CategoryMenu/CategoryMenu2"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/CategoryMenu/CategoryMenu2/VBoxContainer"]
+self_modulate = Color(0.917647, 0.768627, 0.207843, 1)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="HBoxContainer/CategoryMenu/CategoryMenu2/VBoxContainer"]
+self_modulate = Color(0.917647, 0.768627, 0.207843, 1)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="HBoxContainer/CategoryMenu/CategoryMenu2/VBoxContainer"]
+self_modulate = Color(0.917647, 0.768627, 0.207843, 1)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_5xx2x")
+stretch_mode = 0
+
+[node name="DataMenu" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DataMenu"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TankPreview" type="Panel" parent="HBoxContainer/DataMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DataMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.6
+
+[node name="Panel" type="Panel" parent="HBoxContainer/DataMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ghnuy")
+
+[node name="GridMenu" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Panel" type="Panel" parent="HBoxContainer/GridMenu"]
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_70ro2")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/GridMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/GridMenu/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Tank Data"
+horizontal_alignment = 1

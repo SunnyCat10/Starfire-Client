@@ -1,9 +1,9 @@
 res://ui/PlayerEditor.tscn
 res://assets/Shaders/PlayerEditor.gdshader
+res://assets/Themes/PlayerEditor.tres
 res://assets/Themes/AllyScoreboard.tres
 res://assets/Themes/EnemyScoreboard.tres
 res://Scenes/Turrets/GerbilTurret.gdshader
 res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
-res://ui/PlayerEditorBackground.gdshader

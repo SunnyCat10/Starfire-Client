@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=22 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
@@ -40,6 +40,26 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wigou"]
 shader = ExtResource("12_a7c48")
+shader_parameter/line_size = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq2xk"]
+bg_color = Color(0, 0.239216, 0.596078, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k467"]
+shader = ExtResource("1_431hm")
+shader_parameter/selected_color_1 = Color(0.172549, 0.501961, 0.215686, 1)
+shader_parameter/selected_color_2 = Color(0.552941, 0.341176, 0.113725, 1)
+shader_parameter/selected_color_3 = Color(0.121569, 0.321569, 0.388235, 1)
+shader_parameter/selected_texture = ExtResource("2_k74nh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6mkl"]
 bg_color = Color(0.00784314, 0.152941, 0.00784314, 1)
@@ -53,13 +73,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70ro2"]
-bg_color = Color(0.196078, 0.129412, 0.227451, 1)
-border_width_left = 8
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.643137, 0.0117647, 0.121569, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3usx0"]
+shader = ExtResource("12_a7c48")
+shader_parameter/line_size = 0.85
 
 [node name="PlayerEditor" type="Control"]
 layout_mode = 3
@@ -380,10 +396,61 @@ size_flags_stretch_ratio = 3.0
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TankPreview" type="Panel" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_e8pcf")
+text = "- PREVIEW -"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_e8pcf")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+material = SubResource("ShaderMaterial_wigou")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pq2xk")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+material = SubResource("ShaderMaterial_2k467")
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture = ExtResource("1_tm475")
 
 [node name="GridContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer"]
 layout_mode = 2
@@ -441,31 +508,61 @@ layout_mode = 2
 use_parent_material = true
 layout_mode = 2
 texture_normal = ExtResource("7_hmhk3")
+stretch_mode = 0
 
 [node name="GridMenu" type="MarginContainer" parent="MarginContainer/EditorLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/GridMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu"]
 layout_mode = 2
-theme = ExtResource("6_e8pcf")
-theme_override_styles/panel = SubResource("StyleBoxFlat_70ro2")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("6_e8pcf")
+text = "- DATA -"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_e8pcf")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer/EditorLayout/GridMenu/Panel/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+material = SubResource("ShaderMaterial_3usx0")
 layout_mode = 2
-size_flags_vertical = 0
-text = "Tank Data"
-horizontal_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_l6mkl")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/GridContainer"]
+use_parent_material = true
+layout_mode = 2
+texture_normal = ExtResource("7_hmhk3")

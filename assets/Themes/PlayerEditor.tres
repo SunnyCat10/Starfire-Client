@@ -1,21 +1,19 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cddeh34ai2xqx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l13bj"]
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-corner_radius_top_left = 16
-corner_radius_top_right = 16
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cddeh34ai2xqx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kifwq"]
-bg_color = Color(0.196078, 0.129412, 0.227451, 1)
-border_width_left = 8
-border_width_right = 8
-border_color = Color(0.643137, 0.0117647, 0.121569, 1)
+bg_color = Color(0, 0.0705882, 0.0352941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.929412, 0.968627, 0.964706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [resource]
 Button/font_sizes/font_size = 28
-Label/font_sizes/font_size = 32
-Label/styles/normal = SubResource("StyleBoxFlat_l13bj")
+Label/font_sizes/font_size = 24
 Panel/styles/panel = SubResource("StyleBoxFlat_kifwq")
-VBoxContainer/constants/separation = 24
+VBoxContainer/constants/separation = 16

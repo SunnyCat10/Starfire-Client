@@ -7,3 +7,4 @@ res://Scenes/Turrets/GerbilTurret.gdshader
 res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
+res://ui/PlayerEditorGridScreen.gdshader

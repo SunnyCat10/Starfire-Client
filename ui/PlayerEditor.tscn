@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=24 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
 [ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="1_tm475"]
 [ext_resource type="Texture2D" uid="uid://cejhcfgshnvsc" path="res://assets/Tanks/Paint/Camo_01.png" id="2_k74nh"]
+[ext_resource type="Resource" uid="uid://ba26slkqnyia8" path="res://Resources/Hulls/Cronus.tres" id="2_yy6ni"]
 [ext_resource type="Texture2D" uid="uid://bfujkakjyuu8m" path="res://assets/Tanks/Paint/Camo_00.png" id="5_5xx2x"]
 [ext_resource type="Theme" uid="uid://cddeh34ai2xqx" path="res://assets/Themes/PlayerEditor.tres" id="6_e8pcf"]
 [ext_resource type="Texture2D" uid="uid://dfbnytkokkw61" path="res://assets/Textures/EditorHullButton.png" id="7_hmhk3"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bi0ul0rhgi6lj" path="res://assets/Textures/EditorSaveButton.png" id="8_v4ugb"]
 [ext_resource type="Texture2D" uid="uid://dosfg2gcyh4tl" path="res://assets/Textures/EditorCoatButton.png" id="9_uqvk4"]
 [ext_resource type="Shader" path="res://ui/PlayerEditorGridScreen.gdshader" id="12_a7c48"]
+[ext_resource type="Material" uid="uid://46k7vly7b578" path="res://Materials/TankShader.tres" id="13_oytqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5bac"]
 
@@ -54,13 +56,6 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k467"]
-shader = ExtResource("1_431hm")
-shader_parameter/selected_color_1 = Color(0.172549, 0.501961, 0.215686, 1)
-shader_parameter/selected_color_2 = Color(0.552941, 0.341176, 0.113725, 1)
-shader_parameter/selected_color_3 = Color(0.121569, 0.321569, 0.388235, 1)
-shader_parameter/selected_texture = ExtResource("2_k74nh")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6mkl"]
 bg_color = Color(0.00784314, 0.152941, 0.00784314, 1)
 border_width_left = 4
@@ -77,6 +72,9 @@ corner_radius_bottom_left = 8
 shader = ExtResource("12_a7c48")
 shader_parameter/line_size = 0.85
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcx6o"]
+border_width_top = 4
+
 [node name="PlayerEditor" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -85,6 +83,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6a8t")
+hull_resources = Array[Resource("res://Resources/Hull.gd")]([ExtResource("2_yy6ni")])
 
 [node name="ColorRect" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_w5bac")
@@ -339,6 +338,7 @@ layout_mode = 2
 theme = ExtResource("6_e8pcf")
 
 [node name="HullBtn" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/SubCategoryMenu/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -347,6 +347,7 @@ texture_normal = ExtResource("7_hmhk3")
 stretch_mode = 0
 
 [node name="TurretBtn" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/SubCategoryMenu/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -355,6 +356,7 @@ texture_normal = ExtResource("8_rrgfv")
 stretch_mode = 0
 
 [node name="CoatBtn" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/SubCategoryMenu/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -371,7 +373,8 @@ layout_mode = 2
 theme = ExtResource("6_e8pcf")
 alignment = 2
 
-[node name="TextureButton4" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/NavigationMenu/VBoxContainer2"]
+[node name="BackBtn" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/NavigationMenu/VBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -379,7 +382,8 @@ size_flags_vertical = 4
 texture_normal = ExtResource("7_wa0ff")
 stretch_mode = 0
 
-[node name="TextureButton5" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/NavigationMenu/VBoxContainer2"]
+[node name="SaveBtn" type="TextureButton" parent="MarginContainer/EditorLayout/MainMenu/VBoxContainer/CategoryMenu/CategoryMenu2/NavigationMenu/VBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -387,55 +391,55 @@ size_flags_vertical = 4
 texture_normal = ExtResource("8_v4ugb")
 stretch_mode = 0
 
-[node name="DataMenu" type="MarginContainer" parent="MarginContainer/EditorLayout"]
+[node name="PreviewAndOptionsMenu" type="MarginContainer" parent="MarginContainer/EditorLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer"]
+[node name="PreviewMenu" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_e8pcf")
 text = "- PREVIEW -"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 9.0
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 
-[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_e8pcf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer"]
 material = SubResource("ShaderMaterial_wigou")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pq2xk")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -443,16 +447,16 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
-material = SubResource("ShaderMaterial_2k467")
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+material = ExtResource("13_oytqt")
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 texture = ExtResource("1_tm475")
 
-[node name="GridContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer"]
+[node name="GridContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.6
@@ -460,80 +464,85 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_e8pcf")
 text = "- OPTIONS -"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 9.0
 
-[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_e8pcf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer"]
 material = SubResource("ShaderMaterial_wigou")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l6mkl")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer"]
 use_parent_material = true
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/EditorLayout/DataMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="HullGrid" type="GridContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/GridContainer/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
 use_parent_material = true
 layout_mode = 2
-texture_normal = ExtResource("7_hmhk3")
-stretch_mode = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("6_e8pcf")
+columns = 4
 
-[node name="GridMenu" type="MarginContainer" parent="MarginContainer/EditorLayout"]
+[node name="DataMenu" type="MarginContainer" parent="MarginContainer/EditorLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("6_e8pcf")
 text = "- DATA -"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_e8pcf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -545,12 +554,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer"]
 material = SubResource("ShaderMaterial_3usx0")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l6mkl")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -558,11 +567,38 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/EditorLayout/GridMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/ScrollContainer"]
 use_parent_material = true
 layout_mode = 2
-texture_normal = ExtResource("7_hmhk3")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+text = "GERBIL CLASS HULL"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("6_e8pcf")
+theme_override_styles/separator = SubResource("StyleBoxFlat_kcx6o")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "The [b]GERBIL[/b] class hull offer high mobility and maneuverability second to none. While lacking in armor to more modern designs, the ease of maintance and the ability to cheapely retrofit and produce new Gerbils, makes the Gerbil based tanks ideal candidate for support roles and planetry defence garrisons.
+
+First fielded by the Tikshuv Coalition in the closing days of the Third Intergalactic Moogs War, tanks based on the Gerbil participated in countless campaigns in Kesheregian Space, The Inner and Outer Gerbilian Rim and The Gadab Void.
+
+During the Siege of Boras Prime, 6000 Gerbil Mark II and 9000 Gerbil Mark I lead by the Grand Kesheregs: Gerbillius and Geshpillius respectively, systematically destroyed convoys and command centers of Moogsmarines reinforcement. Using their high mobility, the ability to field light variants of the potent Raftguns, and ease of repair, The Grand Kesheregs delayed the Moogsmarines for months. Until at last the Moogsian Fortress of Vicious Vice fell to the thundering roar of Tikshuvian Raftbattlecannons, resulting in the Tikshuv Coalition Victory.
+
+Battle tested on numerous planets for centuries, with hundreds of modifications and modules available the gerbil can operate in practically any terrain and climate. Noteable examples include Pavel Pattern Engineering Gerbil equiped with magnetic threads which allows the Gerbil to operate in outer space while magnetically being attached to a spaceship or a space station. And the increasingly rare Kader Pattern Gerbil equiped with a devastating miniaturized Contact Raftcannon. While the ability to manufacture new Contact Raftcannons is long lost, the few remaining Kader Pattern Gerbils are utilized to their limits, spearheading the ongoing 132th Kader Campaign in the 18th Beacon Army of Kesheregia."
+fit_content = true

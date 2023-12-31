@@ -1,10 +1,13 @@
-res://ui/PlayerEditor.tscn
+res://tanks/gerbil.tscn
 res://assets/Shaders/PlayerEditor.gdshader
 res://assets/Themes/PlayerEditor.tres
+res://ui/PlayerEditorGridScreen.gdshader
 res://assets/Themes/AllyScoreboard.tres
 res://assets/Themes/EnemyScoreboard.tres
 res://Scenes/Turrets/GerbilTurret.gdshader
-res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
-res://ui/PlayerEditorGridScreen.gdshader
+res://ui/PlayerEditor.tscn
+res://Resources/Hull.gd
+res://Resources/Hulls/Cronus.tres
+res://ui/PlayerEditor.gd

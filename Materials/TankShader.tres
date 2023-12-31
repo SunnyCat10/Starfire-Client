@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://46k7vly7b578"]
+
+[ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_uoukm"]
+[ext_resource type="Texture2D" uid="uid://cejhcfgshnvsc" path="res://assets/Tanks/Paint/Camo_01.png" id="2_tb3qk"]
+
+[resource]
+shader = ExtResource("1_uoukm")
+shader_parameter/selected_color_1 = Color(0.172549, 0.501961, 0.215686, 1)
+shader_parameter/selected_color_2 = Color(0.552941, 0.341176, 0.113725, 1)
+shader_parameter/selected_color_3 = Color(0.121569, 0.321569, 0.388235, 1)
+shader_parameter/selected_texture = ExtResource("2_tb3qk")

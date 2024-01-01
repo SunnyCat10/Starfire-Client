@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2qrn80bnw1hi"
-path="res://.godot/imported/EditorTurretButton.png-5a924a38c06325e654e78037446db0aa.ctex"
+uid="uid://dxau4dyci1lb7"
+path="res://.godot/imported/EditorColor1Selected.png-5c75ee9fd11d227daf59abd0b7b43fb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures/EditorTurretButton.png"
-dest_files=["res://.godot/imported/EditorTurretButton.png-5a924a38c06325e654e78037446db0aa.ctex"]
+source_file="res://assets/UITextures/EditorColor1Selected.png"
+dest_files=["res://.godot/imported/EditorColor1Selected.png-5c75ee9fd11d227daf59abd0b7b43fb3.ctex"]
 
 [params]
 

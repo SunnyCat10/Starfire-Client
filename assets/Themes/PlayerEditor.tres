@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cddeh34ai2xqx"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cddeh34ai2xqx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcx6o"]
+border_width_top = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kifwq"]
 bg_color = Color(0, 0.0705882, 0.0352941, 1)
@@ -16,6 +19,7 @@ corner_radius_bottom_left = 8
 Button/font_sizes/font_size = 28
 GridContainer/constants/h_separation = 16
 GridContainer/constants/v_separation = 16
+HSeparator/styles/separator = SubResource("StyleBoxFlat_kcx6o")
 Label/font_sizes/font_size = 24
 Panel/styles/panel = SubResource("StyleBoxFlat_kifwq")
 VBoxContainer/constants/separation = 16

@@ -6,17 +6,25 @@ extends Control
 @export var coat_resources : Array[UiButtonResource]
 
 
-@onready var camo_00 : Texture2D = preload("res://assets/Tanks/Paint/Camo_00.png")
-@onready var camo_01 : Texture2D = preload("res://assets/Tanks/Paint/Camo_01.png")
+#@onready var camo_00 : Texture2D = preload("res://assets/Tanks/Paint/Camo_00.png")
+#@onready var camo_01 : Texture2D = preload("res://assets/Tanks/Paint/Camo_01.png")
+@onready var editor_color_1 : Texture2D = preload("res://assets/UITextures/EditorColor1.png")
+@onready var editor_color_2 : Texture2D = preload("res://assets/UITextures/EditorColor2.png")
+@onready var editor_color_3 : Texture2D = preload("res://assets/UITextures/EditorColor3.png")
+@onready var editor_color_1_selected : Texture2D = preload("res://assets/UITextures/EditorColor1Selected.png")
+@onready var editor_color_2_selected : Texture2D = preload("res://assets/UITextures/EditorColor2Selected.png")
+@onready var editor_color_3_selected : Texture2D = preload("res://assets/UITextures/EditorColor3Selected.png")
 
 @onready var color_picker : ColorPicker = %ColorPicker
 
 #@onready var material_1_btn : TextureButton = %Material1Btn
 #@onready var material_2_btn : TextureButton = %Material2Btn
 
-@onready var color_1_btn : TextureButton = %Color1Btn
-@onready var color_2_btn : TextureButton = %Color2Btn
-@onready var color_3_btn : TextureButton = %Color3Btn
+#@onready var color_1_btn : TextureButton = %Color1Btn
+#@onready var color_2_btn : TextureButton = %Color2Btn
+#@onready var color_3_btn : TextureButton = %Color3Btn
+
+@onready var color_buttons : Array[TextureButton] = [%Color1Btn, %Color2Btn, %Color3Btn]
 
 @onready var hull_btn : TextureButton = %HullBtn
 @onready var turret_btn : TextureButton = %TurretBtn
@@ -24,7 +32,7 @@ extends Control
 @onready var back_btn : TextureButton = %BackBtn
 @onready var save_btn : TextureButton = %SaveBtn
 
-@onready var preview : Sprite2D = %Preview
+# @onready var preview : Sprite2D = %Preview
 
 @onready var hull_grid : GridContainer = %HullGrid
 @onready var turret_grid : GridContainer = %TurretGrid
@@ -34,13 +42,25 @@ extends Control
 @onready var coat_container : ScrollContainer = %CoatContainer
 @onready var coat_data : MarginContainer = %CoatData
 
-var selected_button : int = 1
+@onready var tank_hull_preview : TextureRect = %TankHullPreview
+
+enum ColorButton {FIRST, SECOND, THIRD}
+var selected_button : ColorButton = ColorButton.FIRST
 
 func _ready():
 	color_picker.color_changed.connect(on_color_changed)
-	color_1_btn.pressed.connect(func(): selected_button = 1)
-	color_2_btn.pressed.connect(func(): selected_button = 2)
-	color_3_btn.pressed.connect(func(): selected_button = 3)
+	
+	color_buttons[ColorButton.FIRST].pressed.connect(func(): 
+		selected_button = ColorButton.FIRST
+		set_button_texture(ColorButton.FIRST))
+	
+	color_buttons[ColorButton.SECOND].pressed.connect(func(): 
+		selected_button = ColorButton.SECOND
+		set_button_texture(ColorButton.SECOND))
+	
+	color_buttons[ColorButton.THIRD].pressed.connect(func(): 
+		selected_button = ColorButton.THIRD
+		set_button_texture(ColorButton.THIRD))
 	#material_1_btn.pressed.connect(func(): preview.material.set_shader_parameter("selected_texture", camo_00))
 	#material_2_btn.pressed.connect(func(): preview.material.set_shader_parameter("selected_texture", camo_01))
 	
@@ -91,17 +111,35 @@ func load_categories() -> void:
 	pass
 
 func on_color_changed(color : Color):
-	preview.material.set_shader_parameter("selected_color_" + str(selected_button), color)
+	# preview.material.set_shader_parameter("selected_color_" + str(selected_button), color)
+	tank_hull_preview.material.set_shader_parameter("selected_color_" + str(selected_button + 1), color)
 	color_button(color)
 
 
 func color_button(color : Color):
 	var button : TextureButton
 	match selected_button:
-		1:
-			button = color_1_btn
-		2:
-			button = color_2_btn
-		3:
-			button = color_3_btn
+		ColorButton.FIRST:
+			button = color_buttons[ColorButton.FIRST]
+		ColorButton.SECOND:
+			button = color_buttons[ColorButton.SECOND]
+		ColorButton.THIRD:
+			button = color_buttons[ColorButton.THIRD]
 	button.self_modulate = 	color
+
+
+func set_button_texture(selected_button : ColorButton) -> void:
+	resest_color_buttons_texture()
+	match selected_button:
+		ColorButton.FIRST:
+			color_buttons[ColorButton.FIRST].texture_normal = editor_color_1_selected
+		ColorButton.SECOND:
+			color_buttons[ColorButton.SECOND].texture_normal = editor_color_2_selected
+		ColorButton.THIRD:
+			color_buttons[ColorButton.THIRD].texture_normal = editor_color_3_selected
+
+
+func resest_color_buttons_texture() -> void:
+	color_buttons[ColorButton.FIRST].texture_normal = editor_color_1
+	color_buttons[ColorButton.SECOND].texture_normal = editor_color_2
+	color_buttons[ColorButton.THIRD].texture_normal = editor_color_3

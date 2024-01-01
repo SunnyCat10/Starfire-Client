@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hai2v05byykl"
-path="res://.godot/imported/EditorBackButton.png-4a1f35ffb0575e5daa6b41a4883fc666.ctex"
+uid="uid://bydkaibpxwbyi"
+path="res://.godot/imported/EditorColor1.png-e5171b37e689d609a435b191c394ef32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures/EditorBackButton.png"
-dest_files=["res://.godot/imported/EditorBackButton.png-4a1f35ffb0575e5daa6b41a4883fc666.ctex"]
+source_file="res://assets/UITextures/EditorColor1.png"
+dest_files=["res://.godot/imported/EditorColor1.png-e5171b37e689d609a435b191c394ef32.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=30 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
@@ -7,15 +7,20 @@
 [ext_resource type="Resource" uid="uid://ba26slkqnyia8" path="res://Resources/Hulls/Cronus.tres" id="2_yy6ni"]
 [ext_resource type="Resource" uid="uid://bpn704qc477u0" path="res://Resources/Coats/Plain.tres" id="3_w0avm"]
 [ext_resource type="Resource" uid="uid://cg5m3w76xo3kr" path="res://Resources/Coats/Spotted.tres" id="4_vypvm"]
-[ext_resource type="Texture2D" uid="uid://bfujkakjyuu8m" path="res://assets/Tanks/Paint/Camo_00.png" id="5_5xx2x"]
 [ext_resource type="Theme" uid="uid://cddeh34ai2xqx" path="res://assets/Themes/PlayerEditor.tres" id="6_e8pcf"]
-[ext_resource type="Texture2D" uid="uid://dfbnytkokkw61" path="res://assets/Textures/EditorHullButton.png" id="7_hmhk3"]
-[ext_resource type="Texture2D" uid="uid://hai2v05byykl" path="res://assets/Textures/EditorBackButton.png" id="7_wa0ff"]
-[ext_resource type="Texture2D" uid="uid://c2qrn80bnw1hi" path="res://assets/Textures/EditorTurretButton.png" id="8_rrgfv"]
-[ext_resource type="Texture2D" uid="uid://bi0ul0rhgi6lj" path="res://assets/Textures/EditorSaveButton.png" id="8_v4ugb"]
-[ext_resource type="Texture2D" uid="uid://dosfg2gcyh4tl" path="res://assets/Textures/EditorCoatButton.png" id="9_uqvk4"]
+[ext_resource type="Texture2D" uid="uid://dfbnytkokkw61" path="res://assets/UITextures/EditorHullButton.png" id="7_hmhk3"]
+[ext_resource type="Texture2D" uid="uid://hai2v05byykl" path="res://assets/UITextures/EditorBackButton.png" id="7_wa0ff"]
+[ext_resource type="Texture2D" uid="uid://c2qrn80bnw1hi" path="res://assets/UITextures/EditorTurretButton.png" id="8_rrgfv"]
+[ext_resource type="Texture2D" uid="uid://bi0ul0rhgi6lj" path="res://assets/UITextures/EditorSaveButton.png" id="8_v4ugb"]
+[ext_resource type="Texture2D" uid="uid://dosfg2gcyh4tl" path="res://assets/UITextures/EditorCoatButton.png" id="9_uqvk4"]
 [ext_resource type="Shader" path="res://ui/PlayerEditorGridScreen.gdshader" id="12_a7c48"]
 [ext_resource type="Material" uid="uid://46k7vly7b578" path="res://Materials/TankShader.tres" id="13_oytqt"]
+[ext_resource type="Texture2D" uid="uid://bydkaibpxwbyi" path="res://assets/UITextures/EditorColor1.png" id="16_6oujx"]
+[ext_resource type="Texture2D" uid="uid://bveidmrbnm1cx" path="res://assets/UITextures/EditorColor2.png" id="17_mwlp4"]
+[ext_resource type="Texture2D" uid="uid://byh37u05a1mw0" path="res://assets/UITextures/EditorColor1Hover.png" id="17_opvwj"]
+[ext_resource type="Texture2D" uid="uid://d3162cr2a0yda" path="res://assets/UITextures/EditorColor3.png" id="18_2emmd"]
+[ext_resource type="Texture2D" uid="uid://cr0pf2dr80bn8" path="res://assets/UITextures/EditorColor2Hover.png" id="19_gjcof"]
+[ext_resource type="Texture2D" uid="uid://c5jv87t2kndxt" path="res://assets/UITextures/EditorColor3Hover.png" id="21_xlikn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5bac"]
 
@@ -73,9 +78,6 @@ corner_radius_bottom_left = 8
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3usx0"]
 shader = ExtResource("12_a7c48")
 shader_parameter/line_size = 0.85
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcx6o"]
-border_width_top = 4
 
 [node name="PlayerEditor" type="Control"]
 layout_mode = 3
@@ -281,7 +283,8 @@ theme_override_constants/margin_bottom = 4
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+[node name="TankHullPreview" type="TextureRect" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
 material = ExtResource("13_oytqt")
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
@@ -458,7 +461,6 @@ horizontal_alignment = 1
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("6_e8pcf")
-theme_override_styles/separator = SubResource("StyleBoxFlat_kcx6o")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -479,46 +481,54 @@ theme_override_constants/margin_top = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="ColorSlector" type="HBoxContainer" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Color3Btn" type="TextureButton" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer/ColorSlector"]
+[node name="Color1Btn" type="TextureButton" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer/ColorSlector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_normal = ExtResource("5_5xx2x")
+texture_normal = ExtResource("16_6oujx")
+texture_hover = ExtResource("17_opvwj")
 stretch_mode = 0
 
 [node name="Color2Btn" type="TextureButton" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer/ColorSlector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_normal = ExtResource("5_5xx2x")
+texture_normal = ExtResource("17_mwlp4")
+texture_hover = ExtResource("19_gjcof")
 stretch_mode = 0
 
-[node name="Color1Btn" type="TextureButton" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer/ColorSlector"]
+[node name="Color3Btn" type="TextureButton" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer/ColorSlector"]
 unique_name_in_owner = true
 modulate = Color(1, 0.976471, 1, 1)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_normal = ExtResource("5_5xx2x")
+texture_normal = ExtResource("18_2emmd")
+texture_hover = ExtResource("21_xlikn")
 stretch_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_e8pcf")
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/EditorLayout/DataMenu/MarginContainer/VBoxContainer/Panel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CoatData/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 6
 color = Color(0.745098, 0.733333, 0.741176, 1)
 edit_alpha = false
 picker_shape = 2
+can_add_swatches = false
 sampler_visible = false
 color_modes_visible = false
-hex_visible = false
 presets_visible = false

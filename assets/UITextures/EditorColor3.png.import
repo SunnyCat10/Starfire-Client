@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi0ul0rhgi6lj"
-path="res://.godot/imported/EditorSaveButton.png-53f76577498d0648de53332ce3f964f1.ctex"
+uid="uid://d3162cr2a0yda"
+path="res://.godot/imported/EditorColor3.png-d76ee40f29ea3ed56b53d06f302ef97a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures/EditorSaveButton.png"
-dest_files=["res://.godot/imported/EditorSaveButton.png-53f76577498d0648de53332ce3f964f1.ctex"]
+source_file="res://assets/UITextures/EditorColor3.png"
+dest_files=["res://.godot/imported/EditorColor3.png-d76ee40f29ea3ed56b53d06f302ef97a.ctex"]
 
 [params]
 

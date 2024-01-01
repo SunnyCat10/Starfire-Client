@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfbnytkokkw61"
-path="res://.godot/imported/EditorHullButton.png-1681ccc9775af632fd036e9ef51ef9aa.ctex"
+uid="uid://dx0sgbow4f6c2"
+path="res://.godot/imported/EditorColor2Selected.png-5823d5c6a00853665cecdafc34a10c5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Textures/EditorHullButton.png"
-dest_files=["res://.godot/imported/EditorHullButton.png-1681ccc9775af632fd036e9ef51ef9aa.ctex"]
+source_file="res://assets/UITextures/EditorColor2Selected.png"
+dest_files=["res://.godot/imported/EditorColor2Selected.png-5823d5c6a00853665cecdafc34a10c5c.ctex"]
 
 [params]
 

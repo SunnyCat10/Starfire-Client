@@ -107,8 +107,16 @@ func load_category(category_resources, category_grid : GridContainer) -> void:
 func load_categories() -> void:
 	load_category(hull_resources, hull_grid)
 	load_category(turret_resources, turret_grid)
-	load_category(coat_resources, coat_grid)
-	pass
+	load_coats(coat_resources, coat_grid)
+
+
+func load_coats(category_resources, category_grid : GridContainer) -> void:
+	for resource : UiButtonResource in category_resources :
+		var button : TextureButton = resource.load_as_button()
+		button.custom_minimum_size = Vector2(option_button_minimum_size, option_button_minimum_size)
+		button.pressed.connect(func(): tank_hull_preview.material.set_shader_parameter("selected_texture", resource.texture))
+		category_grid.add_child(button)
+
 
 func on_color_changed(color : Color):
 	# preview.material.set_shader_parameter("selected_color_" + str(selected_button), color)

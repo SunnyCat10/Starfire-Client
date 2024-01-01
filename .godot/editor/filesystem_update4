@@ -1,4 +1,4 @@
-res://ui/PlayerEditor.tscn
+res://tanks/gerbil.tscn
 res://assets/Shaders/PlayerEditor.gdshader
 res://Materials/TankShader.tres
 res://assets/Themes/PlayerEditor.tres
@@ -6,10 +6,6 @@ res://ui/PlayerEditorGridScreen.gdshader
 res://assets/Themes/AllyScoreboard.tres
 res://assets/Themes/EnemyScoreboard.tres
 res://Scenes/Turrets/GerbilTurret.gdshader
-res://ui/PlayerEditor.gd
-res://Resources/UiButtonResource.gd
-res://Resources/Coats/Spotted.tres
-res://Resources/Coats/Plain.tres
-res://tanks/gerbil.tscn
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
+res://ui/PlayerEditor.tscn

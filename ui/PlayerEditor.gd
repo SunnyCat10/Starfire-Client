@@ -52,15 +52,18 @@ func _ready():
 	
 	color_buttons[ColorButton.FIRST].pressed.connect(func(): 
 		selected_button = ColorButton.FIRST
-		set_button_texture(ColorButton.FIRST))
+		set_button_texture(ColorButton.FIRST)
+		color_picker.color = color_buttons[ColorButton.FIRST].self_modulate)
 	
 	color_buttons[ColorButton.SECOND].pressed.connect(func(): 
 		selected_button = ColorButton.SECOND
-		set_button_texture(ColorButton.SECOND))
+		set_button_texture(ColorButton.SECOND)
+		color_picker.color = color_buttons[ColorButton.SECOND].self_modulate)
 	
 	color_buttons[ColorButton.THIRD].pressed.connect(func(): 
 		selected_button = ColorButton.THIRD
-		set_button_texture(ColorButton.THIRD))
+		set_button_texture(ColorButton.THIRD)
+		color_picker.color = color_buttons[ColorButton.THIRD].self_modulate)
 	#material_1_btn.pressed.connect(func(): preview.material.set_shader_parameter("selected_texture", camo_00))
 	#material_2_btn.pressed.connect(func(): preview.material.set_shader_parameter("selected_texture", camo_01))
 	
@@ -136,9 +139,9 @@ func color_button(color : Color):
 	button.self_modulate = 	color
 
 
-func set_button_texture(selected_button : ColorButton) -> void:
+func set_button_texture(currently_selected_button : ColorButton) -> void:
 	resest_color_buttons_texture()
-	match selected_button:
+	match currently_selected_button:
 		ColorButton.FIRST:
 			color_buttons[ColorButton.FIRST].texture_normal = editor_color_1_selected
 		ColorButton.SECOND:

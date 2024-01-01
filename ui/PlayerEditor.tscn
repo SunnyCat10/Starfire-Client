@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=36 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
@@ -7,12 +7,18 @@
 [ext_resource type="Resource" uid="uid://ba26slkqnyia8" path="res://Resources/Hulls/Cronus.tres" id="2_yy6ni"]
 [ext_resource type="Resource" uid="uid://bpn704qc477u0" path="res://Resources/Coats/Plain.tres" id="3_w0avm"]
 [ext_resource type="Resource" uid="uid://cg5m3w76xo3kr" path="res://Resources/Coats/Spotted.tres" id="4_vypvm"]
+[ext_resource type="Resource" uid="uid://byhccc8cnb4pi" path="res://Resources/Coats/Coat02.tres" id="5_2i7mn"]
 [ext_resource type="Theme" uid="uid://cddeh34ai2xqx" path="res://assets/Themes/PlayerEditor.tres" id="6_e8pcf"]
+[ext_resource type="Resource" uid="uid://7lscywp4mc5y" path="res://Resources/Coats/Coat03.tres" id="6_fnhpx"]
+[ext_resource type="Resource" uid="uid://bqe5l6o45w1vm" path="res://Resources/Coats/Coat04.tres" id="7_cyke2"]
 [ext_resource type="Texture2D" uid="uid://dfbnytkokkw61" path="res://assets/UITextures/EditorHullButton.png" id="7_hmhk3"]
 [ext_resource type="Texture2D" uid="uid://hai2v05byykl" path="res://assets/UITextures/EditorBackButton.png" id="7_wa0ff"]
 [ext_resource type="Texture2D" uid="uid://c2qrn80bnw1hi" path="res://assets/UITextures/EditorTurretButton.png" id="8_rrgfv"]
+[ext_resource type="Resource" uid="uid://bn67hy1tpytju" path="res://Resources/Coats/Coat05.tres" id="8_umcnd"]
 [ext_resource type="Texture2D" uid="uid://bi0ul0rhgi6lj" path="res://assets/UITextures/EditorSaveButton.png" id="8_v4ugb"]
+[ext_resource type="Resource" uid="uid://jigp2jvpb5ha" path="res://Resources/Coats/Coat06.tres" id="9_qvonh"]
 [ext_resource type="Texture2D" uid="uid://dosfg2gcyh4tl" path="res://assets/UITextures/EditorCoatButton.png" id="9_uqvk4"]
+[ext_resource type="Resource" uid="uid://bgp1exycfsjqf" path="res://Resources/Coats/Coat07.tres" id="10_wu6uh"]
 [ext_resource type="Shader" path="res://ui/PlayerEditorGridScreen.gdshader" id="12_a7c48"]
 [ext_resource type="Material" uid="uid://46k7vly7b578" path="res://Materials/TankShader.tres" id="13_oytqt"]
 [ext_resource type="Texture2D" uid="uid://bydkaibpxwbyi" path="res://assets/UITextures/EditorColor1.png" id="16_6oujx"]
@@ -88,7 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6a8t")
 hull_resources = Array[Resource("res://Resources/Hull.gd")]([ExtResource("2_yy6ni")])
-coat_resources = Array[Resource("res://Resources/UiButtonResource.gd")]([ExtResource("3_w0avm"), ExtResource("4_vypvm")])
+coat_resources = Array[Resource("res://Resources/UiButtonResource.gd")]([ExtResource("3_w0avm"), ExtResource("4_vypvm"), ExtResource("5_2i7mn"), ExtResource("6_fnhpx"), ExtResource("7_cyke2"), ExtResource("8_umcnd"), ExtResource("9_qvonh"), ExtResource("10_wu6uh")])
 
 [node name="ColorRect" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_w5bac")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UiButtonResource" load_steps=3 format=3 uid="uid://7lscywp4mc5y"]
+
+[ext_resource type="Script" path="res://Resources/UiButtonResource.gd" id="1_jolnt"]
+[ext_resource type="Texture2D" uid="uid://hrgf681uymuk" path="res://assets/Tanks/Paint/Camo_03.png" id="2_6i42i"]
+
+[resource]
+script = ExtResource("1_jolnt")
+name = &"Coat3"
+texture = ExtResource("2_6i42i")

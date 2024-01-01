@@ -9,3 +9,10 @@ res://Scenes/Turrets/GerbilTurret.gdshader
 res://Maps/map.tscn
 res://Scenes/Gamemodes/ctf.tscn
 res://ui/PlayerEditor.tscn
+res://Resources/Coats/Coat02.tres
+res://Resources/Coats/Coat03.tres
+res://Resources/Coats/Coat04.tres
+res://Resources/Coats/Coat05.tres
+res://Resources/Coats/Coat06.tres
+res://Resources/Coats/Coat07.tres
+res://ui/PlayerEditor.gd

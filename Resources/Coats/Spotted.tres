@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UiButtonResource" load_steps=4 format=3 uid="uid://cg5m3w76xo3kr"]
+
+[ext_resource type="Script" path="res://Resources/UiButtonResource.gd" id="1_sge5p"]
+[ext_resource type="Texture2D" uid="uid://cejhcfgshnvsc" path="res://assets/Tanks/Paint/Camo_01.png" id="2_h7d1u"]
+[ext_resource type="Material" uid="uid://46k7vly7b578" path="res://Materials/TankShader.tres" id="3_vuvtl"]
+
+[resource]
+script = ExtResource("1_sge5p")
+name = &"Spotted"
+texture = ExtResource("2_h7d1u")
+texture_shader = ExtResource("3_vuvtl")

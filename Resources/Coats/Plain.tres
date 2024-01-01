@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UiButtonResource" load_steps=4 format=3 uid="uid://bpn704qc477u0"]
+
+[ext_resource type="Script" path="res://Resources/UiButtonResource.gd" id="1_pjhr2"]
+[ext_resource type="Texture2D" uid="uid://bfujkakjyuu8m" path="res://assets/Tanks/Paint/Camo_00.png" id="2_582nx"]
+[ext_resource type="Material" uid="uid://46k7vly7b578" path="res://Materials/TankShader.tres" id="3_17ohl"]
+
+[resource]
+script = ExtResource("1_pjhr2")
+name = &"Plain"
+texture = ExtResource("2_582nx")
+texture_shader = ExtResource("3_17ohl")

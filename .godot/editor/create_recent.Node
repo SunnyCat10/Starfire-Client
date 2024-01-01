@@ -1,14 +1,14 @@
+MarginContainer
+VBoxContainer
+HBoxContainer
 ScrollContainer
 RichTextLabel
 HSeparator
 Label
-VBoxContainer
 TextureRect
 CenterContainer
-MarginContainer
 CanvasLayer
 SubViewport
 SubViewportContainer
 TextureButton
 GridContainer
-PanelContainer

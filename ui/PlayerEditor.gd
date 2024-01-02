@@ -2,7 +2,7 @@ extends Control
 
 @export var option_button_minimum_size : float = 96.
 @export var hull_resources : Array[Hull]
-@export var turret_resources : Array[UiButtonResource]
+@export var turret_resources : Array[Turret]
 @export var coat_resources : Array[UiButtonResource]
 
 
@@ -44,7 +44,7 @@ extends Control
 
 #@onready var tank_hull_preview : TextureRect = %TankHullPreview
 @onready var tank_hull_preview : Node2D = %Preview
-@onready var tank_turret_preview : Node2D = %TankTurretPreview
+@onready var tank_turret_preview : Sprite2D = %TankTurretPreview
 
 enum ColorButton {FIRST, SECOND, THIRD}
 var selected_button : ColorButton = ColorButton.FIRST
@@ -109,8 +109,16 @@ func load_category(category_resources, category_grid : GridContainer) -> void:
 
 func load_categories() -> void:
 	load_category(hull_resources, hull_grid)
-	load_category(turret_resources, turret_grid)
+	load_turrets(turret_resources, turret_grid)
 	load_coats(coat_resources, coat_grid)
+
+
+func load_turrets(category_resources, category_grid : GridContainer) -> void:
+	for resource : UiButtonResource in category_resources :
+		var button : TextureButton = resource.load_as_button()
+		button.custom_minimum_size = Vector2(option_button_minimum_size, option_button_minimum_size)
+		button.pressed.connect(func(): tank_turret_preview.texture = resource.texture)
+		category_grid.add_child(button)
 
 
 func load_coats(category_resources, category_grid : GridContainer) -> void:

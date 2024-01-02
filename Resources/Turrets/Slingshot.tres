@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Turret" load_steps=4 format=3 uid="uid://cab7uk47ca13g"]
+
+[ext_resource type="Script" path="res://Resources/Turrets/Turret.gd" id="1_r2hwx"]
+[ext_resource type="Texture2D" uid="uid://crerjahpt8ers" path="res://assets/Tanks/Turrets/Slingshot.png" id="2_wwet3"]
+[ext_resource type="Material" uid="uid://bl1kqcmlnapyo" path="res://Materials/PlayerEditorTankShader.tres" id="3_hb7cw"]
+
+[resource]
+script = ExtResource("1_r2hwx")
+name = &"Slingshot"
+texture = ExtResource("2_wwet3")
+texture_height = 32
+texture_width = 32
+texture_shader = ExtResource("3_hb7cw")

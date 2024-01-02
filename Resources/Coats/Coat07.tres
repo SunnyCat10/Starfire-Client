@@ -7,3 +7,5 @@
 script = ExtResource("1_mdvjs")
 name = &"Coat7"
 texture = ExtResource("2_oeduj")
+texture_height = 32
+texture_width = 32

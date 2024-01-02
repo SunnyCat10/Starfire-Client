@@ -8,4 +8,6 @@
 script = ExtResource("1_pjhr2")
 name = &"Plain"
 texture = ExtResource("2_582nx")
+texture_height = 32
+texture_width = 32
 texture_shader = ExtResource("3_17ohl")

@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Hull" load_steps=4 format=3 uid="uid://ba26slkqnyia8"]
 
-[ext_resource type="Script" path="res://Resources/Hull.gd" id="1_cep2b"]
+[ext_resource type="Script" path="res://Resources/Hulls/Hull.gd" id="1_tjxkk"]
 [ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="2_wso5f"]
 [ext_resource type="Material" uid="uid://46k7vly7b578" path="res://Materials/TankShader.tres" id="3_efmui"]
 
 [resource]
-script = ExtResource("1_cep2b")
+script = ExtResource("1_tjxkk")
 name = &"Cronus"
 texture = ExtResource("2_wso5f")
+texture_height = 32
+texture_width = 32
 texture_shader = ExtResource("3_efmui")

@@ -1,0 +1,2 @@
+extends UiButtonResource
+class_name Hull

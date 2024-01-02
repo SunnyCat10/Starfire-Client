@@ -1,7 +1,7 @@
+TextureRect
 Sprite2D
 Marker2D
 Control
-TextureRect
 CenterContainer
 Panel
 ScrollContainer
@@ -12,4 +12,3 @@ HBoxContainer
 RichTextLabel
 Label
 CanvasLayer
-SubViewport

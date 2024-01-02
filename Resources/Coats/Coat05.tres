@@ -7,3 +7,5 @@
 script = ExtResource("1_opudi")
 name = &"Coat5"
 texture = ExtResource("2_wx0il")
+texture_height = 32
+texture_width = 32

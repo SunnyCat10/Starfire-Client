@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Turret" load_steps=4 format=3 uid="uid://d38ajvld27jtm"]
+
+[ext_resource type="Script" path="res://Resources/Turrets/Turret.gd" id="1_1w1a2"]
+[ext_resource type="Texture2D" uid="uid://ds46c3lawdcj5" path="res://assets/Tanks/Turrets/Tomato.png" id="2_p0lp7"]
+[ext_resource type="Material" uid="uid://bl1kqcmlnapyo" path="res://Materials/PlayerEditorTankShader.tres" id="3_jkjhw"]
+
+[resource]
+script = ExtResource("1_1w1a2")
+name = &"Tomato"
+texture = ExtResource("2_p0lp7")
+texture_height = 32
+texture_width = 64
+texture_shader = ExtResource("3_jkjhw")

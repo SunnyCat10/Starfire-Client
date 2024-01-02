@@ -8,4 +8,6 @@
 script = ExtResource("1_sge5p")
 name = &"Spotted"
 texture = ExtResource("2_h7d1u")
+texture_height = 32
+texture_width = 32
 texture_shader = ExtResource("3_vuvtl")

@@ -42,7 +42,9 @@ extends Control
 @onready var coat_container : ScrollContainer = %CoatContainer
 @onready var coat_data : MarginContainer = %CoatData
 
-@onready var tank_hull_preview : TextureRect = %TankHullPreview
+#@onready var tank_hull_preview : TextureRect = %TankHullPreview
+@onready var tank_hull_preview : Node2D = %Preview
+@onready var tank_turret_preview : Node2D = %TankTurretPreview
 
 enum ColorButton {FIRST, SECOND, THIRD}
 var selected_button : ColorButton = ColorButton.FIRST
@@ -64,8 +66,6 @@ func _ready():
 		selected_button = ColorButton.THIRD
 		set_button_texture(ColorButton.THIRD)
 		color_picker.color = color_buttons[ColorButton.THIRD].self_modulate)
-	#material_1_btn.pressed.connect(func(): preview.material.set_shader_parameter("selected_texture", camo_00))
-	#material_2_btn.pressed.connect(func(): preview.material.set_shader_parameter("selected_texture", camo_01))
 	
 	hull_btn.pressed.connect(func():
 		hide_categories()
@@ -118,12 +118,13 @@ func load_coats(category_resources, category_grid : GridContainer) -> void:
 		var button : TextureButton = resource.load_as_button()
 		button.custom_minimum_size = Vector2(option_button_minimum_size, option_button_minimum_size)
 		button.pressed.connect(func(): tank_hull_preview.material.set_shader_parameter("selected_texture", resource.texture))
+		button.pressed.connect(func(): tank_turret_preview.material.set_shader_parameter("selected_texture", resource.texture))
 		category_grid.add_child(button)
 
 
 func on_color_changed(color : Color):
-	# preview.material.set_shader_parameter("selected_color_" + str(selected_button), color)
 	tank_hull_preview.material.set_shader_parameter("selected_color_" + str(selected_button + 1), color)
+	tank_turret_preview.material.set_shader_parameter("selected_color_" + str(selected_button + 1), color)
 	color_button(color)
 
 

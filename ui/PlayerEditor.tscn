@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=37 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Shader" path="res://assets/Shaders/PlayerEditor.gdshader" id="1_431hm"]
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
@@ -27,19 +27,13 @@
 [ext_resource type="Texture2D" uid="uid://d3162cr2a0yda" path="res://assets/UITextures/EditorColor3.png" id="18_2emmd"]
 [ext_resource type="Texture2D" uid="uid://cr0pf2dr80bn8" path="res://assets/UITextures/EditorColor2Hover.png" id="19_gjcof"]
 [ext_resource type="Texture2D" uid="uid://c5jv87t2kndxt" path="res://assets/UITextures/EditorColor3Hover.png" id="21_xlikn"]
+[ext_resource type="Texture2D" uid="uid://ds46c3lawdcj5" path="res://assets/Tanks/Turrets/Tomato.png" id="22_c8cor"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5bac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxj2k"]
 bg_color = Color(0, 0.0705882, 0.0352941, 1)
 border_color = Color(0.929412, 0.968627, 0.964706, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4wmt"]
-shader = ExtResource("1_431hm")
-shader_parameter/selected_color_1 = Color(0.490196, 0.188235, 0, 1)
-shader_parameter/selected_color_2 = Color(0.85098, 0.682353, 0.109804, 1)
-shader_parameter/selected_color_3 = Color(0.215686, 0.356863, 0, 1)
-shader_parameter/selected_texture = ExtResource("2_k74nh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5eqs3"]
 bg_color = Color(0, 0.0705882, 0.0352941, 1)
@@ -68,6 +62,13 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4wmt"]
+shader = ExtResource("1_431hm")
+shader_parameter/selected_color_1 = Color(0.0941176, 0.337255, 0.317647, 1)
+shader_parameter/selected_color_2 = Color(0.627451, 0.729412, 0.701961, 1)
+shader_parameter/selected_color_3 = Color(0.47451, 0.223529, 0.192157, 1)
+shader_parameter/selected_texture = ExtResource("2_k74nh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6mkl"]
 bg_color = Color(0.00784314, 0.152941, 0.00784314, 1)
@@ -106,13 +107,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_e8pcf")
 theme_override_styles/panel = SubResource("StyleBoxFlat_fxj2k")
-
-[node name="Preview" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_j4wmt")
-position = Vector2(344, 168)
-scale = Vector2(8, 8)
-texture = ExtResource("1_tm475")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -291,10 +285,29 @@ layout_mode = 2
 
 [node name="TankHullPreview" type="TextureRect" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("13_oytqt")
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 texture = ExtResource("1_tm475")
+
+[node name="Control" type="Control" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Preview" type="Sprite2D" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer/Control"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_j4wmt")
+scale = Vector2(6, 6)
+texture = ExtResource("1_tm475")
+
+[node name="Marker2D" type="Marker2D" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer/Control/Preview"]
+position = Vector2(-2, 0)
+
+[node name="TankTurretPreview" type="Sprite2D" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer/PreviewMenu/VBoxContainer/MarginContainer/MarginContainer/PanelContainer/MarginContainer/CenterContainer/Control/Preview/Marker2D"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_j4wmt")
+position = Vector2(0.333333, -0.333333)
+texture = ExtResource("22_c8cor")
 
 [node name="GridContainer" type="MarginContainer" parent="MarginContainer/EditorLayout/PreviewAndOptionsMenu/VBoxContainer"]
 layout_mode = 2

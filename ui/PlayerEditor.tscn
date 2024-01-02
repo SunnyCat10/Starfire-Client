@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://drq34c8pcvue4"]
+[gd_scene load_steps=39 format=3 uid="uid://drq34c8pcvue4"]
 
 [ext_resource type="Script" path="res://ui/PlayerEditor.gd" id="1_g6a8t"]
 [ext_resource type="Texture2D" uid="uid://cf73l1r3eo7rj" path="res://assets/Tanks/Hulls/Cronus.png" id="1_tm475"]
@@ -8,8 +8,10 @@
 [ext_resource type="Resource" uid="uid://d38ajvld27jtm" path="res://Resources/Turrets/Tomato.tres" id="4_c7owh"]
 [ext_resource type="Resource" uid="uid://cg5m3w76xo3kr" path="res://Resources/Coats/Spotted.tres" id="4_vypvm"]
 [ext_resource type="Resource" uid="uid://byhccc8cnb4pi" path="res://Resources/Coats/Coat02.tres" id="5_2i7mn"]
+[ext_resource type="Resource" uid="uid://b5ru8jajfl7v3" path="res://Resources/Turrets/Sparky.tres" id="5_tgvop"]
 [ext_resource type="Theme" uid="uid://cddeh34ai2xqx" path="res://assets/Themes/PlayerEditor.tres" id="6_e8pcf"]
 [ext_resource type="Resource" uid="uid://7lscywp4mc5y" path="res://Resources/Coats/Coat03.tres" id="6_fnhpx"]
+[ext_resource type="Resource" uid="uid://12skukxk47if" path="res://Resources/Turrets/Flak.tres" id="6_yi2m6"]
 [ext_resource type="Resource" uid="uid://bqe5l6o45w1vm" path="res://Resources/Coats/Coat04.tres" id="7_cyke2"]
 [ext_resource type="Texture2D" uid="uid://dfbnytkokkw61" path="res://assets/UITextures/EditorHullButton.png" id="7_hmhk3"]
 [ext_resource type="Texture2D" uid="uid://hai2v05byykl" path="res://assets/UITextures/EditorBackButton.png" id="7_wa0ff"]
@@ -89,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6a8t")
 hull_resources = Array[Resource("res://Resources/Hulls/Hull.gd")]([ExtResource("2_yy6ni")])
-turret_resources = Array[Resource("res://Resources/Turrets/Turret.gd")]([ExtResource("3_yhc00"), ExtResource("4_c7owh")])
+turret_resources = Array[Resource("res://Resources/Turrets/Turret.gd")]([ExtResource("3_yhc00"), ExtResource("4_c7owh"), ExtResource("5_tgvop"), ExtResource("6_yi2m6")])
 coat_resources = Array[Resource("res://Resources/UiButtonResource.gd")]([ExtResource("3_w0avm"), ExtResource("4_vypvm"), ExtResource("5_2i7mn"), ExtResource("6_fnhpx"), ExtResource("7_cyke2"), ExtResource("8_umcnd"), ExtResource("9_qvonh"), ExtResource("10_wu6uh")])
 
 [node name="ColorRect" type="Panel" parent="."]

@@ -23,3 +23,5 @@ res://Scenes/Gamemodes/ctf.tscn
 res://Resources/Hulls/Hull.gd
 res://Resources/Hulls/Cronus.tres
 res://ui/PlayerEditor.gd
+res://Resources/Turrets/Sparky.tres
+res://Resources/Turrets/Flak.tres

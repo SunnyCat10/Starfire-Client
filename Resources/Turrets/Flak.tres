@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Turret" load_steps=4 format=3 uid="uid://12skukxk47if"]
+
+[ext_resource type="Script" path="res://Resources/Turrets/Turret.gd" id="1_7k1mb"]
+[ext_resource type="Texture2D" uid="uid://b805wgblluxnm" path="res://assets/Tanks/Turrets/Flak.png" id="2_renmk"]
+[ext_resource type="Material" uid="uid://bl1kqcmlnapyo" path="res://Materials/PlayerEditorTankShader.tres" id="3_feu6x"]
+
+[resource]
+script = ExtResource("1_7k1mb")
+name = &"Flak"
+texture = ExtResource("2_renmk")
+texture_height = 32
+texture_width = 32
+texture_shader = ExtResource("3_feu6x")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Turret" load_steps=4 format=3 uid="uid://b5ru8jajfl7v3"]
+
+[ext_resource type="Script" path="res://Resources/Turrets/Turret.gd" id="1_exa5d"]
+[ext_resource type="Texture2D" uid="uid://vpmo21h8bymr" path="res://assets/Tanks/Turrets/Sparky.png" id="2_jcumo"]
+[ext_resource type="Material" uid="uid://bl1kqcmlnapyo" path="res://Materials/PlayerEditorTankShader.tres" id="3_1cjx2"]
+
+[resource]
+script = ExtResource("1_exa5d")
+name = &"Sparky"
+texture = ExtResource("2_jcumo")
+texture_height = 32
+texture_width = 32
+texture_shader = ExtResource("3_1cjx2")
